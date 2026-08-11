@@ -1,0 +1,4626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>VITALIS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#f7f3ea;
+  --surface:#fff;
+  --surface-2:#f0ead9;
+  --border:#e0d5bf;
+  --text:#2f3b2f;
+  --text-muted:#7a8574;
+  --green:#4f7a5c;
+  --green-light:#eaf1ea;
+  --terracotta:#c17a53;
+  --gold:#c9a15a;
+  --blue:#5b8a9a;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+  padding-bottom:90px;
+}
+.mono{font-family:'IBM Plex Mono',monospace}
+.serif{font-family:'Fraunces',serif}
+
+header{
+  padding:20px 20px 14px;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  background:linear-gradient(180deg,var(--bg) 88%,transparent);
+  backdrop-filter:blur(6px);
+  z-index:10;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+header .brand-icon{width:38px;height:38px;flex-shrink:0}
+header .brand-text h1{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:24px;
+  margin:0;
+  line-height:1;
+  color:var(--green);
+}
+header .brand-text p{
+  color:var(--text-muted);
+  font-size:10.5px;
+  margin:4px 0 0;
+  font-family:'IBM Plex Mono',monospace;
+  letter-spacing:.04em;
+}
+header .client-pill{
+  margin-left:auto;
+  flex-shrink:0;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:7px 12px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--green);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  max-width:150px;
+}
+
+main{
+  padding:16px 16px 20px;
+  max-width:560px;
+  margin:0 auto;
+}
+
+.tabbar{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  display:flex;
+  z-index:20;
+  padding-bottom:env(safe-area-inset-bottom,0);
+}
+.tab{
+  flex:1;
+  text-align:center;
+  padding:12px 0 9px;
+  color:var(--text-muted);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9.5px;
+  border:none;
+  background:none;
+  cursor:pointer;
+}
+.tab-emoji{
+  display:block;
+  font-size:16px;
+  margin-bottom:3px;
+  opacity:.5;
+}
+.tab.active{color:var(--green)}
+.tab.active .tab-emoji{opacity:1}
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 1px 3px rgba(47,59,47,.04);
+}
+
+.section-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-bottom:10px;
+}
+
+label{
+  display:block;
+  font-size:13px;
+  color:var(--text-muted);
+  margin:13px 0 6px;
+}
+label:first-of-type{margin-top:0}
+
+input[type=date],
+input[type=number],
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
+textarea,
+select{
+  width:100%;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:10px;
+  font-family:'Inter',sans-serif;
+  font-size:14.5px;
+  appearance:none;
+}
+input:focus,textarea:focus,select:focus{
+  outline:2px solid var(--green);
+  outline-offset:-1px;
+}
+textarea{min-height:60px;resize:vertical}
+
+.seg{display:flex;gap:7px;flex-wrap:wrap}
+.seg button{
+  padding:8px 11px;
+  border-radius:10px;
+  border:1.5px solid var(--border);
+  background:var(--surface-2);
+  color:var(--text-muted);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  cursor:pointer;
+}
+.seg button.active{
+  border-color:var(--green);
+  color:var(--green);
+  background:var(--green-light);
+}
+
+.check-row{display:flex;flex-wrap:wrap;gap:7px}
+.check-chip{
+  padding:8px 12px;
+  border-radius:20px;
+  border:1.5px solid var(--border);
+  background:var(--surface-2);
+  color:var(--text-muted);
+  font-size:12.5px;
+  cursor:pointer;
+}
+.check-chip.active{
+  border-color:var(--terracotta);
+  color:var(--terracotta);
+  background:#f7ece4;
+}
+
+.btn-primary{
+  width:100%;
+  padding:13px;
+  border-radius:12px;
+  border:none;
+  background:var(--green);
+  color:#fff;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  margin-top:16px;
+  cursor:pointer;
+}
+.btn-primary:disabled{opacity:.6}
+
+.btn-secondary{
+  width:100%;
+  padding:11px;
+  border-radius:12px;
+  border:1.5px solid var(--green);
+  background:var(--green-light);
+  color:var(--green);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+.btn-link{
+  border:none;
+  background:none;
+  color:var(--green);
+  text-decoration:underline;
+  cursor:pointer;
+  font-size:12px;
+  padding:10px 0;
+}
+
+.logout{
+  color:var(--terracotta);
+  border-color:var(--terracotta);
+  background:#f7ece4;
+}
+
+.del-btn{
+  background:none;
+  border:none;
+  color:var(--terracotta);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  cursor:pointer;
+  text-decoration:underline;
+  padding:0;
+  margin-top:8px;
+}
+
+.client-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+}
+.client-item:last-child{border-bottom:none}
+.client-avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--green-light);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  color:var(--green);
+  flex-shrink:0;
+  font-size:14px;
+}
+.client-item.active .client-avatar{background:var(--green);color:#fff}
+.client-name{font-size:13.5px;font-weight:600;flex:1}
+
+.entry{
+  border-bottom:1px solid var(--border);
+  padding:13px 0;
+}
+.entry:last-child{border-bottom:none}
+.entry-date{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+  color:var(--text-muted);
+  margin-bottom:6px;
+}
+.entry-stats{
+  display:flex;
+  gap:12px;
+  font-size:12.5px;
+  color:var(--text-muted);
+  margin-bottom:6px;
+  flex-wrap:wrap;
+}
+.entry-stats b{color:var(--text);font-weight:600}
+.entry-note{
+  font-size:13px;
+  color:var(--text);
+  line-height:1.4;
+  margin-top:4px;
+}
+.entry-note .lbl{
+  font-size:10px;
+  color:var(--text-muted);
+  font-family:'IBM Plex Mono',monospace;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  display:block;
+  margin-bottom:2px;
+}
+
+.empty{
+  text-align:center;
+  padding:32px 20px;
+  color:var(--text-muted);
+  font-size:13.5px;
+}
+
+.stat-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:14px;
+}
+.stat-box{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:13px;
+}
+.stat-box .num{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:24px;
+  color:var(--green);
+  line-height:1;
+}
+.stat-box .lbl{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9.5px;
+  color:var(--text-muted);
+  margin-top:5px;
+}
+
+.chart-wrap svg{width:100%;height:auto;display:block}
+.chart-caption{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10.5px;
+  color:var(--text-muted);
+  margin-top:8px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.toast{
+  position:fixed;
+  bottom:90px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--green);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:20px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;
+  opacity:0;
+  transition:opacity .25s ease;
+  pointer-events:none;
+  z-index:30;
+  white-space:nowrap;
+}
+.toast.show{opacity:1}
+
+.link-box{
+  background:var(--surface-2);
+  border:1px dashed var(--border);
+  border-radius:10px;
+  padding:10px 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  word-break:break-all;
+  color:var(--green);
+  margin-top:8px;
+}
+
+.setup-banner{
+  background:#fdf3e2;
+  border:1px solid var(--gold);
+  border-radius:12px;
+  padding:12px 14px;
+  font-size:12.5px;
+  color:#7a5b1e;
+  margin-bottom:14px;
+}
+
+.auth-wrap{
+  max-width:430px;
+  margin:30px auto;
+}
+.auth-logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+.auth-logo svg{
+  width:72px;
+  height:72px;
+}
+.auth-logo h2{
+  font-family:'Fraunces',serif;
+  font-size:34px;
+  color:var(--green);
+  margin:10px 0 3px;
+}
+.auth-logo p{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  color:var(--text-muted);
+  letter-spacing:.06em;
+}
+.auth-error{
+  background:#f7ece4;
+  border:1px solid #d9aa91;
+  color:#9b5436;
+  border-radius:10px;
+  padding:10px 12px;
+  font-size:12.5px;
+  margin-bottom:12px;
+}
+.auth-success{
+  background:var(--green-light);
+  border:1px solid #a9c5ae;
+  color:var(--green);
+  border-radius:10px;
+  padding:10px 12px;
+  font-size:12.5px;
+  margin-bottom:12px;
+}
+
+.hidden{display:none!important}
+</style>
+</head>
+
+<body>
+
+<header>
+  <svg class="brand-icon" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="48" fill="#eaf1ea" stroke="#e0d5bf" stroke-width="2"/>
+    <path d="M50 78 C50 60 50 55 50 42" stroke="#4f7a5c" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z" fill="#4f7a5c"/>
+    <path d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z" fill="#6b9a76"/>
+  </svg>
+
+  <div class="brand-text">
+    <h1 id="header-title">VITALIS</h1>
+    <p id="header-subtitle">SUIVI NATUROPATHIE</p>
+  </div>
+
+  <div class="client-pill" id="client-pill" style="display:none;">
+    <span>👤</span>
+    <span class="name" id="client-pill-name"></span>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<div class="tabbar" id="tabbar"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* ============================================================
+   SUPABASE
+============================================================ */
+
+const SUPABASE_URL = 'https://vrfquuhrmbtiuwvnnfjc.supabase.co';
+
+const SUPABASE_ANON_KEY =
+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyZnF1dWhybWJ0aXV3dm5uZmpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4MzMwNjcsImV4cCI6MjEwMTQwOTA2N30.cV6z0MHkYvXsFXRHid4uftrGLIAo0dOYN23XPyby67w';
+
+
+/* ============================================================
+   SUPABASE AUTH
+============================================================ */
+
+let currentUser = null;
+let authLoading = true;
+
+async function getSession(){
+
+  try{
+
+    const response = await fetch(
+      `${SUPABASE_URL}/auth/v1/session`,
+      {
+        headers:{
+          'apikey':SUPABASE_ANON_KEY,
+          'Authorization':`Bearer ${SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+    if(!response.ok){
+      currentUser = null;
+      return null;
+    }
+
+    const data = await response.json();
+
+    if(data && data.user){
+      currentUser = data.user;
+      return data;
+    }
+
+    currentUser = null;
+    return null;
+
+  }catch(error){
+
+    console.error(error);
+    currentUser = null;
+    return null;
+
+  }
+}
+
+
+async function login(email,password){
+
+  const response = await fetch(
+    `${SUPABASE_URL}/auth/v1/token?grant_type=password`,
+    {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':SUPABASE_ANON_KEY
+      },
+      body:JSON.stringify({
+        email,
+        password
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  if(!response.ok){
+
+    throw new Error(
+      data.error_description ||
+      data.msg ||
+      'E-mail ou mot de passe incorrect.'
+    );
+
+  }
+
+  if(data.access_token){
+
+    localStorage.setItem(
+      'vitalis_access_token',
+      data.access_token
+    );
+
+    localStorage.setItem(
+      'vitalis_refresh_token',
+      data.refresh_token || ''
+    );
+
+    currentUser = data.user;
+
+  }
+
+  return data;
+}
+
+
+async function logout(){
+
+  try{
+
+    const token =
+      localStorage.getItem('vitalis_access_token');
+
+    await fetch(
+      `${SUPABASE_URL}/auth/v1/logout`,
+      {
+        method:'POST',
+        headers:{
+          'apikey':SUPABASE_ANON_KEY,
+          'Authorization':`Bearer ${token || SUPABASE_ANON_KEY}`
+        }
+      }
+    );
+
+  }catch(e){
+    console.error(e);
+  }
+
+  localStorage.removeItem('vitalis_access_token');
+  localStorage.removeItem('vitalis_refresh_token');
+
+  currentUser = null;
+
+  clients=[];
+  activeClientId=null;
+  activeClientData=null;
+  bilans=[];
+
+  render();
+}
+
+
+async function sendPasswordRecovery(email){
+
+  const redirectTo =
+    window.location.origin +
+    window.location.pathname;
+
+  const response = await fetch(
+    `${SUPABASE_URL}/auth/v1/recover`,
+    {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':SUPABASE_ANON_KEY
+      },
+      body:JSON.stringify({
+        email,
+        redirect_to:redirectTo
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  if(!response.ok){
+
+    throw new Error(
+      data.error_description ||
+      data.msg ||
+      'Impossible d’envoyer l’e-mail.'
+    );
+
+  }
+
+  return data;
+}
+
+
+/*
+  Cette fonction est appelée lorsque l'utilisateur arrive
+  depuis le lien de récupération envoyé par Supabase.
+*/
+async function updatePassword(newPassword){
+
+  const token =
+    localStorage.getItem('vitalis_access_token');
+
+  const response = await fetch(
+    `${SUPABASE_URL}/auth/v1/user`,
+    {
+      method:'PUT',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':SUPABASE_ANON_KEY,
+        'Authorization':`Bearer ${token}`
+      },
+      body:JSON.stringify({
+        password:newPassword
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  if(!response.ok){
+
+    throw new Error(
+      data.message ||
+      data.msg ||
+      'Impossible de modifier le mot de passe.'
+    );
+
+  }
+
+  return data;
+}
+
+
+/*
+  Supabase met normalement les tokens de récupération
+  dans le hash de l'URL.
+
+  On les récupère ici et on les conserve afin que
+  updatePassword() puisse fonctionner.
+*/
+function processRecoveryTokens(){
+
+  const hash =
+    window.location.hash.substring(1);
+
+  if(!hash) return false;
+
+  const params =
+    new URLSearchParams(hash);
+
+  const accessToken =
+    params.get('access_token');
+
+  const refreshToken =
+    params.get('refresh_token');
+
+  const type =
+    params.get('type');
+
+  if(accessToken){
+
+    localStorage.setItem(
+      'vitalis_access_token',
+      accessToken
+    );
+
+    if(refreshToken){
+
+      localStorage.setItem(
+        'vitalis_refresh_token',
+        refreshToken
+      );
+
+    }
+
+    currentUser = {
+      id:null,
+      email:null
+    };
+
+    return type === 'recovery';
+
+  }
+
+  return false;
+}
+
+
+/* ============================================================
+   CONSTANTES
+============================================================ */
+
+const DIGESTION_OPTIONS = [
+  'Ballonnements',
+  'Constipation',
+  'Diarrhée',
+  'Reflux',
+  'Digestion difficile'
+];
+
+const EMOTIONNEL_OPTIONS = [
+  'Anxiété',
+  'Stress',
+  'Irritabilité',
+  'Déprime'
+];
+
+const ENERGIE_OPTIONS = [
+  'Excellente',
+  'Bonne',
+  'Fatigue occasionnelle',
+  'Fatigue chronique'
+];
+
+const OBJECTIFS_OPTIONS = [
+  'Perte de poids',
+  'Rééquilibrage alimentaire',
+  'Gestion du stress',
+  'Accompagnement hypertension',
+  'Accompagnement diabète',
+  'Accompagnement cholestérol',
+  'Bien-être général'
+];
+
+const EFFORT_TYPES = [
+  'Marche',
+  'Cardio léger',
+  'Renforcement',
+  'Étirement / mobilité',
+  'Autre'
+];
+
+
+/* ============================================================
+   UTILITAIRES
+============================================================ */
+
+function isConfigured(){
+  return !SUPABASE_URL.includes('TON-PROJET');
+}
+
+
+function todayStr(){
+  return new Date().toISOString().slice(0,10);
+}
+
+
+function escapeHtml(s){
+
+  return (s || '').toString().replace(
+    /[&<>"']/g,
+    c => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c])
+  );
+
+}
+
+
+function formatDate(d){
+
+  if(!d) return '';
+
+  const [y,m,day] = d.split('-');
+
+  const months = [
+    'janv.','févr.','mars','avr.','mai','juin',
+    'juil.','août','sept.','oct.','nov.','déc.'
+  ];
+
+  return `${day} ${months[Number(m)-1]} ${y}`;
+
+}
+
+
+function calcAge(birthDate){
+
+  if(!birthDate) return null;
+
+  const b = new Date(birthDate);
+  const n = new Date();
+
+  let age =
+    n.getFullYear() -
+    b.getFullYear();
+
+  if(
+    n.getMonth() < b.getMonth() ||
+    (
+      n.getMonth() === b.getMonth() &&
+      n.getDate() < b.getDate()
+    )
+  ){
+
+    age--;
+
+  }
+
+  return age;
+
+}
+
+
+function calcBMI(heightCm,weightKg){
+
+  if(!heightCm || !weightKg) return null;
+
+  const h = heightCm / 100;
+
+  return (
+    weightKg / (h*h)
+  ).toFixed(1);
+
+}
+
+
+function showToast(msg){
+
+  const t =
+    document.getElementById('toast');
+
+  if(!t) return;
+
+  t.textContent = msg;
+
+  t.classList.add('show');
+
+  setTimeout(
+    () => t.classList.remove('show'),
+    1800
+  );
+
+}
+
+
+/* ============================================================
+   SUPABASE REST
+============================================================ */
+
+async function sb(path,opts={}){
+
+  const token =
+    localStorage.getItem('vitalis_access_token') ||
+    SUPABASE_ANON_KEY;
+
+  const headers = {
+    'Content-Type':'application/json',
+    'apikey':SUPABASE_ANON_KEY,
+    'Authorization':`Bearer ${token}`,
+    ...(opts.headers || {})
+  };
+
+  if(
+    opts.method === 'POST' &&
+    !headers.Prefer
+  ){
+
+    headers.Prefer =
+      'return=representation';
+
+  }
+
+  const res =
+    await fetch(
+      `${SUPABASE_URL}/rest/v1/${path}`,
+      {
+        ...opts,
+        headers
+      }
+    );
+
+  if(!res.ok){
+
+    throw new Error(
+      'Supabase error: ' +
+      res.status +
+      ' ' +
+      await res.text()
+    );
+
+  }
+
+  const text =
+    await res.text();
+
+  return text ?
+    JSON.parse(text) :
+    null;
+
+}
+
+
+/* ============================================================
+   URL / MODE
+============================================================ */
+
+const urlParams =
+  new URLSearchParams(
+    window.location.search
+  );
+
+const CLIENT_MODE_ID =
+  urlParams.get('client');
+
+const isClientMode =
+  !!CLIENT_MODE_ID;
+
+
+/*
+  Si le lien contient ?client=...
+  l'espace cliente reste accessible.
+
+  Sinon, l'espace professionnel nécessite
+  une authentification Supabase.
+*/
+
+
+/* ============================================================
+   STATE
+============================================================ */
+
+let clients = [];
+
+let activeClientId =
+  CLIENT_MODE_ID || null;
+
+let activeClientData = null;
+
+let bilans = [];
+
+let activeTab =
+  isClientMode ?
+  'new' :
+  'clients';
+
+let newClientName = '';
+
+let editingAdmission = false;
+
+let editingPrescription = false;
+
+let recoveryMode = false;
+
+let authScreen = 'login';
+
+
+let admissionForm = {
+  birth_date:'',
+  sex:'Femme',
+  profession:'',
+  phone:'',
+  email:'',
+  height_cm:'',
+  motif_consultation:'',
+  antecedents_medicaux:'',
+  antecedents_chirurgicaux:'',
+  antecedents_familiaux:'',
+  allergies:'',
+  objectifs:[]
+};
+
+
+let prescriptionForm = {
+  diet:'',
+  micronutrition:'',
+  phyto:'',
+  exercises:'',
+  hygiene:'',
+  suivi:''
+};
+
+
+let form = {
+  date:todayStr(),
+  weight:'',
+  waist:'',
+  petit_dejeuner:'',
+  dejeuner:'',
+  diner:'',
+  collations:'',
+  hydratation_l:'',
+  effort_type:'Marche',
+  effort_duration:'',
+  sleep_hours:'',
+  sleep_quality:'Bonne',
+  stress_level:'Modéré',
+  stress_comment:'',
+  digestion:[],
+  digestion_comment:'',
+  energie:'Bonne',
+  emotionnel:[],
+  douleurs:'',
+  health_note:'',
+  payment_status:'attente',
+  payment_method:'Mobile Money',
+  payment_amount:''
+};
+
+
+function resetForm(){
+
+  form = {
+    date:todayStr(),
+    weight:'',
+    waist:'',
+    petit_dejeuner:'',
+    dejeuner:'',
+    diner:'',
+    collations:'',
+    hydratation_l:'',
+    effort_type:'Marche',
+    effort_duration:'',
+    sleep_hours:'',
+    sleep_quality:'Bonne',
+    stress_level:'Modéré',
+    stress_comment:'',
+    digestion:[],
+    digestion_comment:'',
+    energie:'Bonne',
+    emotionnel:[],
+    douleurs:'',
+    health_note:'',
+    payment_status:'attente',
+    payment_method:'Mobile Money',
+    payment_amount:''
+  };
+
+}
+
+
+/* ============================================================
+   AUTH SCREEN
+============================================================ */
+
+function renderAuth(){
+
+  const main =
+    document.getElementById('main');
+
+  document.getElementById('tabbar')
+    .innerHTML = '';
+
+  document.getElementById('client-pill')
+    .style.display = 'none';
+
+  if(recoveryMode){
+
+    main.innerHTML = `
+      <div class="auth-wrap">
+
+        <div class="auth-logo">
+
+          <svg viewBox="0 0 100 100">
+            <circle
+              cx="50"
+              cy="50"
+              r="48"
+              fill="#eaf1ea"
+              stroke="#e0d5bf"
+              stroke-width="2"
+            />
+
+            <path
+              d="M50 78 C50 60 50 55 50 42"
+              stroke="#4f7a5c"
+              stroke-width="4"
+              fill="none"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
+              fill="#4f7a5c"
+            />
+
+            <path
+              d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
+              fill="#6b9a76"
+            />
+          </svg>
+
+          <h2>VITALIS</h2>
+
+          <p>
+            NOUVEAU MOT DE PASSE
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <div class="section-label">
+            🔐 Sécurité du compte
+          </div>
+
+          <div id="recovery-message"></div>
+
+          <label>Nouveau mot de passe</label>
+
+          <input
+            type="password"
+            id="new-password"
+            placeholder="Minimum 6 caractères"
+            autocomplete="new-password"
+          >
+
+          <label>Confirmer le mot de passe</label>
+
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="Retape ton mot de passe"
+            autocomplete="new-password"
+          >
+
+          <button
+            class="btn-primary"
+            id="update-password-btn"
+          >
+            Enregistrer le nouveau mot de passe
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+    attachRecoveryHandlers();
+
+    return;
+  }
+
+
+  if(authScreen === 'forgot'){
+
+    main.innerHTML = `
+      <div class="auth-wrap">
+
+        <div class="auth-logo">
+
+          <svg viewBox="0 0 100 100">
+            <circle
+              cx="50"
+              cy="50"
+              r="48"
+              fill="#eaf1ea"
+              stroke="#e0d5bf"
+              stroke-width="2"
+            />
+
+            <path
+              d="M50 78 C50 60 50 55 50 42"
+              stroke="#4f7a5c"
+              stroke-width="4"
+              fill="none"
+              stroke-linecap="round"
+            />
+
+            <path
+              d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
+              fill="#4f7a5c"
+            />
+
+            <path
+              d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
+              fill="#6b9a76"
+            />
+          </svg>
+
+          <h2>VITALIS</h2>
+
+          <p>
+            RÉCUPÉRATION DU MOT DE PASSE
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <div class="section-label">
+            🔑 Mot de passe oublié
+          </div>
+
+          <div id="forgot-message"></div>
+
+          <label>Adresse e-mail</label>
+
+          <input
+            type="email"
+            id="forgot-email"
+            placeholder="ton@email.com"
+            autocomplete="email"
+          >
+
+          <button
+            class="btn-primary"
+            id="forgot-btn"
+          >
+            Envoyer le lien de récupération
+          </button>
+
+          <button
+            class="btn-secondary"
+            id="back-login-btn"
+          >
+            ← Retour à la connexion
+          </button>
+
+        </div>
+
+      </div>
+    `;
+
+    attachForgotHandlers();
+
+    return;
+  }
+
+
+  main.innerHTML = `
+    <div class="auth-wrap">
+
+      <div class="auth-logo">
+
+        <svg viewBox="0 0 100 100">
+          <circle
+            cx="50"
+            cy="50"
+            r="48"
+            fill="#eaf1ea"
+            stroke="#e0d5bf"
+            stroke-width="2"
+          />
+
+          <path
+            d="M50 78 C50 60 50 55 50 42"
+            stroke="#4f7a5c"
+            stroke-width="4"
+            fill="none"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
+            fill="#4f7a5c"
+          />
+
+          <path
+            d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
+            fill="#6b9a76"
+          />
+        </svg>
+
+        <h2>VITALIS</h2>
+
+        <p>
+          ESPACE PROFESSIONNEL
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <div class="section-label">
+          🔐 Connexion
+        </div>
+
+        <div id="login-message"></div>
+
+        <label>Adresse e-mail</label>
+
+        <input
+          type="email"
+          id="login-email"
+          placeholder="ton@email.com"
+          autocomplete="email"
+        >
+
+        <label>Mot de passe</label>
+
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Ton mot de passe"
+          autocomplete="current-password"
+        >
+
+        <button
+          class="btn-primary"
+          id="login-btn"
+        >
+          Se connecter
+        </button>
+
+        <div style="text-align:center;margin-top:10px;">
+
+          <button
+            class="btn-link"
+            id="forgot-link"
+          >
+            Mot de passe oublié ?
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+  attachLoginHandlers();
+
+}
+
+
+function attachLoginHandlers(){
+
+  const button =
+    document.getElementById('login-btn');
+
+  const forgot =
+    document.getElementById('forgot-link');
+
+  if(button){
+
+    button.onclick = async () => {
+
+      const email =
+        document.getElementById('login-email')
+          .value.trim();
+
+      const password =
+        document.getElementById('login-password')
+          .value;
+
+      const message =
+        document.getElementById('login-message');
+
+      if(!email || !password){
+
+        message.innerHTML = `
+          <div class="auth-error">
+            Entre ton e-mail et ton mot de passe.
+          </div>
+        `;
+
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Connexion...';
+
+      try{
+
+        await login(
+          email,
+          password
+        );
+
+        showToast('Connexion réussie ✅');
+
+        await startApp();
+
+      }catch(error){
+
+        message.innerHTML = `
+          <div class="auth-error">
+            ${escapeHtml(error.message)}
+          </div>
+        `;
+
+      }
+
+      button.disabled = false;
+      button.textContent = 'Se connecter';
+
+    };
+
+  }
+
+
+  if(forgot){
+
+    forgot.onclick = () => {
+
+      authScreen='forgot';
+
+      render();
+
+    };
+
+  }
+
+}
+
+
+function attachForgotHandlers(){
+
+  const back =
+    document.getElementById('back-login-btn');
+
+  const button =
+    document.getElementById('forgot-btn');
+
+  if(back){
+
+    back.onclick = () => {
+
+      authScreen='login';
+
+      render();
+
+    };
+
+  }
+
+
+  if(button){
+
+    button.onclick = async () => {
+
+      const email =
+        document.getElementById('forgot-email')
+          .value.trim();
+
+      const message =
+        document.getElementById('forgot-message');
+
+      if(!email){
+
+        message.innerHTML = `
+          <div class="auth-error">
+            Entre ton adresse e-mail.
+          </div>
+        `;
+
+        return;
+
+      }
+
+      button.disabled=true;
+      button.textContent='Envoi...';
+
+      try{
+
+        await sendPasswordRecovery(email);
+
+        message.innerHTML = `
+          <div class="auth-success">
+            ✅ E-mail envoyé. Vérifie ta boîte Gmail
+            et ton dossier Spam.
+          </div>
+        `;
+
+        button.textContent='E-mail envoyé';
+
+      }catch(error){
+
+        message.innerHTML = `
+          <div class="auth-error">
+            ${escapeHtml(error.message)}
+          </div>
+        `;
+
+        button.disabled=false;
+        button.textContent='Envoyer le lien de récupération';
+
+      }
+
+    };
+
+  }
+
+}
+
+
+function attachRecoveryHandlers(){
+
+  const button =
+    document.getElementById('update-password-btn');
+
+  if(!button) return;
+
+  button.onclick = async () => {
+
+    const password =
+      document.getElementById('new-password')
+        .value;
+
+    const confirmation =
+      document.getElementById('confirm-password')
+        .value;
+
+    const message =
+      document.getElementById('recovery-message');
+
+
+    if(password.length < 6){
+
+      message.innerHTML = `
+        <div class="auth-error">
+          Le mot de passe doit contenir au moins 6 caractères.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    if(password !== confirmation){
+
+      message.innerHTML = `
+        <div class="auth-error">
+          Les deux mots de passe ne correspondent pas.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    button.disabled=true;
+    button.textContent='Enregistrement...';
+
+
+    try{
+
+      await updatePassword(password);
+
+      message.innerHTML = `
+        <div class="auth-success">
+          ✅ Ton mot de passe a été modifié.
+        </div>
+      `;
+
+      setTimeout(() => {
+
+        recoveryMode=false;
+        authScreen='login';
+
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
+
+        localStorage.removeItem(
+          'vitalis_access_token'
+        );
+
+        localStorage.removeItem(
+          'vitalis_refresh_token'
+        );
+
+        currentUser=null;
+
+        render();
+
+      },1200);
+
+
+    }catch(error){
+
+      message.innerHTML = `
+        <div class="auth-error">
+          ${escapeHtml(error.message)}
+        </div>
+      `;
+
+      button.disabled=false;
+      button.textContent='Enregistrer le nouveau mot de passe';
+
+    }
+
+  };
+
+}
+
+
+/* ============================================================
+   DATA LOADING
+============================================================ */
+
+async function loadClients(){
+
+  if(!isConfigured()) return;
+
+  try{
+
+    clients =
+      await sb(
+        'vitalis_clients?select=*&order=created_at.desc'
+      );
+
+  }catch(e){
+
+    console.error(e);
+    clients=[];
+
+  }
+
+}
+
+
+async function loadActiveClient(){
+
+  if(
+    !isConfigured() ||
+    !activeClientId
+  ){
+
+    activeClientData=null;
+    return;
+
+  }
+
+  try{
+
+    const rows =
+      await sb(
+        `vitalis_clients?id=eq.${activeClientId}&select=*`
+      );
+
+    activeClientData =
+      rows && rows[0] ?
+      rows[0] :
+      null;
+
+  }catch(e){
+
+    console.error(e);
+    activeClientData=null;
+
+  }
+
+}
+
+
+async function loadBilans(){
+
+  if(
+    !isConfigured() ||
+    !activeClientId
+  ){
+
+    bilans=[];
+    return;
+
+  }
+
+  try{
+
+    bilans =
+      await sb(
+        `vitalis_bilans?client_id=eq.${activeClientId}&select=*&order=date.desc`
+      );
+
+  }catch(e){
+
+    console.error(e);
+    bilans=[];
+
+  }
+
+}
+
+
+function activeClient(){
+  return activeClientData;
+}
+
+
+function baseUrl(){
+
+  return (
+    window.location.origin +
+    window.location.pathname
+  );
+
+}
+
+
+/* ============================================================
+   HEADER / TABS
+============================================================ */
+
+function renderHeader(){
+
+  const c =
+    activeClient();
+
+  const pill =
+    document.getElementById('client-pill');
+
+  if(isClientMode && c){
+
+    pill.style.display='none';
+
+    document.getElementById(
+      'header-subtitle'
+    ).textContent =
+      `ESPACE DE ${c.name.toUpperCase()}`;
+
+  }else if(!isClientMode){
+
+    pill.style.display =
+      c ? 'flex' : 'none';
+
+    if(c){
+
+      document.getElementById(
+        'client-pill-name'
+      ).textContent=c.name;
+
+    }
+
+    document.getElementById(
+      'header-subtitle'
+    ).textContent =
+      c ?
+      `SUIVI DE ${c.name.toUpperCase()}` :
+      'SUIVI NATUROPATHIE';
+
+  }
+
+}
+
+
+function renderTabs(){
+
+  const bar =
+    document.getElementById('tabbar');
+
+  if(isClientMode){
+
+    bar.innerHTML=`
+      <button class="tab" data-tab="new">
+        <span class="tab-emoji">📝</span>
+        Nouveau bilan
+      </button>
+
+      <button class="tab" data-tab="history">
+        <span class="tab-emoji">📋</span>
+        Historique
+      </button>
+
+      <button class="tab" data-tab="progress">
+        <span class="tab-emoji">📈</span>
+        Évolution
+      </button>
+    `;
+
+  }else{
+
+    bar.innerHTML=`
+      <button class="tab" data-tab="clients">
+        <span class="tab-emoji">👥</span>
+        Clientes
+      </button>
+
+      <button class="tab" data-tab="profile">
+        <span class="tab-emoji">🗂️</span>
+        Fiche
+      </button>
+
+      <button class="tab" data-tab="new">
+        <span class="tab-emoji">📝</span>
+        Bilan
+      </button>
+
+      <button class="tab" data-tab="history">
+        <span class="tab-emoji">📋</span>
+        Historique
+      </button>
+
+      <button class="tab" data-tab="progress">
+        <span class="tab-emoji">📈</span>
+        Évolution
+      </button>
+    `;
+
+  }
+
+  document
+    .querySelectorAll('.tab')
+    .forEach(t => {
+
+      t.classList.toggle(
+        'active',
+        t.dataset.tab===activeTab
+      );
+
+      t.onclick=async () => {
+
+        activeTab=t.dataset.tab;
+
+        render();
+
+      };
+
+    });
+
+}
+
+
+/* ============================================================
+   CLIENTS
+============================================================ */
+
+function renderClients(){
+
+  const list =
+    clients.length ?
+
+    clients.map(c => `
+
+      <div
+        class="client-item ${c.id===activeClientId?'active':''}"
+        data-act="select-client"
+        data-id="${c.id}"
+      >
+
+        <div class="client-avatar">
+          ${escapeHtml(
+            c.name ?
+            c.name.charAt(0).toUpperCase() :
+            '?'
+          )}
+        </div>
+
+        <div style="flex:1;">
+          <div class="client-name">
+            ${escapeHtml(c.name)}
+          </div>
+        </div>
+
+        ${
+          c.id===activeClientId ?
+          '<span style="color:var(--green);font-size:11px;">● active</span>' :
+          ''
+        }
+
+        <button
+          class="del-btn"
+          data-act="delete-client"
+          data-id="${c.id}"
+          style="margin-top:0;margin-left:8px;"
+        >
+          ✕
+        </button>
+
+      </div>
+
+    `).join('')
+
+    :
+
+    `
+      <div class="empty">
+        Aucune cliente pour l'instant.
+      </div>
+    `;
+
+
+  const linkSection =
+    activeClientId ?
+
+    `
+      <div class="card">
+
+        <div class="section-label">
+          🔗 Lien personnel de la cliente
+        </div>
+
+        <div style="font-size:12.5px;color:var(--text-muted);">
+          Envoie ce lien à ta cliente pour qu'elle
+          remplisse elle-même ses bilans.
+        </div>
+
+        <div class="link-box">
+          ${baseUrl()}?client=${activeClientId}
+        </div>
+
+        <button
+          class="btn-secondary"
+          id="copy-link-btn"
+        >
+          Copier le lien
+        </button>
+
+      </div>
+    ` :
+
+    '';
+
+
+  return `
+
+    <div class="card">
+
+      <div class="section-label">
+        👥 Tes clientes
+      </div>
+
+      ${list}
+
+    </div>
+
+    ${linkSection}
+
+    <div class="card">
+
+      <div class="section-label">
+        + Ajouter une cliente
+      </div>
+
+      <label>Nom</label>
+
+      <input
+        type="text"
+        id="new-client-name"
+        placeholder="ex : Sophie M."
+        value="${escapeHtml(newClientName)}"
+      >
+
+      <button
+        class="btn-primary"
+        id="add-client-btn"
+      >
+        Ajouter
+      </button>
+
+      <button
+        class="btn-secondary logout"
+        id="logout-btn"
+      >
+        🚪 Se déconnecter
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ============================================================
+   PROFILE
+============================================================ */
+
+function renderProfile(){
+
+  const c =
+    activeClient();
+
+  if(!c){
+
+    return `
+      <div class="card">
+        <div class="empty">
+          Sélectionne une cliente pour voir sa fiche.
+        </div>
+      </div>
+    `;
+
+  }
+
+
+  const age =
+    calcAge(c.birth_date);
+
+  const objectifs =
+    c.objectifs || [];
+
+
+  const admissionView =
+    editingAdmission ?
+
+    `
+      <div class="card">
+
+        <div class="section-label">
+          🗂️ Fiche d'admission —
+          ${escapeHtml(c.name)}
+        </div>
+
+        <label>Date de naissance</label>
+        <input
+          type="date"
+          id="a-birth"
+          value="${c.birth_date || ''}"
+        >
+
+        <label>Sexe</label>
+
+        <div class="seg">
+
+          <button
+            data-act="a-sex"
+            data-val="Femme"
+            class="${admissionForm.sex==='Femme'?'active':''}"
+          >
+            Femme
+          </button>
+
+          <button
+            data-act="a-sex"
+            data-val="Homme"
+            class="${admissionForm.sex==='Homme'?'active':''}"
+          >
+            Homme
+          </button>
+
+        </div>
+
+        <label>Profession</label>
+        <input
+          type="text"
+          id="a-profession"
+          value="${escapeHtml(admissionForm.profession)}"
+        >
+
+        <label>Téléphone</label>
+        <input
+          type="tel"
+          id="a-phone"
+          value="${escapeHtml(admissionForm.phone)}"
+        >
+
+        <label>E-mail</label>
+        <input
+          type="email"
+          id="a-email"
+          value="${escapeHtml(admissionForm.email)}"
+        >
+
+        <label>Taille (cm)</label>
+        <input
+          type="number"
+          id="a-height"
+          value="${admissionForm.height_cm}"
+        >
+
+        <label>Motif de consultation</label>
+        <textarea id="a-motif">${escapeHtml(admissionForm.motif_consultation)}</textarea>
+
+        <label>Antécédents médicaux</label>
+        <textarea id="a-medicaux">${escapeHtml(admissionForm.antecedents_medicaux)}</textarea>
+
+        <label>Antécédents chirurgicaux</label>
+        <textarea id="a-chirurgicaux">${escapeHtml(admissionForm.antecedents_chirurgicaux)}</textarea>
+
+        <label>Antécédents familiaux</label>
+        <textarea id="a-familiaux">${escapeHtml(admissionForm.antecedents_familiaux)}</textarea>
+
+        <label>Allergies</label>
+        <textarea id="a-allergies">${escapeHtml(admissionForm.allergies)}</textarea>
+
+        <label>Objectifs</label>
+
+        <div class="check-row">
+
+          ${OBJECTIFS_OPTIONS.map(o => `
+
+            <span
+              class="check-chip ${
+                admissionForm.objectifs.includes(o)
+                ? 'active'
+                : ''
+              }"
+              data-act="a-objectif"
+              data-val="${escapeHtml(o)}"
+            >
+              ${escapeHtml(o)}
+            </span>
+
+          `).join('')}
+
+        </div>
+
+        <button
+          class="btn-primary"
+          id="save-admission-btn"
+        >
+          Enregistrer la fiche
+        </button>
+
+      </div>
+    `
+
+    :
+
+    `
+      <div class="card">
+
+        <div class="section-label">
+          🗂️ Fiche d'admission
+        </div>
+
+        <div class="entry-stats">
+
+          ${
+            age!==null ?
+            `<span><b>${age}</b> ans</span>` :
+            ''
+          }
+
+          ${
+            c.sex ?
+            `<span>${escapeHtml(c.sex)}</span>` :
+            ''
+          }
+
+          ${
+            c.height_cm ?
+            `<span><b>${c.height_cm}</b> cm</span>` :
+            ''
+          }
+
+        </div>
+
+        ${
+          c.profession ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Profession</span>
+            ${escapeHtml(c.profession)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          c.phone || c.email ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Contact</span>
+            ${escapeHtml(c.phone || '')}
+            ${c.email ? ' · '+escapeHtml(c.email) : ''}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          c.motif_consultation ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Motif de consultation</span>
+            ${escapeHtml(c.motif_consultation)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          c.antecedents_medicaux ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Antécédents médicaux</span>
+            ${escapeHtml(c.antecedents_medicaux)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          c.antecedents_chirurgicaux ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Antécédents chirurgicaux</span>
+            ${escapeHtml(c.antecedents_chirurgicaux)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          c.antecedents_familiaux ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Antécédents familiaux</span>
+            ${escapeHtml(c.antecedents_familiaux)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          c.allergies ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Allergies</span>
+            ${escapeHtml(c.allergies)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          objectifs.length ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Objectifs</span>
+            ${objectifs.map(escapeHtml).join(' · ')}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          !isClientMode ?
+          `
+          <button
+            class="btn-secondary"
+            id="edit-admission-btn"
+          >
+            ✏️ Modifier la fiche
+          </button>
+          ` :
+          ''
+        }
+
+      </div>
+    `;
+
+
+  const rx = {
+
+    diet:c.prescription_diet || '',
+
+    micronutrition:
+      c.prescription_micronutrition || '',
+
+    phyto:
+      c.prescription_phyto || '',
+
+    exercises:
+      c.prescription_exercises || '',
+
+    hygiene:
+      c.prescription_hygiene || '',
+
+    suivi:
+      c.prescription_suivi || ''
+
+  };
+
+
+  const prescriptionView =
+    editingPrescription ?
+
+    `
+      <div class="card">
+
+        <div class="section-label">
+          🌿 Conseils naturopathiques
+        </div>
+
+        <label>Alimentation</label>
+        <textarea id="rx-diet">${escapeHtml(prescriptionForm.diet)}</textarea>
+
+        <label>Micronutrition / Compléments</label>
+        <textarea id="rx-micro">${escapeHtml(prescriptionForm.micronutrition)}</textarea>
+
+        <label>Phytothérapie / Aromathérapie</label>
+        <textarea id="rx-phyto">${escapeHtml(prescriptionForm.phyto)}</textarea>
+
+        <label>Activité physique</label>
+        <textarea id="rx-exercises">${escapeHtml(prescriptionForm.exercises)}</textarea>
+
+        <label>Hygiène de vie</label>
+        <textarea id="rx-hygiene">${escapeHtml(prescriptionForm.hygiene)}</textarea>
+
+        <label>Plan de suivi</label>
+        <textarea id="rx-suivi">${escapeHtml(prescriptionForm.suivi)}</textarea>
+
+        <button
+          class="btn-primary"
+          id="save-rx-btn"
+        >
+          Enregistrer les conseils
+        </button>
+
+      </div>
+    `
+
+    :
+
+    `
+      <div class="card">
+
+        <div class="section-label">
+          🌿 Conseils naturopathiques
+        </div>
+
+        ${
+          rx.diet ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Alimentation</span>
+            ${escapeHtml(rx.diet)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          rx.micronutrition ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Micronutrition</span>
+            ${escapeHtml(rx.micronutrition)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          rx.phyto ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Phytothérapie</span>
+            ${escapeHtml(rx.phyto)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          rx.exercises ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Activité physique</span>
+            ${escapeHtml(rx.exercises)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          rx.hygiene ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Hygiène de vie</span>
+            ${escapeHtml(rx.hygiene)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          rx.suivi ?
+          `
+          <div class="entry-note">
+            <span class="lbl">Plan de suivi</span>
+            ${escapeHtml(rx.suivi)}
+          </div>
+          ` :
+          ''
+        }
+
+        ${
+          !rx.diet &&
+          !rx.micronutrition &&
+          !rx.phyto &&
+          !rx.exercises &&
+          !rx.hygiene &&
+          !rx.suivi ?
+
+          `
+          <div style="font-size:13px;color:var(--text-muted);">
+            Aucun conseil enregistré encore.
+          </div>
+          ` :
+
+          ''
+        }
+
+        ${
+          !isClientMode ?
+          `
+          <button
+            class="btn-secondary"
+            id="edit-rx-btn"
+          >
+            ✏️ Modifier les conseils
+          </button>
+          ` :
+          ''
+        }
+
+      </div>
+    `;
+
+
+  return admissionView + prescriptionView;
+
+}
+
+
+/* ============================================================
+   NOUVEAU BILAN
+============================================================ */
+
+function renderNew(){
+
+  const c =
+    activeClient();
+
+  if(!c){
+
+    return `
+      <div class="card">
+        <div class="empty">
+          ${
+            isClientMode ?
+            'Lien invalide ou cliente introuvable.' :
+            "Sélectionne une cliente dans l'onglet Clientes."
+          }
+        </div>
+      </div>
+    `;
+
+  }
+
+
+  const bmi =
+    calcBMI(
+      c.height_cm,
+      form.weight ?
+      Number(form.weight) :
+      null
+    );
+
+
+  return `
+
+    <div class="card">
+
+      <div class="section-label">
+        Bilan pour ${escapeHtml(c.name)}
+      </div>
+
+      <label>Date</label>
+      <input
+        type="date"
+        id="f-date"
+        value="${form.date}"
+      >
+
+      <label>Poids (kg)</label>
+      <input
+        type="number"
+        step="0.1"
+        id="f-weight"
+        value="${form.weight}"
+      >
+
+      ${
+        bmi ?
+        `
+        <div style="font-size:11.5px;color:var(--text-muted);margin-top:4px;">
+          IMC estimé :
+          <b style="color:var(--green)">${bmi}</b>
+          (taille ${c.height_cm || '?'} cm)
+        </div>
+        ` :
+        ''
+      }
+
+      <label>Tour de taille (cm)</label>
+      <input
+        type="number"
+        step="0.5"
+        id="f-waist"
+        value="${form.waist}"
+      >
+
+      <div class="section-label" style="margin-top:18px;">
+        🍽️ Alimentation
+      </div>
+
+      <label>Petit-déjeuner</label>
+      <input
+        type="text"
+        id="f-petitdej"
+        value="${escapeHtml(form.petit_dejeuner)}"
+      >
+
+      <label>Déjeuner</label>
+      <input
+        type="text"
+        id="f-dejeuner"
+        value="${escapeHtml(form.dejeuner)}"
+      >
+
+      <label>Dîner</label>
+      <input
+        type="text"
+        id="f-diner"
+        value="${escapeHtml(form.diner)}"
+      >
+
+      <label>Collations</label>
+      <input
+        type="text"
+        id="f-collations"
+        value="${escapeHtml(form.collations)}"
+      >
+
+      <label>Hydratation (L/jour)</label>
+      <input
+        type="number"
+        step="0.1"
+        id="f-hydratation"
+        value="${form.hydratation_l}"
+      >
+
+      <div class="section-label" style="margin-top:18px;">
+        🏃 Activité physique
+      </div>
+
+      <div class="seg">
+
+        ${EFFORT_TYPES.map(t => `
+
+          <button
+            data-act="effort-type"
+            data-val="${escapeHtml(t)}"
+            class="${form.effort_type===t?'active':''}"
+          >
+            ${escapeHtml(t)}
+          </button>
+
+        `).join('')}
+
+      </div>
+
+      <label>Durée (min)</label>
+
+      <input
+        type="number"
+        id="f-duration"
+        value="${form.effort_duration}"
+      >
+
+      <div class="section-label" style="margin-top:18px;">
+        😴 Sommeil
+      </div>
+
+      <label>Nombre d'heures</label>
+
+      <input
+        type="number"
+        step="0.5"
+        id="f-sleep"
+        value="${form.sleep_hours}"
+      >
+
+      <label>Qualité</label>
+
+      <div class="seg">
+
+        ${['Bonne','Moyenne','Mauvaise'].map(v => `
+
+          <button
+            data-act="sleep-quality"
+            data-val="${v}"
+            class="${form.sleep_quality===v?'active':''}"
+          >
+            ${v}
+          </button>
+
+        `).join('')}
+
+      </div>
+
+      <div class="section-label" style="margin-top:18px;">
+        😰 Stress
+      </div>
+
+      <div class="seg">
+
+        ${['Faible','Modéré','Élevé'].map(v => `
+
+          <button
+            data-act="stress-level"
+            data-val="${v}"
+            class="${form.stress_level===v?'active':''}"
+          >
+            ${v}
+          </button>
+
+        `).join('')}
+
+      </div>
+
+      <label>Commentaire stress</label>
+
+      <input
+        type="text"
+        id="f-stress-comment"
+        value="${escapeHtml(form.stress_comment)}"
+      >
+
+      <div class="section-label" style="margin-top:18px;">
+        🩺 Bilan naturopathique
+      </div>
+
+      <label>Digestion</label>
+
+      <div class="check-row">
+
+        ${DIGESTION_OPTIONS.map(o => `
+
+          <span
+            class="check-chip ${
+              form.digestion.includes(o)
+              ? 'active'
+              : ''
+            }"
+            data-act="digestion"
+            data-val="${escapeHtml(o)}"
+          >
+            ${escapeHtml(o)}
+          </span>
+
+        `).join('')}
+
+      </div>
+
+      <label>Commentaire digestion</label>
+
+      <input
+        type="text"
+        id="f-digestion-comment"
+        value="${escapeHtml(form.digestion_comment)}"
+      >
+
+      <label>Énergie</label>
+
+      <div class="seg">
+
+        ${ENERGIE_OPTIONS.map(o => `
+
+          <button
+            data-act="energie"
+            data-val="${escapeHtml(o)}"
+            class="${form.energie===o?'active':''}"
+          >
+            ${escapeHtml(o)}
+          </button>
+
+        `).join('')}
+
+      </div>
+
+      <label>État émotionnel</label>
+
+      <div class="check-row">
+
+        ${EMOTIONNEL_OPTIONS.map(o => `
+
+          <span
+            class="check-chip ${
+              form.emotionnel.includes(o)
+              ? 'active'
+              : ''
+            }"
+            data-act="emotionnel"
+            data-val="${escapeHtml(o)}"
+          >
+            ${escapeHtml(o)}
+          </span>
+
+        `).join('')}
+
+      </div>
+
+      <label>Douleurs</label>
+
+      <input
+        type="text"
+        id="f-douleurs"
+        placeholder="ex : hanche, genou"
+        value="${escapeHtml(form.douleurs)}"
+      >
+
+      <label>Notes santé générales</label>
+
+      <textarea id="f-health">${escapeHtml(form.health_note)}</textarea>
+
+      <div class="section-label" style="margin-top:18px;">
+        💰 Paiement
+      </div>
+
+      <div class="seg">
+
+        <button
+          data-act="payment-status"
+          data-val="paye"
+          class="${form.payment_status==='paye'?'active':''}"
+        >
+          ✅ Payé
+        </button>
+
+        <button
+          data-act="payment-status"
+          data-val="attente"
+          class="${form.payment_status==='attente'?'active':''}"
+        >
+          ⏳ En attente
+        </button>
+
+      </div>
+
+      <label>Méthode</label>
+
+      <div class="seg">
+
+        ${['Mobile Money','Espèces','Virement','Autre'].map(v => `
+
+          <button
+            data-act="payment-method"
+            data-val="${v}"
+            class="${form.payment_method===v?'active':''}"
+          >
+            ${v}
+          </button>
+
+        `).join('')}
+
+      </div>
+
+      <label>Montant</label>
+
+      <input
+        type="number"
+        step="0.01"
+        id="f-payment-amount"
+        value="${form.payment_amount}"
+      >
+
+      <button
+        class="btn-primary"
+        id="save-btn"
+      >
+        Enregistrer le bilan
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+/* ============================================================
+   HISTORIQUE
+============================================================ */
+
+function renderHistory(){
+
+  const c =
+    activeClient();
+
+  if(!c){
+
+    return `
+      <div class="card">
+        <div class="empty">
+          Sélectionne une cliente.
+        </div>
+      </div>
+    `;
+
+  }
+
+
+  if(bilans.length===0){
+
+    return `
+      <div class="card">
+        <div class="empty">
+          Aucun bilan enregistré pour
+          ${escapeHtml(c.name)}.
+        </div>
+      </div>
+    `;
+
+  }
+
+
+  return `
+
+    <div class="card">
+
+      ${bilans.map(e => `
+
+        <div class="entry">
+
+          <div class="entry-date">
+            ${formatDate(e.date)}
+          </div>
+
+          <div class="entry-stats">
+
+            ${
+              e.weight ?
+              `<span><b>${e.weight}</b> kg</span>` :
+              ''
+            }
+
+            ${
+              e.waist ?
+              `<span>
+                Taille <b>${e.waist}</b>cm
+              </span>` :
+              ''
+            }
+
+            ${
+              e.sleep_hours ?
+              `<span>
+                😴 <b>${e.sleep_hours}</b>h
+                (${escapeHtml(e.sleep_quality || '')})
+              </span>` :
+              ''
+            }
+
+            ${
+              e.stress_level ?
+              `<span>
+                Stress :
+                <b>${escapeHtml(e.stress_level)}</b>
+              </span>` :
+              ''
+            }
+
+          </div>
+
+          ${
+            e.energie ?
+            `
+            <div class="entry-note">
+              <span class="lbl">Énergie</span>
+              ${escapeHtml(e.energie)}
+            </div>
+            ` :
+            ''
+          }
+
+          ${
+            e.digestion &&
+            e.digestion.length ?
+            `
+            <div class="entry-note">
+              <span class="lbl">Digestion</span>
+              ${e.digestion.map(escapeHtml).join(', ')}
+            </div>
+            ` :
+            ''
+          }
+
+          ${
+            e.emotionnel &&
+            e.emotionnel.length ?
+            `
+            <div class="entry-note">
+              <span class="lbl">Émotionnel</span>
+              ${e.emotionnel.map(escapeHtml).join(', ')}
+            </div>
+            ` :
+            ''
+          }
+
+          ${
+            e.douleurs ?
+            `
+            <div class="entry-note">
+              <span class="lbl">Douleurs</span>
+              ${escapeHtml(e.douleurs)}
+            </div>
+            ` :
+            ''
+          }
+
+          ${
+            e.petit_dejeuner ||
+            e.dejeuner ||
+            e.diner ?
+
+            `
+            <div class="entry-note">
+              <span class="lbl">Repas</span>
+              ${
+                [
+                  e.petit_dejeuner,
+                  e.dejeuner,
+                  e.diner,
+                  e.collations
+                ]
+                .filter(Boolean)
+                .map(escapeHtml)
+                .join(' · ')
+              }
+            </div>
+            ` :
+
+            ''
+          }
+
+          ${
+            e.health_note ?
+            `
+            <div class="entry-note">
+              <span class="lbl">Notes</span>
+              ${escapeHtml(e.health_note)}
+            </div>
+            ` :
+            ''
+          }
+
+          ${
+            e.payment_status ?
+            `
+            <div class="entry-note">
+
+              <span class="lbl">
+                Paiement
+              </span>
+
+              ${
+                e.payment_status === 'paye'
+                ? '✅ Payé'
+                : '⏳ En attente'
+              }
+
+              ${
+                e.payment_amount ?
+                ' · ' + e.payment_amount :
+                ''
+              }
+
+              ${
+                e.payment_method ?
+                ' · ' + escapeHtml(e.payment_method) :
+                ''
+              }
+
+            </div>
+            ` :
+            ''
+          }
+
+          ${
+            !isClientMode ?
+            `
+            <button
+              class="del-btn"
+              data-act="delete-bilan"
+              data-id="${e.id}"
+            >
+              Supprimer
+            </button>
+            ` :
+            ''
+          }
+
+        </div>
+
+      `).join('')}
+
+    </div>
+
+  `;
+
+}
+
+
+/* ============================================================
+   EVOLUTION
+============================================================ */
+
+function renderProgress(){
+
+  const c =
+    activeClient();
+
+  if(!c){
+
+    return `
+      <div class="card">
+        <div class="empty">
+          Sélectionne une cliente.
+        </div>
+      </div>
+    `;
+
+  }
+
+
+  if(bilans.length===0){
+
+    return `
+      <div class="card">
+        <div class="empty">
+          Pas encore assez de données.
+        </div>
+      </div>
+    `;
+
+  }
+
+
+  const sorted =
+    [...bilans]
+      .sort((a,b)=>
+        a.date.localeCompare(b.date)
+      );
+
+
+  const withWeight =
+    sorted.filter(e=>e.weight);
+
+
+  const withSleep =
+    sorted.filter(e=>e.sleep_hours);
+
+
+  const avgSleep =
+    withSleep.length ?
+
+    (
+      withSleep.reduce(
+        (s,e)=>
+          s + Number(e.sleep_hours),
+        0
+      ) /
+      withSleep.length
+    ).toFixed(1)
+
+    :
+
+    '—';
+
+
+  const lastBmi =
+    c.height_cm &&
+    withWeight.length ?
+
+    calcBMI(
+      c.height_cm,
+      withWeight[
+        withWeight.length-1
+      ].weight
+    )
+
+    :
+
+    null;
+
+
+  function lineChart(
+    list,
+    key,
+    color,
+    lo,
+    hi
+  ){
+
+    const w=300;
+    const h=100;
+    const pad=10;
+
+    const vals =
+      list.map(
+        e=>Number(e[key])
+      );
+
+    const min =
+      lo !== undefined ?
+      lo :
+      Math.min(...vals)-.5;
+
+    const max =
+      hi !== undefined ?
+      hi :
+      Math.max(...vals)+.5;
+
+    const pts =
+      list.map((e,i)=>{
+
+        const x =
+          pad +
+          (
+            i /
+            (list.length-1 || 1)
+          ) *
+          (w-2*pad);
+
+        const y =
+          h-pad -
+          (
+            (Number(e[key])-min) /
+            (max-min || 1)
+          ) *
+          (h-2*pad);
+
+        return `${x},${y}`;
+
+      }).join(' ');
+
+
+    return `
+      <svg viewBox="0 0 ${w} ${h}">
+        <polyline
+          points="${pts}"
+          fill="none"
+          stroke="${color}"
+          stroke-width="2.5"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+        />
+      </svg>
+    `;
+
+  }
+
+
+  const weightChart =
+    withWeight.length>=2 ?
+
+    `
+      <div class="card">
+
+        <div class="section-label">
+          ⚖️ Évolution du poids
+        </div>
+
+        <div class="chart-wrap">
+          ${lineChart(
+            withWeight,
+            'weight',
+            '#4f7a5c'
+          )}
+        </div>
+
+        <div class="chart-caption">
+
+          <span>
+            ${withWeight[0].weight}kg
+          </span>
+
+          <span>
+            ${
+              withWeight[
+                withWeight.length-1
+              ].weight
+            }kg
+          </span>
+
+        </div>
+
+      </div>
+    ` :
+
+    '';
+
+
+  const sleepChart =
+    withSleep.length>=2 ?
+
+    `
+      <div class="card">
+
+        <div class="section-label">
+          😴 Évolution du sommeil
+        </div>
+
+        <div class="chart-wrap">
+          ${lineChart(
+            withSleep,
+            'sleep_hours',
+            '#5b8a9a',
+            0,
+            10
+          )}
+        </div>
+
+      </div>
+    ` :
+
+    '';
+
+
+  const totalPaye =
+    sorted
+      .filter(
+        e=>e.payment_status==='paye'
+      )
+      .reduce(
+        (s,e)=>
+          s + (Number(e.payment_amount)||0),
+        0
+      );
+
+
+  const countAttente =
+    sorted.filter(
+      e=>e.payment_status==='attente'
+    ).length;
+
+
+  return `
+
+    <div class="stat-grid">
+
+      <div class="stat-box">
+        <div class="num">
+          ${sorted.length}
+        </div>
+        <div class="lbl">
+          📋 Bilans
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <div class="num">
+          ${avgSleep}
+        </div>
+        <div class="lbl">
+          😴 Sommeil moyen
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <div class="num">
+          ${
+            withWeight.length ?
+            withWeight[
+              withWeight.length-1
+            ].weight :
+            '—'
+          }
+        </div>
+        <div class="lbl">
+          ⚖️ Dernier poids
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <div class="num">
+          ${lastBmi || '—'}
+        </div>
+        <div class="lbl">
+          📐 IMC actuel
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        💰 Paiements
+      </div>
+
+      <div class="entry-stats">
+
+        <span>
+          Total encaissé :
+          <b style="color:var(--green)">
+            ${totalPaye}
+          </b>
+        </span>
+
+        <span>
+          En attente :
+          <b style="color:var(--terracotta)">
+            ${countAttente}
+          </b>
+        </span>
+
+      </div>
+
+    </div>
+
+    ${weightChart}
+    ${sleepChart}
+
+  `;
+
+}
+
+
+/* ============================================================
+   MAIN RENDER
+============================================================ */
+
+function render(){
+
+  /*
+    L'espace cliente par lien continue de fonctionner.
+    L'espace naturopathe nécessite une session.
+  */
+
+  if(
+    !isClientMode &&
+    !currentUser &&
+    !recoveryMode
+  ){
+
+    renderAuth();
+    return;
+
+  }
+
+
+  if(recoveryMode){
+
+    renderAuth();
+    return;
+
+  }
+
+
+  renderHeader();
+  renderTabs();
+
+  const main =
+    document.getElementById('main');
+
+
+  if(
+    activeTab==='clients' &&
+    !isClientMode
+  ){
+
+    main.innerHTML =
+      renderClients();
+
+  }else if(activeTab==='profile'){
+
+    main.innerHTML =
+      renderProfile();
+
+  }else if(activeTab==='new'){
+
+    main.innerHTML =
+      renderNew();
+
+  }else if(activeTab==='history'){
+
+    main.innerHTML =
+      renderHistory();
+
+  }else{
+
+    main.innerHTML =
+      renderProgress();
+
+  }
+
+
+  attachHandlers();
+
+}
+
+
+/* ============================================================
+   HANDLERS
+============================================================ */
+
+function attachHandlers(){
+
+  const pill =
+    document.getElementById('client-pill');
+
+  if(pill){
+
+    pill.onclick=()=>{
+
+      activeTab='clients';
+      render();
+
+    };
+
+  }
+
+
+  document
+    .querySelectorAll(
+      '[data-act="select-client"]'
+    )
+    .forEach(el=>{
+
+      el.onclick=async ev=>{
+
+        if(
+          ev.target.closest(
+            '[data-act="delete-client"]'
+          )
+        ){
+
+          return;
+
+        }
+
+        activeClientId =
+          el.dataset.id;
+
+        await loadActiveClient();
+        await loadBilans();
+
+        activeTab='profile';
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="delete-client"]'
+    )
+    .forEach(el=>{
+
+      el.onclick=async ev=>{
+
+        ev.stopPropagation();
+
+        if(
+          !confirm(
+            'Supprimer cette cliente et ses données ?'
+          )
+        ){
+
+          return;
+
+        }
+
+        try{
+
+          await sb(
+            `vitalis_clients?id=eq.${el.dataset.id}`,
+            {
+              method:'DELETE'
+            }
+          );
+
+        }catch(e){
+
+          console.error(e);
+
+        }
+
+
+        if(
+          activeClientId ===
+          el.dataset.id
+        ){
+
+          activeClientId=null;
+          activeClientData=null;
+          bilans=[];
+
+        }
+
+
+        await loadClients();
+
+        showToast(
+          'Cliente supprimée'
+        );
+
+        render();
+
+      };
+
+    });
+
+
+  const nameEl =
+    document.getElementById(
+      'new-client-name'
+    );
+
+  if(nameEl){
+
+    nameEl.oninput =
+      e => newClientName=e.target.value;
+
+  }
+
+
+  const addBtn =
+    document.getElementById(
+      'add-client-btn'
+    );
+
+  if(addBtn){
+
+    addBtn.onclick=async ()=>{
+
+      if(!newClientName.trim()){
+
+        showToast(
+          'Entre un nom'
+        );
+
+        return;
+
+      }
+
+
+      try{
+
+        const created =
+          await sb(
+            'vitalis_clients',
+            {
+              method:'POST',
+              body:JSON.stringify({
+                name:
+                  newClientName.trim(),
+                objectifs:[]
+              })
+            }
+          );
+
+
+        newClientName='';
+
+        await loadClients();
+
+
+        if(
+          created &&
+          created[0]
+        ){
+
+          activeClientId =
+            created[0].id;
+
+          await loadActiveClient();
+          await loadBilans();
+
+        }
+
+
+        showToast(
+          'Cliente ajoutée ✅'
+        );
+
+        render();
+
+      }catch(e){
+
+        console.error(e);
+
+        showToast(
+          'Erreur — vérifie Supabase'
+        );
+
+      }
+
+    };
+
+  }
+
+
+  const logoutBtn =
+    document.getElementById(
+      'logout-btn'
+    );
+
+  if(logoutBtn){
+
+    logoutBtn.onclick=async ()=>{
+
+      await logout();
+
+    };
+
+  }
+
+
+  const copyLinkBtn =
+    document.getElementById(
+      'copy-link-btn'
+    );
+
+  if(copyLinkBtn){
+
+    copyLinkBtn.onclick=async ()=>{
+
+      try{
+
+        await navigator.clipboard.writeText(
+          `${baseUrl()}?client=${activeClientId}`
+        );
+
+        showToast(
+          'Lien copié 📋'
+        );
+
+      }catch(e){
+
+        showToast(
+          'Copie impossible'
+        );
+
+      }
+
+    };
+
+  }
+
+
+  /* =========================
+     FICHE ADMISSION
+  ========================= */
+
+  const editAdmBtn =
+    document.getElementById(
+      'edit-admission-btn'
+    );
+
+  if(editAdmBtn){
+
+    editAdmBtn.onclick=()=>{
+
+      const c =
+        activeClient();
+
+      admissionForm={
+
+        birth_date:
+          c.birth_date || '',
+
+        sex:
+          c.sex || 'Femme',
+
+        profession:
+          c.profession || '',
+
+        phone:
+          c.phone || '',
+
+        email:
+          c.email || '',
+
+        height_cm:
+          c.height_cm || '',
+
+        motif_consultation:
+          c.motif_consultation || '',
+
+        antecedents_medicaux:
+          c.antecedents_medicaux || '',
+
+        antecedents_chirurgicaux:
+          c.antecedents_chirurgicaux || '',
+
+        antecedents_familiaux:
+          c.antecedents_familiaux || '',
+
+        allergies:
+          c.allergies || '',
+
+        objectifs:
+          c.objectifs || []
+
+      };
+
+      editingAdmission=true;
+
+      render();
+
+    };
+
+  }
+
+
+  document
+    .querySelectorAll(
+      '[data-act="a-sex"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        admissionForm.sex =
+          b.dataset.val;
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="a-objectif"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        const v =
+          b.dataset.val;
+
+        admissionForm.objectifs =
+          admissionForm.objectifs.includes(v)
+
+          ?
+
+          admissionForm.objectifs.filter(
+            x=>x!==v
+          )
+
+          :
+
+          [
+            ...admissionForm.objectifs,
+            v
+          ];
+
+        render();
+
+      };
+
+    });
+
+
+  const admissionMap={
+
+    'a-birth':'birth_date',
+    'a-profession':'profession',
+    'a-phone':'phone',
+    'a-email':'email',
+    'a-height':'height_cm',
+    'a-motif':'motif_consultation',
+    'a-medicaux':'antecedents_medicaux',
+    'a-chirurgicaux':'antecedents_chirurgicaux',
+    'a-familiaux':'antecedents_familiaux',
+    'a-allergies':'allergies'
+
+  };
+
+
+  Object.keys(admissionMap)
+    .forEach(id=>{
+
+      const el =
+        document.getElementById(id);
+
+      if(!el) return;
+
+      el.oninput =
+        e =>
+          admissionForm[
+            admissionMap[id]
+          ] =
+            e.target.value;
+
+    });
+
+
+  const saveAdmBtn =
+    document.getElementById(
+      'save-admission-btn'
+    );
+
+  if(saveAdmBtn){
+
+    saveAdmBtn.onclick=async ()=>{
+
+      try{
+
+        await sb(
+          `vitalis_clients?id=eq.${activeClientId}`,
+          {
+            method:'PATCH',
+            headers:{
+              Prefer:'return=minimal'
+            },
+            body:JSON.stringify({
+
+              birth_date:
+                admissionForm.birth_date ||
+                null,
+
+              sex:
+                admissionForm.sex,
+
+              profession:
+                admissionForm.profession,
+
+              phone:
+                admissionForm.phone,
+
+              email:
+                admissionForm.email,
+
+              height_cm:
+                admissionForm.height_cm ?
+                Number(
+                  admissionForm.height_cm
+                ) :
+                null,
+
+              motif_consultation:
+                admissionForm.motif_consultation,
+
+              antecedents_medicaux:
+                admissionForm.antecedents_medicaux,
+
+              antecedents_chirurgicaux:
+                admissionForm.antecedents_chirurgicaux,
+
+              antecedents_familiaux:
+                admissionForm.antecedents_familiaux,
+
+              allergies:
+                admissionForm.allergies,
+
+              objectifs:
+                admissionForm.objectifs
+
+            })
+          }
+        );
+
+
+        await loadActiveClient();
+
+        editingAdmission=false;
+
+        showToast(
+          'Fiche enregistrée 🗂️'
+        );
+
+        render();
+
+      }catch(e){
+
+        console.error(e);
+
+        showToast(
+          "Erreur d'enregistrement"
+        );
+
+      }
+
+    };
+
+  }
+
+
+  /* =========================
+     PRESCRIPTION
+  ========================= */
+
+  const editRxBtn =
+    document.getElementById(
+      'edit-rx-btn'
+    );
+
+  if(editRxBtn){
+
+    editRxBtn.onclick=()=>{
+
+      const c =
+        activeClient();
+
+      prescriptionForm={
+
+        diet:
+          c.prescription_diet || '',
+
+        micronutrition:
+          c.prescription_micronutrition || '',
+
+        phyto:
+          c.prescription_phyto || '',
+
+        exercises:
+          c.prescription_exercises || '',
+
+        hygiene:
+          c.prescription_hygiene || '',
+
+        suivi:
+          c.prescription_suivi || ''
+
+      };
+
+      editingPrescription=true;
+
+      render();
+
+    };
+
+  }
+
+
+  const rxMap={
+
+    'rx-diet':'diet',
+    'rx-micro':'micronutrition',
+    'rx-phyto':'phyto',
+    'rx-exercises':'exercises',
+    'rx-hygiene':'hygiene',
+    'rx-suivi':'suivi'
+
+  };
+
+
+  Object.keys(rxMap)
+    .forEach(id=>{
+
+      const el =
+        document.getElementById(id);
+
+      if(!el) return;
+
+      el.oninput =
+        e =>
+          prescriptionForm[
+            rxMap[id]
+          ] =
+            e.target.value;
+
+    });
+
+
+  const saveRxBtn =
+    document.getElementById(
+      'save-rx-btn'
+    );
+
+  if(saveRxBtn){
+
+    saveRxBtn.onclick=async ()=>{
+
+      try{
+
+        await sb(
+          `vitalis_clients?id=eq.${activeClientId}`,
+          {
+            method:'PATCH',
+            headers:{
+              Prefer:'return=minimal'
+            },
+            body:JSON.stringify({
+
+              prescription_diet:
+                prescriptionForm.diet,
+
+              prescription_micronutrition:
+                prescriptionForm.micronutrition,
+
+              prescription_phyto:
+                prescriptionForm.phyto,
+
+              prescription_exercises:
+                prescriptionForm.exercises,
+
+              prescription_hygiene:
+                prescriptionForm.hygiene,
+
+              prescription_suivi:
+                prescriptionForm.suivi
+
+            })
+          }
+        );
+
+
+        await loadActiveClient();
+
+        editingPrescription=false;
+
+        showToast(
+          'Conseils enregistrés 🌿'
+        );
+
+        render();
+
+      }catch(e){
+
+        console.error(e);
+
+        showToast(
+          "Erreur d'enregistrement"
+        );
+
+      }
+
+    };
+
+  }
+
+
+  /* =========================
+     NOUVEAU BILAN
+  ========================= */
+
+  document
+    .querySelectorAll(
+      '[data-act="effort-type"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        form.effort_type =
+          b.dataset.val;
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="sleep-quality"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        form.sleep_quality =
+          b.dataset.val;
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="stress-level"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        form.stress_level =
+          b.dataset.val;
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="energie"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        form.energie =
+          b.dataset.val;
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="digestion"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        const v =
+          b.dataset.val;
+
+        form.digestion =
+          form.digestion.includes(v)
+
+          ?
+
+          form.digestion.filter(
+            x=>x!==v
+          )
+
+          :
+
+          [
+            ...form.digestion,
+            v
+          ];
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="emotionnel"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        const v =
+          b.dataset.val;
+
+        form.emotionnel =
+          form.emotionnel.includes(v)
+
+          ?
+
+          form.emotionnel.filter(
+            x=>x!==v
+          )
+
+          :
+
+          [
+            ...form.emotionnel,
+            v
+          ];
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="payment-status"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        form.payment_status =
+          b.dataset.val;
+
+        render();
+
+      };
+
+    });
+
+
+  document
+    .querySelectorAll(
+      '[data-act="payment-method"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=()=>{
+
+        form.payment_method =
+          b.dataset.val;
+
+        render();
+
+      };
+
+    });
+
+
+  const fieldMap={
+
+    'f-date':'date',
+    'f-weight':'weight',
+    'f-waist':'waist',
+    'f-petitdej':'petit_dejeuner',
+    'f-dejeuner':'dejeuner',
+    'f-diner':'diner',
+    'f-collations':'collations',
+    'f-hydratation':'hydratation_l',
+    'f-duration':'effort_duration',
+    'f-sleep':'sleep_hours',
+    'f-stress-comment':'stress_comment',
+    'f-digestion-comment':'digestion_comment',
+    'f-douleurs':'douleurs',
+    'f-health':'health_note',
+    'f-payment-amount':'payment_amount'
+
+  };
+
+
+  Object.keys(fieldMap)
+    .forEach(id=>{
+
+      const el =
+        document.getElementById(id);
+
+      if(el){
+
+        el.oninput =
+          e =>
+            form[
+              fieldMap[id]
+            ] =
+              e.target.value;
+
+      }
+
+    });
+
+
+  const saveBtn =
+    document.getElementById(
+      'save-btn'
+    );
+
+
+  if(saveBtn){
+
+    saveBtn.onclick=async ()=>{
+
+      if(!activeClientId){
+
+        showToast(
+          'Aucune cliente sélectionnée'
+        );
+
+        return;
+
+      }
+
+
+      const payload={
+
+        client_id:
+          activeClientId,
+
+        date:
+          form.date ||
+          todayStr(),
+
+        weight:
+          form.weight ?
+          Number(form.weight) :
+          null,
+
+        waist:
+          form.waist ?
+          Number(form.waist) :
+          null,
+
+        petit_dejeuner:
+          form.petit_dejeuner,
+
+        dejeuner:
+          form.dejeuner,
+
+        diner:
+          form.diner,
+
+        collations:
+          form.collations,
+
+        hydratation_l:
+          form.hydratation_l ?
+          Number(form.hydratation_l) :
+          null,
+
+        effort_type:
+          form.effort_type,
+
+        effort_duration:
+          form.effort_duration ?
+          Number(form.effort_duration) :
+          null,
+
+        sleep_hours:
+          form.sleep_hours ?
+          Number(form.sleep_hours) :
+          null,
+
+        sleep_quality:
+          form.sleep_quality,
+
+        stress_level:
+          form.stress_level,
+
+        stress_comment:
+          form.stress_comment,
+
+        digestion:
+          form.digestion,
+
+        digestion_comment:
+          form.digestion_comment,
+
+        energie:
+          form.energie,
+
+        emotionnel:
+          form.emotionnel,
+
+        douleurs:
+          form.douleurs,
+
+        health_note:
+          form.health_note,
+
+        entered_by:
+          isClientMode ?
+          'client' :
+          'naturopathe',
+
+        payment_status:
+          form.payment_status,
+
+        payment_method:
+          form.payment_method,
+
+        payment_amount:
+          form.payment_amount ?
+          Number(form.payment_amount) :
+          null
+
+      };
+
+
+      try{
+
+        await sb(
+          'vitalis_bilans',
+          {
+            method:'POST',
+            body:JSON.stringify(payload)
+          }
+        );
+
+
+        await loadBilans();
+
+        resetForm();
+
+        showToast(
+          'Bilan enregistré 💾'
+        );
+
+        render();
+
+        window.scrollTo({
+          top:0,
+          behavior:'smooth'
+        });
+
+      }catch(e){
+
+        console.error(e);
+
+        showToast(
+          "Erreur d'enregistrement"
+        );
+
+      }
+
+    };
+
+  }
+
+
+  document
+    .querySelectorAll(
+      '[data-act="delete-bilan"]'
+    )
+    .forEach(b=>{
+
+      b.onclick=async ()=>{
+
+        if(
+          !confirm(
+            'Supprimer ce bilan ?'
+          )
+        ){
+
+          return;
+
+        }
+
+        try{
+
+          await sb(
+            `vitalis_bilans?id=eq.${b.dataset.id}`,
+            {
+              method:'DELETE'
+            }
+          );
+
+          await loadBilans();
+
+          render();
+
+          showToast(
+            'Bilan supprimé'
+          );
+
+        }catch(e){
+
+          console.error(e);
+
+        }
+
+      };
+
+    });
+
+}
+
+
+/* ============================================================
+   INITIALISATION
+============================================================ */
+
+async function startApp(){
+
+  authLoading=true;
+
+
+  /*
+    L'espace cliente par lien ne demande pas
+    de connexion professionnelle.
+  */
+
+  if(isClientMode){
+
+    await loadActiveClient();
+
+    await loadBilans();
+
+    authLoading=false;
+
+    render();
+
+    return;
+
+  }
+
+
+  /*
+    Espace professionnel :
+    récupération de la session.
+  */
+
+  await getSession();
+
+
+  if(!currentUser){
+
+    authLoading=false;
+
+    render();
+
+    return;
+
+  }
+
+
+  await loadClients();
+
+
+  if(clients.length){
+
+    /*
+      On garde la cliente déjà sélectionnée
+      si elle existe.
+    */
+
+    if(!activeClientId){
+
+      activeClientId =
+        clients[0].id;
+
+    }
+
+    await loadActiveClient();
+    await loadBilans();
+
+  }
+
+
+  authLoading=false;
+
+  render();
+
+}
+
+
+/* ============================================================
+   DÉMARRAGE
+============================================================ */
+
+async function init(){
+
+  /*
+    Détecte immédiatement un lien Supabase
+    de récupération de mot de passe.
+  */
+
+  const isRecovery =
+    processRecoveryTokens();
+
+
+  if(isRecovery){
+
+    recoveryMode=true;
+
+    render();
+
+    return;
+
+  }
+
+
+  await startApp();
+
+}
+
+
+init();
+
+</script>
+
+</body>
+</html>
