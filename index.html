@@ -1108,6 +1108,99 @@ async function loginUser(email,password){
 
   }
 }
+async function registerUser(email,password,confirmPassword){
+
+  if(!supabaseClient){
+    showAuthMessage(
+      'Supabase n’est pas correctement chargé.'
+    );
+    return;
+  }
+
+  clearAuthMessage();
+
+  email = email.trim();
+
+  if(!email){
+    showAuthMessage(
+      'Entre ton adresse e-mail.'
+    );
+    return;
+  }
+
+  if(password.length < 6){
+    showAuthMessage(
+      'Le mot de passe doit contenir au moins 6 caractères.'
+    );
+    return;
+  }
+
+  if(password !== confirmPassword){
+    showAuthMessage(
+      'Les deux mots de passe ne correspondent pas.'
+    );
+    return;
+  }
+
+  const btn =
+    document.getElementById('register-btn');
+
+  if(btn){
+    btn.disabled = true;
+    btn.textContent = 'Création...';
+  }
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth.signUp({
+        email,
+        password
+      });
+
+    if(error){
+      throw error;
+    }
+
+    showAuthMessage(
+      'Compte créé ✅ Tu peux maintenant te connecter.'
+    );
+
+    authScreen = 'login';
+
+    render();
+
+  }catch(error){
+
+    console.error(error);
+
+    let message =
+      'Impossible de créer le compte.';
+
+    if(
+      error.message &&
+      error.message.toLowerCase().includes(
+        'already registered'
+      )
+    ){
+      message =
+        'Cette adresse e-mail possède déjà un compte.';
+    }
+
+    showAuthMessage(message);
+
+  }finally{
+
+    if(btn){
+      btn.disabled = false;
+      btn.textContent = 'Créer mon compte';
+    }
+
+  }
+}
 
 /* =========================================================
    MOT DE PASSE OUBLIE
@@ -1631,7 +1724,164 @@ function renderAuth(){
 
     return;
   }
+/*
+  INSCRIPTION CLIENTE
+*/
 
+if(authScreen === 'register'){
+
+  document.getElementById(
+    'main'
+  ).innerHTML = `
+
+    <div class="auth-wrap">
+
+      <div class="auth-card">
+
+        <div class="card">
+
+          <div class="auth-logo">
+
+            <svg viewBox="0 0 100 100">
+              <circle
+                cx="50"
+                cy="50"
+                r="48"
+                fill="#eaf1ea"
+                stroke="#e0d5bf"
+                stroke-width="2"
+              />
+
+              <path
+                d="M50 78 C50 60 50 55 50 42"
+                stroke="#4f7a5c"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+
+              <path
+                d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
+                fill="#4f7a5c"
+              />
+
+              <path
+                d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
+                fill="#6b9a76"
+              />
+            </svg>
+
+            <h2>VITALIS</h2>
+            <p>ESPACE CLIENTE</p>
+
+          </div>
+
+          <div
+            id="auth-message"
+            class="auth-message"
+          ></div>
+
+          <div class="section-label">
+            📝 CRÉER MON COMPTE
+          </div>
+
+          <label>E-mail</label>
+
+          <input
+            type="email"
+            id="register-email"
+            placeholder="ton@email.com"
+            autocomplete="email"
+          >
+
+          <label>Mot de passe</label>
+
+          <input
+            type="password"
+            id="register-password"
+            placeholder="Minimum 6 caractères"
+            autocomplete="new-password"
+          >
+
+          <label>Confirmer le mot de passe</label>
+
+          <input
+            type="password"
+            id="register-confirm"
+            placeholder="Retape ton mot de passe"
+            autocomplete="new-password"
+          >
+
+          <button
+            class="btn-primary"
+            id="register-btn"
+          >
+            Créer mon compte
+          </button>
+
+          <button
+            class="text-button"
+            id="back-login-register-btn"
+            style="width:100%; margin-top:8px;"
+          >
+            ← Retour à la connexion
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  `;
+
+  const registerBtn =
+    document.getElementById(
+      'register-btn'
+    );
+
+  const backBtn =
+    document.getElementById(
+      'back-login-register-btn'
+    );
+
+  if(registerBtn){
+
+    registerBtn.onclick = () => {
+
+      registerUser(
+        document.getElementById(
+          'register-email'
+        ).value,
+
+        document.getElementById(
+          'register-password'
+        ).value,
+
+        document.getElementById(
+          'register-confirm'
+        ).value
+      );
+
+    };
+
+  }
+
+  if(backBtn){
+
+    backBtn.onclick = () => {
+
+      authScreen = 'login';
+
+      clearAuthMessage();
+
+      render();
+
+    };
+
+  }
+
+  return;
+}
   /*
     Connexion
   */
@@ -1721,6 +1971,7 @@ function renderAuth(){
             id="forgot-btn"
             style="width:100%; margin-top:8px;"
           >
+          📝 Créer mon compte cliente
             Mot de passe oublié ?
           </button>
 
@@ -1755,6 +2006,10 @@ function renderAuth(){
     document.getElementById(
       'forgot-btn'
     );
+  const registerLink =
+  document.getElementById(
+    'register-btn-link'
+  );
 
   if(loginBtn){
 
@@ -1780,6 +2035,19 @@ function renderAuth(){
     };
 
   }
+  if(registerLink){
+
+  registerLink.onclick = () => {
+
+    authScreen = 'register';
+
+    clearAuthMessage();
+
+    render();
+
+  };
+
+}
 
   password?.addEventListener(
     'keydown',
