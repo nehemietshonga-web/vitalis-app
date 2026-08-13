@@ -1160,11 +1160,11 @@ async function registerUser(email,password,confirmPassword){
         email,
         password
       });
-
-    if(error){
-      throw error;
-    }
-
+if(error){
+  console.error('Erreur Supabase inscription :', error);
+  showAuthMessage('Erreur : ' + error.message);
+  return;
+}
     showAuthMessage(
       'Compte créé ✅ Tu peux maintenant te connecter.'
     );
