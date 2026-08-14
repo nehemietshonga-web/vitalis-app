@@ -1,6 +1,9 @@
 <!DOCTYPE html> 
-<html lang="fr">
+<html lang="fr"><link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
 <head>
+  <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <title>VITALIS</title>
@@ -5397,7 +5400,14 @@ async function init(){
 }
 
 init();
-
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log('Vitalis PWA activée ✅'))
+        .catch(error => console.error('Erreur PWA :', error));
+    });
+  }
 </script>
 
 </body>
