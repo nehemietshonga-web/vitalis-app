@@ -5400,6 +5400,24 @@ async function init(){
 }
 
 init();
+</script>
+
+<script>
+   if ('serviceWorker' in navigator) {
+
+    window.addEventListener('load', () => {
+
+      navigator.serviceWorker.register('/service-worker.js')
+
+        .then(() => console.log('Vitalis PWA activée ✅'))
+
+        .catch(error => console.error('Erreur PWA :', error));
+
+    });
+
+  }
+
+</script>
 
 </body>
 </html>
