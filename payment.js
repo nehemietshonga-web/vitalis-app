@@ -1,11 +1,10 @@
-// VITALIS — Module paiement illicocash
-// Ce fichier ne modifie pas l'application tant qu'il n'est pas chargé par index.html.
+// VITALIS — Module paiement
+// Les coordonnées de paiement seront récupérées depuis la configuration
+// de l'application et ne sont pas stockées dans ce fichier.
 
 const VITALIS_PAYMENT_CONFIG = {
   method: "Illicocash",
   currency: "USD",
-  recipientName: "Wasinga Mukeyina",
-  recipientPhone: "+243 89 06 90 712",
   bucket: "payment-proofs"
 };
 
