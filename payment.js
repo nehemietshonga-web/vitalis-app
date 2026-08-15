@@ -49,4 +49,23 @@ function renderIllicocashPayment(containerId) {
       >
     </div>
   `;
+  amountInput.parentElement.appendChild(box);
+
 }
+
+const vitalisPaymentObserver = new MutationObserver(() => {
+
+  initVitalisIllicocash();
+
+});
+
+vitalisPaymentObserver.observe(document.body, {
+
+  childList: true,
+
+  subtree: true
+
+});
+
+initVitalisIllicocash();
+
