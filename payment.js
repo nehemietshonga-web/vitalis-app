@@ -12,3 +12,41 @@ const VITALIS_PAYMENT_CONFIG = {
 function getVitalisPaymentConfig() {
   return VITALIS_PAYMENT_CONFIG;
 }
+function renderIllicocashPayment(containerId) {
+  const container = document.getElementById(containerId);
+
+  if (!container) return;
+
+  const config = getVitalisPaymentConfig();
+
+  container.innerHTML = `
+    <div class="vitalis-payment-box">
+      <h3>📱 Paiement illicocash</h3>
+
+      <p>
+        Effectuez votre paiement en USD au numéro :
+      </p>
+
+      <strong>${config.recipientPhone}</strong>
+
+      <p>
+        Titulaire : ${config.recipientName}<br>
+        Devise : ${config.currency}
+      </p>
+
+      <p>
+        ⏳ Statut : <strong>En attente</strong>
+      </p>
+
+      <label for="vitalis-payment-proof">
+        📎 Ajouter ma preuve de paiement
+      </label>
+
+      <input
+        type="file"
+        id="vitalis-payment-proof"
+        accept="image/*,.pdf"
+      >
+    </div>
+  `;
+}
