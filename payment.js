@@ -54,17 +54,12 @@ function renderIllicocashPayment(containerId) {
 }
 
 const vitalisPaymentObserver = new MutationObserver(() => {
-
   initVitalisIllicocash();
-
 });
 
 vitalisPaymentObserver.observe(document.body, {
-
   childList: true,
-
   subtree: true
-
 });
 
 initVitalisIllicocash();
