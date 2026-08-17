@@ -2149,10 +2149,7 @@ async function loadClients(){
 
 async function loadActiveClient(){
 
-  if(
-    !supabaseClient ||
-    !activeClientId
-  ){
+  if(!supabaseClient){
 
     activeClientData = null;
     return;
@@ -2160,18 +2157,48 @@ async function loadActiveClient(){
 
   try{
 
+    let query =
+      supabaseClient
+        .from('vitalis_clients')
+        .select('*');
+
+    /*
+      Si on arrive avec un lien d'invitation,
+      on retrouve la fiche grâce au code.
+    */
+
+    if(INVITE_CODE){
+
+      query =
+        query.eq(
+          'invitation_code',
+          INVITE_CODE
+        );
+
+    }else if(activeClientId){
+
+      /*
+        Compatibilité avec l'ancien système
+      */
+
+      query =
+        query.eq(
+          'id',
+          activeClientId
+        );
+
+    }else{
+
+      activeClientData = null;
+      return;
+
+    }
+
     const {
       data,
       error
     } =
-      await supabaseClient
-        .from('vitalis_clients')
-        .select('*')
-        .eq(
-          'id',
-          activeClientId
-        )
-        .limit(1);
+      await query.limit(1);
 
     if(error)
       throw error;
@@ -2180,6 +2207,22 @@ async function loadActiveClient(){
       data && data[0]
         ? data[0]
         : null;
+
+    /*
+      Si la fiche a été retrouvée
+      grâce à l'invitation, on mémorise
+      son ID pour les bilans.
+    */
+
+    if(
+      activeClientData &&
+      INVITE_CODE
+    ){
+
+      activeClientId =
+        activeClientData.id;
+
+    }
 
   }catch(error){
 
@@ -2191,7 +2234,6 @@ async function loadActiveClient(){
     activeClientData = null;
   }
 }
-
 async function loadBilans(){
 
   if(
