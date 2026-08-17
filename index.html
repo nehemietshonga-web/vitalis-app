@@ -4284,25 +4284,144 @@ function attachHandlers(){
   */
 
   const nameEl =
-    document.getElementById(
-      'new-client-name'
-    );
 
-  if(nameEl){
+  document.getElementById(
 
-    nameEl.oninput =
-      e =>
-        newClientName =
-          e.target.value;
+    'new-client-name'
 
-  }
+  );
 
-  const addBtn =
-    document.getElementById(
-      'add-client-btn'
-    );
+if(nameEl){
 
-  if(addBtn){
+  nameEl.oninput =
+
+    e =>
+
+      newClientName =
+
+        e.target.value;
+
+}
+
+const addBtn =
+
+  document.getElementById(
+
+    'add-client-btn'
+
+  );
+
+if(addBtn){
+
+  addBtn.onclick =
+
+    async () => {
+
+      if(
+
+        !newClientName.trim()
+
+      ){
+
+        showToast(
+
+          'Entre un nom'
+
+        );
+
+        return;
+
+      }
+
+      try{
+
+        const invitationCode =
+
+          crypto.randomUUID();
+
+        const {
+
+          data,
+
+          error
+
+        } =
+
+          await supabaseClient
+
+            .from('vitalis_clients')
+
+            .insert({
+
+              name:
+
+                newClientName.trim(),
+
+              objectifs:[],
+
+              invitation_code:
+
+                invitationCode
+
+            })
+
+            .select();
+
+        if(error)
+
+          throw error;
+
+        newClientName = '';
+
+        await loadClients();
+
+        if(
+
+          data &&
+
+          data[0]
+
+        ){
+
+          activeClientId =
+
+            data[0].id;
+
+          await loadActiveClient();
+
+          await loadBilans();
+
+        }
+
+        showToast(
+
+          'Cliente ajoutée ✅'
+
+        );
+
+        render();
+
+      }catch(error){
+
+        console.error(
+
+          'Erreur ajout cliente:',
+
+          error
+
+        );
+
+        showToast(
+
+          'Erreur — vérifie les permissions Supabase'
+
+        );
+
+      }
+
+    };
+
+}
 
     addBtn.onclick =
       async () => {
