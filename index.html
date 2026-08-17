@@ -705,11 +705,11 @@ const EFFORT_TYPES = [
 const urlParams =
   new URLSearchParams(window.location.search);
 
-const CLIENT_MODE_ID =
-  urlParams.get('client');
+const INVITE_CODE =
+  urlParams.get('invite');
 
 const isClientMode =
-  !!CLIENT_MODE_ID;
+  !!INVITE_CODE;
 
 /* =========================================================
    STATE
