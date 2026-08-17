@@ -722,7 +722,10 @@ let authScreen = 'login';
 let isRecoveryMode = false;
 
 let clients = [];
-let activeClientId = CLIENT_MODE_ID || null;
+activeClientId =
+  isClientMode
+    ? null
+    : null;
 let activeClientData = null;
 let bilans = [];
 
@@ -2074,13 +2077,14 @@ async function loadActiveClient(){
       on retrouve la fiche grâce au code.
     */
 
-    if(CLIENT_MODE_ID){
+    if(INVITE_CODE){
 
   query =
     query.eq(
-      'id',
-      CLIENT_MODE_ID
+      'invitation_code',
+      INVITE_CODE
     );
+}
 
     }else if(activeClientId){
 
