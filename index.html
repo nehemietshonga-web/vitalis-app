@@ -2464,7 +2464,7 @@ function renderClients(){
           </div>
 
           <div class="link-box">
-            ${baseUrl()}?client=${activeClientId}
+            ${baseUrl()}?invite=${activeClientData?.invitation_code || ''}
           </div>
 
           <button
