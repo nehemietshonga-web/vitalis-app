@@ -4509,7 +4509,7 @@ if(addBtn){
         try{
 
           await navigator.clipboard.writeText(
-            `${baseUrl()}?client=${activeClientId}`
+            `${baseUrl()}?invite=${activeClientData?.invitation_code || ''}`
           );
 
           showToast(
