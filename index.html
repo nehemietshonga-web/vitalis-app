@@ -2074,13 +2074,13 @@ async function loadActiveClient(){
       on retrouve la fiche grâce au code.
     */
 
-    if(INVITE_CODE){
+    if(CLIENT_MODE_ID){
 
-      query =
-        query.eq(
-          'invitation_code',
-          INVITE_CODE
-        );
+  query =
+    query.eq(
+      'id',
+      CLIENT_MODE_ID
+    );
 
     }else if(activeClientId){
 
@@ -2122,8 +2122,8 @@ async function loadActiveClient(){
     */
 
     if(
-      activeClientData &&
-      INVITE_CODE
+  activeClientData &&
+  CLIENT_MODE_ID
     ){
 
       activeClientId =
