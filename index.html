@@ -2305,13 +2305,28 @@ function renderAuth(){
               : ''
           }
 
-          <button
-            class="text-button"
-            id="forgot-btn"
-            style="width:100%;margin-top:8px;"
-          >
-            Mot de passe oublié ?
-          </button>
+          <div style="width:100%;margin-top:8px;">
+
+  <button
+    class="text-button"
+    id="create-account-btn"
+    type="button"
+    style="width:100%;"
+    onclick="startClientSignup()"
+  >
+    📝 Créer mon compte cliente
+  </button>
+
+  <button
+    class="text-button"
+    id="forgot-btn"
+    type="button"
+    style="width:100%;margin-top:8px;"
+  >
+    Mot de passe oublié ?
+  </button>
+
+</div>
 
           <div class="auth-small">
 
@@ -5458,7 +5473,69 @@ function render(){
 /* =========================================================
    INIT
    ========================================================= */
+async function startClientSignup(){
 
+  const email = prompt(
+    "Entre ton adresse e-mail :"
+  );
+
+  if(!email) return;
+
+  const password = prompt(
+    "Choisis ton mot de passe (6 caractères minimum) :"
+  );
+
+  if(!password) return;
+
+  if(password.length < 6){
+
+    alert(
+      "Le mot de passe doit contenir au moins 6 caractères."
+    );
+
+    return;
+  }
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth.signUp({
+
+        email: email.trim(),
+        password,
+
+        options:{
+          emailRedirectTo: baseUrl()
+        }
+
+      });
+
+    if(error)
+      throw error;
+
+    alert(
+      "✅ Compte créé !\n\n" +
+      "Tu peux maintenant te connecter avec ton adresse e-mail et ton mot de passe."
+    );
+
+  }catch(error){
+
+    console.error(
+      "Erreur création compte :",
+      error
+    );
+
+    alert(
+      "Impossible de créer le compte : " +
+      (error.message || "Erreur inconnue")
+    );
+
+  }
+
+}
 async function init(){
 
   try{
