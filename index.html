@@ -1,17 +1,23 @@
-<!DOCTYPE html> 
-<html lang="fr"><link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#ffffff">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#ffffff">
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="theme-color" content="#ffffff">
+
+<link rel="manifest" href="/manifest.json">
+
 <title>VITALIS</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet">
 
 <style>
+
 :root{
   --bg:#f7f3ea;
   --surface:#ffffff;
@@ -32,7 +38,8 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
   margin:0;
   padding:0;
 }
@@ -45,20 +52,16 @@ body{
   padding-bottom:90px;
 }
 
-.mono{
-  font-family:'IBM Plex Mono',monospace;
-}
-
-.serif{
-  font-family:'Fraunces',serif;
-}
-
 header{
   padding:20px 20px 14px;
   border-bottom:1px solid var(--border);
   position:sticky;
   top:0;
-  background:linear-gradient(180deg,var(--bg) 88%,transparent);
+  background:linear-gradient(
+    180deg,
+    var(--bg) 88%,
+    transparent
+  );
   backdrop-filter:blur(6px);
   z-index:10;
   display:flex;
@@ -66,13 +69,13 @@ header{
   gap:12px;
 }
 
-header .brand-icon{
+.brand-icon{
   width:38px;
   height:38px;
   flex-shrink:0;
 }
 
-header .brand-text h1{
+.brand-text h1{
   font-family:'Fraunces',serif;
   font-weight:600;
   font-size:24px;
@@ -81,7 +84,7 @@ header .brand-text h1{
   color:var(--green);
 }
 
-header .brand-text p{
+.brand-text p{
   color:var(--text-muted);
   font-size:10.5px;
   margin:4px 0 0;
@@ -89,7 +92,7 @@ header .brand-text p{
   letter-spacing:.04em;
 }
 
-header .client-pill{
+.client-pill{
   margin-left:auto;
   flex-shrink:0;
   background:var(--surface-2);
@@ -106,7 +109,7 @@ header .client-pill{
   max-width:150px;
 }
 
-header .client-pill span.name{
+.client-pill .name{
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -137,7 +140,6 @@ main{
   color:var(--text-muted);
   font-family:'IBM Plex Mono',monospace;
   font-size:9.5px;
-  letter-spacing:.01em;
   border:none;
   background:none;
   cursor:pointer;
@@ -187,12 +189,7 @@ label:first-of-type{
   margin-top:0;
 }
 
-input[type=date],
-input[type=number],
-input[type=text],
-input[type=email],
-input[type=password],
-input[type=tel],
+input,
 textarea,
 select{
   width:100%;
@@ -203,7 +200,6 @@ select{
   border-radius:10px;
   font-family:'Inter',sans-serif;
   font-size:14.5px;
-  appearance:none;
 }
 
 input:focus,
@@ -214,7 +210,7 @@ select:focus{
 }
 
 textarea{
-  min-height:60px;
+  min-height:70px;
   resize:vertical;
 }
 
@@ -294,8 +290,6 @@ textarea{
   font-family:'IBM Plex Mono',monospace;
   font-size:11.5px;
   font-weight:600;
-  letter-spacing:.03em;
-  text-transform:uppercase;
   margin-top:10px;
   cursor:pointer;
 }
@@ -418,7 +412,6 @@ textarea{
   font-weight:600;
   color:var(--green);
   flex-shrink:0;
-  font-size:14px;
 }
 
 .client-item.active .client-avatar{
@@ -459,31 +452,12 @@ textarea{
 
 .entry-stats b{
   color:var(--text);
-  font-weight:600;
 }
 
 .entry-note{
   font-size:13px;
-  color:var(--text);
   line-height:1.4;
-  margin-top:4px;
-}
-
-.entry-note .lbl{
-  font-size:10px;
-  color:var(--text-muted);
-  font-family:'IBM Plex Mono',monospace;
-  text-transform:uppercase;
-  letter-spacing:.03em;
-  display:block;
-  margin-bottom:2px;
-}
-
-.empty{
-  text-align:center;
-  padding:32px 20px;
-  color:var(--text-muted);
-  font-size:13.5px;
+  margin-top:5px;
 }
 
 .stat-grid{
@@ -505,20 +479,17 @@ textarea{
   font-weight:700;
   font-size:24px;
   color:var(--green);
-  line-height:1;
 }
 
 .stat-box .lbl{
   font-family:'IBM Plex Mono',monospace;
   font-size:9.5px;
   color:var(--text-muted);
-  letter-spacing:.03em;
   margin-top:5px;
 }
 
 .chart-wrap svg{
   width:100%;
-  height:auto;
   display:block;
 }
 
@@ -543,7 +514,7 @@ textarea{
   font-family:'IBM Plex Mono',monospace;
   font-size:11.5px;
   opacity:0;
-  transition:opacity .25s ease;
+  transition:opacity .25s;
   pointer-events:none;
   z-index:30;
   white-space:nowrap;
@@ -565,94 +536,139 @@ textarea{
   margin-top:8px;
 }
 
-.setup-banner{
-  background:#fdf3e2;
-  border:1px solid var(--gold);
-  border-radius:12px;
-  padding:12px 14px;
-  font-size:12.5px;
-  color:#7a5b1e;
-  margin-bottom:14px;
-}
-
-.logout-area{
-  margin-top:18px;
-}
-
-.user-info{
-  font-size:12px;
+.empty{
+  text-align:center;
+  padding:32px 20px;
   color:var(--text-muted);
-  margin-top:8px;
-  word-break:break-word;
+  font-size:13.5px;
 }
 
 .hidden{
   display:none!important;
 }
+
+.small{
+  font-size:12px;
+  color:var(--text-muted);
+  line-height:1.5;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <svg class="brand-icon" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="48" fill="#eaf1ea" stroke="#e0d5bf" stroke-width="2"/>
-    <path d="M50 78 C50 60 50 55 50 42" stroke="#4f7a5c" stroke-width="4" fill="none" stroke-linecap="round"/>
-    <path d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z" fill="#4f7a5c"/>
-    <path d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z" fill="#6b9a76"/>
-  </svg>
 
-  <div class="brand-text">
-    <h1 id="header-title">VITALIS</h1>
-    <p id="header-subtitle">SUIVI NATUROPATHIE</p>
-  </div>
+<svg class="brand-icon" viewBox="0 0 100 100">
 
-  <div class="client-pill" id="client-pill" style="display:none;">
-    <span>👤</span>
-    <span class="name" id="client-pill-name"></span>
-  </div>
+<circle
+  cx="50"
+  cy="50"
+  r="48"
+  fill="#eaf1ea"
+  stroke="#e0d5bf"
+  stroke-width="2"
+/>
+
+<path
+  d="M50 78 C50 60 50 55 50 42"
+  stroke="#4f7a5c"
+  stroke-width="4"
+  fill="none"
+  stroke-linecap="round"
+/>
+
+<path
+  d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
+  fill="#4f7a5c"
+/>
+
+<path
+  d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
+  fill="#6b9a76"
+/>
+
+</svg>
+
+<div class="brand-text">
+
+<h1 id="header-title">VITALIS</h1>
+
+<p id="header-subtitle">
+SUIVI NATUROPATHIE
+</p>
+
+</div>
+
+<div
+  class="client-pill"
+  id="client-pill"
+  style="display:none;"
+>
+
+<span>👤</span>
+
+<span
+  class="name"
+  id="client-pill-name"
+></span>
+
+</div>
+
 </header>
 
 <main id="main"></main>
 
-<div class="tabbar" id="tabbar"></div>
-<div class="toast" id="toast"></div>
+<div
+  class="tabbar"
+  id="tabbar"
+></div>
+
+<div
+  class="toast"
+  id="toast"
+></div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 /* =========================================================
-   CONFIGURATION SUPABASE
+   CONFIGURATION
    ========================================================= */
 
 const SUPABASE_URL =
-
   'https://vrfquuhrmbtiuwvnnfjc.supabase.co';
 
 const SUPABASE_ANON_KEY =
+  'sb_publishable_rlQoSQw67SrLmm4l1QUe0A_MiKJKdYf';
 
-   'sb_publishable_rlQoSQw67SrLmm4l1QUe0A_MiKJKdYf'
+
 /* =========================================================
-   SUPABASE CLIENT
+   SUPABASE
    ========================================================= */
 
 let supabaseClient = null;
 
-try {
-  if (
-    window.supabase &&
-    SUPABASE_URL &&
-    SUPABASE_ANON_KEY
-  ) {
-    supabaseClient = window.supabase.createClient(
+try{
+
+  supabaseClient =
+    window.supabase.createClient(
       SUPABASE_URL,
       SUPABASE_ANON_KEY
     );
-  }
-} catch(error) {
-  console.error('Supabase initialization error:', error);
+
+}catch(error){
+
+  console.error(
+    'Supabase initialization error:',
+    error
+  );
+
 }
+
 
 /* =========================================================
    OPTIONS
@@ -698,18 +714,22 @@ const EFFORT_TYPES = [
   'Autre'
 ];
 
+
 /* =========================================================
    URL / MODE
    ========================================================= */
 
 const urlParams =
-  new URLSearchParams(window.location.search);
+  new URLSearchParams(
+    window.location.search
+  );
 
 const INVITE_CODE =
   urlParams.get('invite');
 
 const isClientMode =
   !!INVITE_CODE;
+
 
 /* =========================================================
    STATE
@@ -722,15 +742,16 @@ let authScreen = 'login';
 let isRecoveryMode = false;
 
 let clients = [];
-activeClientId =
-  isClientMode
-    ? null
-    : null;
+
+let activeClientId = null;
 let activeClientData = null;
+
 let bilans = [];
 
 let activeTab =
-  isClientMode ? 'new' : 'clients';
+  isClientMode
+    ? 'new'
+    : 'clients';
 
 let newClientName = '';
 
@@ -787,31 +808,47 @@ let form = {
   payment_amount:''
 };
 
+
 /* =========================================================
    HELPERS
    ========================================================= */
 
 function todayStr(){
-  return new Date().toISOString().slice(0,10);
+
+  return new Date()
+    .toISOString()
+    .slice(0,10);
+
 }
+
 
 function escapeHtml(s){
+
   return (s || '')
     .toString()
-    .replace(/[&<>"']/g, c => ({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      '"':'&quot;',
-      "'":'&#39;'
-    }[c]));
+    .replace(
+      /[&<>"']/g,
+      c => ({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+      }[c])
+    );
+
 }
 
+
 function formatDate(d){
+
   if(!d) return '';
 
-  const [y,m,day] =
+  const parts =
     d.split('-');
+
+  if(parts.length !== 3)
+    return d;
 
   const months = [
     'janv.','févr.','mars','avr.',
@@ -819,14 +856,25 @@ function formatDate(d){
     'sept.','oct.','nov.','déc.'
   ];
 
-  return `${day} ${months[Number(m)-1]} ${y}`;
+  return `
+    ${parts[2]}
+    ${months[Number(parts[1])-1]}
+    ${parts[0]}
+  `;
+
 }
 
-function calcAge(birthDate){
-  if(!birthDate) return null;
 
-  const b = new Date(birthDate);
-  const n = new Date();
+function calcAge(birthDate){
+
+  if(!birthDate)
+    return null;
+
+  const b =
+    new Date(birthDate);
+
+  const n =
+    new Date();
 
   let age =
     n.getFullYear() -
@@ -843,9 +891,15 @@ function calcAge(birthDate){
   }
 
   return age;
+
 }
 
-function calcBMI(heightCm, weightKg){
+
+function calcBMI(
+  heightCm,
+  weightKg
+){
+
   if(!heightCm || !weightKg)
     return null;
 
@@ -856,50 +910,88 @@ function calcBMI(heightCm, weightKg){
     Number(weightKg) /
     (h * h)
   ).toFixed(1);
+
 }
 
+
 function showToast(msg){
+
   const t =
     document.getElementById('toast');
 
+  if(!t) return;
+
   t.textContent = msg;
+
   t.classList.add('show');
 
-  setTimeout(() => {
-    t.classList.remove('show');
-  }, 2200);
+  setTimeout(
+    () => t.classList.remove('show'),
+    2200
+  );
+
 }
 
-function showAuthMessage(message, type='error'){
+
+function showAuthMessage(
+  message,
+  type='error'
+){
+
   const box =
-    document.getElementById('auth-message');
+    document.getElementById(
+      'auth-message'
+    );
 
   if(!box) return;
 
-  box.textContent = message;
+  box.textContent =
+    message;
+
   box.className =
     `auth-message ${type}`;
+
 }
 
+
 function clearAuthMessage(){
+
   const box =
-    document.getElementById('auth-message');
+    document.getElementById(
+      'auth-message'
+    );
 
   if(!box) return;
 
   box.textContent = '';
-  box.className = 'auth-message';
+
+  box.className =
+    'auth-message';
+
 }
 
+
 function baseUrl(){
+
   return (
     window.location.origin +
     window.location.pathname
   );
+
 }
 
+
+function activeClient(){
+
+  return activeClientData;
+
+}
+
+
 function resetForm(){
+
   form = {
+
     date:todayStr(),
     weight:'',
     waist:'',
@@ -923,18 +1015,20 @@ function resetForm(){
     payment_status:'attente',
     payment_method:'Mobile Money',
     payment_amount:''
+
   };
+
 }
 
+
 /* =========================================================
-   SUPABASE AUTH
+   AUTH
    ========================================================= */
 
 async function checkAuth(){
 
-  if(!supabaseClient){
+  if(!supabaseClient)
     return;
-  }
 
   try{
 
@@ -944,10 +1038,8 @@ async function checkAuth(){
     } =
       await supabaseClient.auth.getSession();
 
-    if(error){
-      console.error(error);
-      return;
-    }
+    if(error)
+      throw error;
 
     currentSession =
       data.session || null;
@@ -957,11 +1049,6 @@ async function checkAuth(){
         ? currentSession.user
         : null;
 
-    /*
-      Vérifie si Supabase vient de rediriger
-      l'utilisateur après une récupération
-      de mot de passe.
-    */
 
     const hash =
       window.location.hash || '';
@@ -970,15 +1057,17 @@ async function checkAuth(){
       hash.includes('type=recovery') ||
       hash.includes('access_token=')
     ){
+
       isRecoveryMode = true;
+
     }
 
-    /*
-      Écoute les changements d'authentification.
-    */
 
     supabaseClient.auth.onAuthStateChange(
-      async (event, session) => {
+      async (
+        event,
+        session
+      ) => {
 
         currentSession =
           session || null;
@@ -988,65 +1077,93 @@ async function checkAuth(){
             ? session.user
             : null;
 
-        if(event === 'PASSWORD_RECOVERY'){
+
+        if(
+          event === 'PASSWORD_RECOVERY'
+        ){
+
           isRecoveryMode = true;
-          render();
-          return;
-        }
-
-        if(event === 'SIGNED_IN'){
-          currentSession = session;
-          currentUser =
-            session ? session.user : null;
-
-          if(!isRecoveryMode){
-            await afterLogin();
-          }
 
           render();
+
           return;
+
         }
 
-        if(event === 'SIGNED_OUT'){
+
+        if(
+          event === 'SIGNED_OUT'
+        ){
+
           currentSession = null;
           currentUser = null;
+
           clients = [];
           activeClientData = null;
           bilans = [];
 
           render();
+
         }
 
       }
     );
 
   }catch(error){
+
     console.error(
-      'Erreur vérification session:',
+      'Erreur auth:',
       error
     );
+
   }
+
 }
+
 
 /* =========================================================
    LOGIN
    ========================================================= */
 
-async function loginUser(email,password){
+async function loginUser(
+  email,
+  password
+){
 
   if(!supabaseClient){
+
     showAuthMessage(
       'Supabase n’est pas correctement chargé.'
     );
+
     return;
+
+  }
+
+  if(
+    !email.trim() ||
+    !password
+  ){
+
+    showAuthMessage(
+      'Entre ton e-mail et ton mot de passe.'
+    );
+
+    return;
+
   }
 
   const btn =
-    document.getElementById('login-btn');
+    document.getElementById(
+      'login-btn'
+    );
 
   if(btn){
+
     btn.disabled = true;
-    btn.textContent = 'Connexion...';
+    btn.textContent =
+      'Connexion...';
+
   }
 
   clearAuthMessage();
@@ -1057,14 +1174,18 @@ async function loginUser(email,password){
       data,
       error
     } =
-      await supabaseClient.auth.signInWithPassword({
-        email:email.trim(),
-        password
-      });
+      await supabaseClient.auth
+        .signInWithPassword({
 
-    if(error){
+          email:
+            email.trim(),
+
+          password
+
+        });
+
+    if(error)
       throw error;
-    }
 
     currentSession =
       data.session;
@@ -1072,9 +1193,12 @@ async function loginUser(email,password){
     currentUser =
       data.user;
 
-    showToast('Connexion réussie ✅');
 
     await afterLogin();
+
+    showToast(
+      'Connexion réussie ✅'
+    );
 
   }catch(error){
 
@@ -1083,56 +1207,302 @@ async function loginUser(email,password){
     let message =
       'Impossible de se connecter.';
 
+    const lower =
+      (
+        error.message || ''
+      ).toLowerCase();
+
     if(
-      error.message &&
-      error.message.toLowerCase().includes(
+      lower.includes(
         'invalid login credentials'
       )
     ){
+
       message =
         'E-mail ou mot de passe incorrect.';
+
     }
 
     if(
-      error.message &&
-      error.message.toLowerCase().includes(
+      lower.includes(
         'email not confirmed'
       )
     ){
+
       message =
         'Ton adresse e-mail n’est pas encore confirmée.';
+
     }
 
-    showAuthMessage(message);
+    showAuthMessage(
+      message
+    );
 
   }finally{
 
     if(btn){
+
       btn.disabled = false;
-      btn.textContent = 'Se connecter';
+
+      btn.textContent =
+        'Se connecter';
+
     }
 
   }
+
 }
 
+
 /* =========================================================
-   MOT DE PASSE OUBLIE
+   CREATION COMPTE CLIENTE
    ========================================================= */
 
-async function sendPasswordRecovery(email){
+async function registerUser(
+  email,
+  password,
+  confirmPassword
+){
 
   if(!supabaseClient){
+
     showAuthMessage(
       'Supabase n’est pas correctement chargé.'
     );
+
     return;
+
   }
 
-  if(!email || !email.trim()){
+  email =
+    email.trim().toLowerCase();
+
+  if(!email){
+
     showAuthMessage(
       'Entre ton adresse e-mail.'
     );
+
     return;
+
+  }
+
+  if(password.length < 6){
+
+    showAuthMessage(
+      'Le mot de passe doit contenir au moins 6 caractères.'
+    );
+
+    return;
+
+  }
+
+  if(
+    password !== confirmPassword
+  ){
+
+    showAuthMessage(
+      'Les deux mots de passe ne correspondent pas.'
+    );
+
+    return;
+
+  }
+
+  const btn =
+    document.getElementById(
+      'register-btn'
+    );
+
+  if(btn){
+
+    btn.disabled = true;
+
+    btn.textContent =
+      'Création...';
+
+  }
+
+  clearAuthMessage();
+
+  try{
+
+    /*
+      Le compte cliente doit être créé
+      depuis son lien d'invitation.
+    */
+
+    if(!INVITE_CODE){
+
+      throw new Error(
+        'Ce formulaire doit être ouvert depuis le lien envoyé par VITALIS.'
+      );
+
+    }
+
+
+    /*
+      Vérifie que le lien existe.
+    */
+
+    const {
+      data:client,
+      error:clientError
+    } =
+      await supabaseClient
+        .from('vitalis_clients')
+        .select('id,name,email')
+        .eq(
+          'invitation_code',
+          INVITE_CODE
+        )
+        .maybeSingle();
+
+    if(clientError)
+      throw clientError;
+
+    if(!client){
+
+      throw new Error(
+        'Lien d’invitation invalide ou expiré.'
+      );
+
+    }
+
+
+    /*
+      Crée le compte Supabase.
+    */
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth
+        .signUp({
+
+          email,
+          password,
+
+          options:{
+            emailRedirectTo:
+              baseUrl()
+          }
+
+        });
+
+    if(error)
+      throw error;
+
+
+    /*
+      Enregistre l’e-mail dans la fiche cliente.
+    */
+
+    const {
+      error:updateError
+    } =
+      await supabaseClient
+        .from('vitalis_clients')
+        .update({
+          email
+        })
+        .eq(
+          'id',
+          client.id
+        );
+
+    if(updateError)
+      throw updateError;
+
+
+    if(data.session){
+
+      currentSession =
+        data.session;
+
+      currentUser =
+        data.user;
+
+      await loadActiveClient();
+      await loadBilans();
+
+      authScreen =
+        'login';
+
+      render();
+
+      showToast(
+        'Compte créé ✅'
+      );
+
+    }else{
+
+      showAuthMessage(
+        'Compte créé ✅ Vérifie ton e-mail pour confirmer ton compte, puis connecte-toi.',
+        'success'
+      );
+
+    }
+
+  }catch(error){
+
+    console.error(
+      'Erreur création compte:',
+      error
+    );
+
+    let message =
+      error.message ||
+      'Impossible de créer le compte.';
+
+    if(
+      message.toLowerCase().includes(
+        'user already registered'
+      )
+    ){
+
+      message =
+        'Un compte existe déjà avec cet e-mail. Connecte-toi plutôt.';
+
+    }
+
+    showAuthMessage(
+      message
+    );
+
+  }finally{
+
+    if(btn){
+
+      btn.disabled = false;
+
+      btn.textContent =
+        'Créer mon compte';
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   RECUPERATION MOT DE PASSE
+   ========================================================= */
+
+async function sendPasswordRecovery(
+  email
+){
+
+  if(!email || !email.trim()){
+
+    showAuthMessage(
+      'Entre ton adresse e-mail.'
+    );
+
+    return;
+
   }
 
   const btn =
@@ -1141,84 +1511,92 @@ async function sendPasswordRecovery(email){
     );
 
   if(btn){
+
     btn.disabled = true;
-    btn.textContent = 'Envoi...';
+
+    btn.textContent =
+      'Envoi...';
+
   }
 
   clearAuthMessage();
 
   try{
 
-    const redirectUrl =
-      baseUrl();
-
     const {
       error
     } =
-      await supabaseClient.auth.resetPasswordForEmail(
-        email.trim(),
-        {
-          redirectTo:redirectUrl
-        }
-      );
+      await supabaseClient.auth
+        .resetPasswordForEmail(
+          email.trim(),
+          {
+            redirectTo:
+              baseUrl()
+          }
+        );
 
-    if(error){
+    if(error)
       throw error;
-    }
 
     showAuthMessage(
-      'E-mail envoyé ✅ Vérifie ta boîte de réception et tes spams. Le lien te ramènera ici pour choisir un nouveau mot de passe.',
+      'E-mail envoyé ✅ Vérifie ta boîte de réception et tes spams.',
       'success'
     );
 
   }catch(error){
 
-    console.error(
-      'Recovery error:',
-      error
-    );
+    console.error(error);
 
     showAuthMessage(
       error.message ||
-      'Impossible d’envoyer l’e-mail de récupération.'
+      'Impossible d’envoyer l’e-mail.'
     );
 
   }finally{
 
     if(btn){
+
       btn.disabled = false;
+
       btn.textContent =
         'Envoyer le lien de récupération';
+
     }
 
   }
+
 }
+
 
 /* =========================================================
    NOUVEAU MOT DE PASSE
    ========================================================= */
 
-async function updatePassword(password,confirmPassword){
-
-  if(!supabaseClient){
-    showAuthMessage(
-      'Supabase n’est pas correctement chargé.'
-    );
-    return;
-  }
+async function updatePassword(
+  password,
+  confirmPassword
+){
 
   if(password.length < 6){
+
     showAuthMessage(
       'Le mot de passe doit contenir au moins 6 caractères.'
     );
+
     return;
+
   }
 
-  if(password !== confirmPassword){
+  if(
+    password !== confirmPassword
+  ){
+
     showAuthMessage(
       'Les deux mots de passe ne correspondent pas.'
     );
+
     return;
+
   }
 
   const btn =
@@ -1227,51 +1605,51 @@ async function updatePassword(password,confirmPassword){
     );
 
   if(btn){
+
     btn.disabled = true;
+
     btn.textContent =
       'Enregistrement...';
-  }
 
-  clearAuthMessage();
+  }
 
   try{
 
     const {
       error
     } =
-      await supabaseClient.auth.updateUser({
-        password
-      });
+      await supabaseClient.auth
+        .updateUser({
+          password
+        });
 
-    if(error){
+    if(error)
       throw error;
-    }
-
-    isRecoveryMode = false;
 
     showAuthMessage(
-      'Nouveau mot de passe enregistré ✅ Tu peux maintenant accéder à VITALIS.',
+      'Mot de passe enregistré ✅',
       'success'
     );
 
-    setTimeout(async () => {
+    setTimeout(
+      () => {
 
-      /*
-        Nettoie le hash de récupération
-        dans l'adresse.
-      */
+        window.history.replaceState(
+          {},
+          document.title,
+          baseUrl()
+        );
 
-      window.history.replaceState(
-        {},
-        document.title,
-        baseUrl()
-      );
+        isRecoveryMode = false;
 
-      await supabaseClient.auth.signOut();
+        authScreen =
+          'login';
 
-      render();
+        render();
 
-    }, 1800);
+      },
+      1500
+    );
 
   }catch(error){
 
@@ -1285,22 +1663,24 @@ async function updatePassword(password,confirmPassword){
   }finally{
 
     if(btn){
+
       btn.disabled = false;
+
       btn.textContent =
         'Enregistrer le nouveau mot de passe';
+
     }
 
   }
+
 }
 
+
 /* =========================================================
-   DECONNEXION
+   LOGOUT
    ========================================================= */
 
 async function logout(){
-
-  if(!supabaseClient)
-    return;
 
   try{
 
@@ -1309,29 +1689,170 @@ async function logout(){
     currentSession = null;
     currentUser = null;
 
+    clients = [];
+    activeClientData = null;
+    bilans = [];
+
     activeClientId =
       isClientMode
-        ? CLIENT_MODE_ID
+        ? null
         : null;
-
-    activeClientData = null;
-    clients = [];
-    bilans = [];
 
     activeTab =
       isClientMode
         ? 'new'
         : 'clients';
 
+    authScreen =
+      'login';
+
     render();
 
   }catch(error){
+
     console.error(error);
+
   }
+
 }
 
+
 /* =========================================================
-   APRES CONNEXION
+   LOAD CLIENTS
+   ========================================================= */
+
+async function loadClients(){
+
+  if(!currentUser)
+    return;
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from('vitalis_clients')
+      .select('*')
+      .order(
+        'created_at',
+        {
+          ascending:false
+        }
+      );
+
+  if(error)
+    throw error;
+
+  clients =
+    data || [];
+
+}
+
+
+/* =========================================================
+   LOAD ACTIVE CLIENT
+   ========================================================= */
+
+async function loadActiveClient(){
+
+  if(!isClientMode && !activeClientId){
+
+    activeClientData = null;
+
+    return;
+
+  }
+
+  let query =
+    supabaseClient
+      .from('vitalis_clients')
+      .select('*');
+
+
+  if(isClientMode){
+
+    query =
+      query.eq(
+        'invitation_code',
+        INVITE_CODE
+      );
+
+  }else{
+
+    query =
+      query.eq(
+        'id',
+        activeClientId
+      );
+
+  }
+
+
+  const {
+    data,
+    error
+  } =
+    await query.maybeSingle();
+
+  if(error)
+    throw error;
+
+  activeClientData =
+    data || null;
+
+  if(activeClientData){
+
+    activeClientId =
+      activeClientData.id;
+
+  }
+
+}
+
+
+/* =========================================================
+   LOAD BILANS
+   ========================================================= */
+
+async function loadBilans(){
+
+  if(!activeClientId){
+
+    bilans = [];
+
+    return;
+
+  }
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from('vitalis_bilans')
+      .select('*')
+      .eq(
+        'client_id',
+        activeClientId
+      )
+      .order(
+        'date',
+        {
+          ascending:false
+        }
+      );
+
+  if(error)
+    throw error;
+
+  bilans =
+    data || [];
+
+}
+
+
+/* =========================================================
+   AFTER LOGIN
    ========================================================= */
 
 async function afterLogin(){
@@ -1339,7 +1860,11 @@ async function afterLogin(){
   if(isClientMode){
 
     await loadActiveClient();
+
     await loadBilans();
+
+    activeTab =
+      'new';
 
   }else{
 
@@ -1354,6 +1879,7 @@ async function afterLogin(){
         clients[0].id;
 
       await loadActiveClient();
+
       await loadBilans();
 
     }
@@ -1361,11 +1887,65 @@ async function afterLogin(){
   }
 
   render();
+
 }
+
 
 /* =========================================================
    AUTH UI
    ========================================================= */
+
+function authLogo(){
+
+  return `
+
+    <div class="auth-logo">
+
+      <svg viewBox="0 0 100 100">
+
+        <circle
+          cx="50"
+          cy="50"
+          r="48"
+          fill="#eaf1ea"
+          stroke="#e0d5bf"
+          stroke-width="2"
+        />
+
+        <path
+          d="M50 78 C50 60 50 55 50 42"
+          stroke="#4f7a5c"
+          stroke-width="4"
+          fill="none"
+          stroke-linecap="round"
+        />
+
+        <path
+          d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
+          fill="#4f7a5c"
+        />
+
+        <path
+          d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
+          fill="#6b9a76"
+        />
+
+      </svg>
+
+      <h2>VITALIS</h2>
+
+      <p>
+        ${isClientMode
+          ? 'ESPACE CLIENTE'
+          : 'SUIVI NATUROPATHIE'}
+      </p>
+
+    </div>
+
+  `;
+
+}
+
 
 function renderAuth(){
 
@@ -1377,9 +1957,8 @@ function renderAuth(){
     'client-pill'
   ).style.display = 'none';
 
-  /*
-    Mot de passe oublié
-  */
+
+  /* RECOVERY */
 
   if(authScreen === 'recovery'){
 
@@ -1393,41 +1972,7 @@ function renderAuth(){
 
           <div class="card">
 
-            <div class="auth-logo">
-
-              <svg viewBox="0 0 100 100">
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="48"
-                  fill="#eaf1ea"
-                  stroke="#e0d5bf"
-                  stroke-width="2"
-                />
-
-                <path
-                  d="M50 78 C50 60 50 55 50 42"
-                  stroke="#4f7a5c"
-                  stroke-width="4"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-
-                <path
-                  d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
-                  fill="#4f7a5c"
-                />
-
-                <path
-                  d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
-                  fill="#6b9a76"
-                />
-              </svg>
-
-              <h2>VITALIS</h2>
-              <p>SUIVI NATUROPATHIE</p>
-
-            </div>
+            ${authLogo()}
 
             <div
               id="auth-message"
@@ -1438,14 +1983,7 @@ function renderAuth(){
               🔐 MOT DE PASSE OUBLIÉ
             </div>
 
-            <p
-              style="
-                font-size:13px;
-                color:var(--text-muted);
-                line-height:1.5;
-                margin-top:0;
-              "
-            >
+            <p class="small">
               Entre ton adresse e-mail.
               Nous allons t’envoyer un lien
               pour créer un nouveau mot de passe.
@@ -1457,7 +1995,6 @@ function renderAuth(){
               type="email"
               id="recovery-email"
               placeholder="ton@email.com"
-              autocomplete="email"
             >
 
             <button
@@ -1480,53 +2017,37 @@ function renderAuth(){
         </div>
 
       </div>
+
     `;
 
-    const email =
-      document.getElementById(
-        'recovery-email'
+
+    document.getElementById(
+      'recovery-btn'
+    ).onclick =
+      () => sendPasswordRecovery(
+        document.getElementById(
+          'recovery-email'
+        ).value
       );
 
-    const recoveryBtn =
-      document.getElementById(
-        'recovery-btn'
-      );
 
-    const backBtn =
-      document.getElementById(
-        'back-login-btn'
-      );
+    document.getElementById(
+      'back-login-btn'
+    ).onclick = () => {
 
-    if(recoveryBtn){
+      authScreen =
+        'login';
 
-      recoveryBtn.onclick = () => {
+      render();
 
-        sendPasswordRecovery(
-          email.value
-        );
-
-      };
-
-    }
-
-    if(backBtn){
-
-      backBtn.onclick = () => {
-
-        authScreen = 'login';
-        clearAuthMessage();
-        render();
-
-      };
-
-    }
+    };
 
     return;
+
   }
 
-  /*
-    Nouveau mot de passe
-  */
+
+  /* NOUVEAU MOT DE PASSE */
 
   if(isRecoveryMode){
 
@@ -1540,63 +2061,31 @@ function renderAuth(){
 
           <div class="card">
 
-            <div class="auth-logo">
-
-              <svg viewBox="0 0 100 100">
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="48"
-                  fill="#eaf1ea"
-                  stroke="#e0d5bf"
-                  stroke-width="2"
-                />
-
-                <path
-                  d="M50 78 C50 60 50 55 50 42"
-                  stroke="#4f7a5c"
-                  stroke-width="4"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-
-                <path
-                  d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
-                  fill="#4f7a5c"
-                />
-
-                <path
-                  d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
-                  fill="#6b9a76"
-                />
-              </svg>
-
-              <h2>VITALIS</h2>
-              <p>NOUVEAU MOT DE PASSE</p>
-
-            </div>
+            ${authLogo()}
 
             <div
               id="auth-message"
               class="auth-message"
             ></div>
 
-            <label>Nouveau mot de passe</label>
+            <label>
+              Nouveau mot de passe
+            </label>
 
             <input
               type="password"
               id="new-password"
               placeholder="Minimum 6 caractères"
-              autocomplete="new-password"
             >
 
-            <label>Confirmer le mot de passe</label>
+            <label>
+              Confirmer le mot de passe
+            </label>
 
             <input
               type="password"
               id="confirm-password"
               placeholder="Retape ton mot de passe"
-              autocomplete="new-password"
             >
 
             <button
@@ -1611,157 +2100,118 @@ function renderAuth(){
         </div>
 
       </div>
+
     `;
 
-    const btn =
-      document.getElementById(
-        'update-password-btn'
+
+    document.getElementById(
+      'update-password-btn'
+    ).onclick =
+      () => updatePassword(
+
+        document.getElementById(
+          'new-password'
+        ).value,
+
+        document.getElementById(
+          'confirm-password'
+        ).value
+
       );
 
-    if(btn){
-
-      btn.onclick = () => {
-
-        updatePassword(
-          document.getElementById(
-            'new-password'
-          ).value,
-          document.getElementById(
-            'confirm-password'
-          ).value
-        );
-
-      };
-
-    }
-
     return;
+
   }
-/*
-  INSCRIPTION CLIENTE
-*/
 
-if(authScreen === 'register'){
 
-  document.getElementById(
-    'main'
-  ).innerHTML = `
+  /* CREATION CLIENTE */
 
-    <div class="auth-wrap">
+  if(authScreen === 'register'){
 
-      <div class="auth-card">
+    document.getElementById(
+      'main'
+    ).innerHTML = `
 
-        <div class="card">
+      <div class="auth-wrap">
 
-          <div class="auth-logo">
+        <div class="auth-card">
 
-            <svg viewBox="0 0 100 100">
-              <circle
-                cx="50"
-                cy="50"
-                r="48"
-                fill="#eaf1ea"
-                stroke="#e0d5bf"
-                stroke-width="2"
-              />
+          <div class="card">
 
-              <path
-                d="M50 78 C50 60 50 55 50 42"
-                stroke="#4f7a5c"
-                stroke-width="4"
-                fill="none"
-                stroke-linecap="round"
-              />
+            ${authLogo()}
 
-              <path
-                d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
-                fill="#4f7a5c"
-              />
+            <div
+              id="auth-message"
+              class="auth-message"
+            ></div>
 
-              <path
-                d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
-                fill="#6b9a76"
-              />
-            </svg>
+            <div class="section-label">
+              📝 CRÉER MON COMPTE
+            </div>
 
-            <h2>VITALIS</h2>
-            <p>ESPACE CLIENTE</p>
+            <p class="small">
+              Crée ton compte cliente pour
+              accéder à ton espace VITALIS.
+            </p>
+
+            <label>E-mail</label>
+
+            <input
+              type="email"
+              id="register-email"
+              placeholder="ton@email.com"
+              autocomplete="email"
+            >
+
+            <label>Mot de passe</label>
+
+            <input
+              type="password"
+              id="register-password"
+              placeholder="Minimum 6 caractères"
+              autocomplete="new-password"
+            >
+
+            <label>
+              Confirmer le mot de passe
+            </label>
+
+            <input
+              type="password"
+              id="register-confirm"
+              placeholder="Retape ton mot de passe"
+              autocomplete="new-password"
+            >
+
+            <button
+              class="btn-primary"
+              id="register-btn"
+            >
+              Créer mon compte
+            </button>
+
+            <button
+              class="text-button"
+              id="back-register"
+              style="width:100%;"
+            >
+              ← Retour à la connexion
+            </button>
 
           </div>
-
-          <div
-            id="auth-message"
-            class="auth-message"
-          ></div>
-
-          <div class="section-label">
-            📝 CRÉER MON COMPTE
-          </div>
-
-          <label>E-mail</label>
-
-          <input
-            type="email"
-            id="register-email"
-            placeholder="ton@email.com"
-            autocomplete="email"
-          >
-
-          <label>Mot de passe</label>
-
-          <input
-            type="password"
-            id="register-password"
-            placeholder="Minimum 6 caractères"
-            autocomplete="new-password"
-          >
-
-          <label>Confirmer le mot de passe</label>
-
-          <input
-            type="password"
-            id="register-confirm"
-            placeholder="Retape ton mot de passe"
-            autocomplete="new-password"
-          >
-
-          <button
-            class="btn-primary"
-            id="register-btn"
-          >
-            Créer mon compte
-          </button>
-
-          <button
-            class="text-button"
-            id="back-login-register-btn"
-            style="width:100%; margin-top:8px;"
-          >
-            ← Retour à la connexion
-          </button>
 
         </div>
 
       </div>
 
-    </div>
-  `;
+    `;
 
-  const registerBtn =
+
     document.getElementById(
       'register-btn'
-    );
+    ).onclick =
+      () => registerUser(
 
-  const backBtn =
-    document.getElementById(
-      'back-login-register-btn'
-    );
-
-  if(registerBtn){
-
-    registerBtn.onclick = () => {
-
-      registerUser(
         document.getElementById(
           'register-email'
         ).value,
@@ -1773,31 +2223,27 @@ if(authScreen === 'register'){
         document.getElementById(
           'register-confirm'
         ).value
+
       );
 
-    };
 
-  }
+    document.getElementById(
+      'back-register'
+    ).onclick = () => {
 
-  if(backBtn){
-
-    backBtn.onclick = () => {
-
-      authScreen = 'login';
-
-      clearAuthMessage();
+      authScreen =
+        'login';
 
       render();
 
     };
 
+    return;
+
   }
 
-  return;
-}
-  /*
-    Connexion
-  */
+
+  /* LOGIN */
 
   document.getElementById(
     'main'
@@ -1809,41 +2255,7 @@ if(authScreen === 'register'){
 
         <div class="card">
 
-          <div class="auth-logo">
-
-            <svg viewBox="0 0 100 100">
-              <circle
-                cx="50"
-                cy="50"
-                r="48"
-                fill="#eaf1ea"
-                stroke="#e0d5bf"
-                stroke-width="2"
-              />
-
-              <path
-                d="M50 78 C50 60 50 55 50 42"
-                stroke="#4f7a5c"
-                stroke-width="4"
-                fill="none"
-                stroke-linecap="round"
-              />
-
-              <path
-                d="M50 55 C50 55 34 52 30 36 C46 36 50 50 50 55 Z"
-                fill="#4f7a5c"
-              />
-
-              <path
-                d="M50 48 C50 48 66 45 70 29 C54 29 50 43 50 48 Z"
-                fill="#6b9a76"
-              />
-            </svg>
-
-            <h2>VITALIS</h2>
-            <p>SUIVI NATUROPATHIE</p>
-
-          </div>
+          ${authLogo()}
 
           <div
             id="auth-message"
@@ -1879,25 +2291,36 @@ if(authScreen === 'register'){
             Se connecter
           </button>
 
-          <button
-  class="text-button"
-  id="register-btn-link"
-  style="width:100%; margin-top:8px;"
->
-  📝 Créer mon compte cliente
-</button>
+          ${
+            isClientMode
+              ? `
+                <button
+                  class="text-button"
+                  id="register-link"
+                  style="width:100%;margin-top:8px;"
+                >
+                  📝 Créer mon compte cliente
+                </button>
+              `
+              : ''
+          }
 
-<button
-  class="text-button"
-  id="forgot-btn"
-  style="width:100%; margin-top:8px;"
->
-  Mot de passe oublié ?
-</button>
+          <button
+            class="text-button"
+            id="forgot-btn"
+            style="width:100%;margin-top:8px;"
+          >
+            Mot de passe oublié ?
+          </button>
 
           <div class="auth-small">
-            VITALIS sécurise l’accès à ton espace
-            professionnel.
+
+            ${
+              isClientMode
+                ? 'Ton espace cliente est protégé par ton compte VITALIS.'
+                : 'VITALIS sécurise l’accès à ton espace professionnel.'
+            }
+
           </div>
 
         </div>
@@ -1905,7 +2328,9 @@ if(authScreen === 'register'){
       </div>
 
     </div>
+
   `;
+
 
   const email =
     document.getElementById(
@@ -1917,59 +2342,17 @@ if(authScreen === 'register'){
       'login-password'
     );
 
-  const loginBtn =
-    document.getElementById(
-      'login-btn'
-    );
 
-  const forgotBtn =
-    document.getElementById(
-      'forgot-btn'
-    );
-  const registerLink =
   document.getElementById(
-    'register-btn-link'
-  );
+    'login-btn'
+  ).onclick =
+    () => loginUser(
+      email.value,
+      password.value
+    );
 
-  if(loginBtn){
 
-    loginBtn.onclick = () => {
-
-      loginUser(
-        email.value,
-        password.value
-      );
-
-    };
-
-  }
-
-  if(forgotBtn){
-
-    forgotBtn.onclick = () => {
-
-      authScreen = 'recovery';
-      clearAuthMessage();
-      render();
-
-    };
-
-  }
-  if(registerLink){
-
-  registerLink.onclick = () => {
-
-    authScreen = 'register';
-
-    clearAuthMessage();
-
-    render();
-
-  };
-
-}
-
-  password?.addEventListener(
+  password.addEventListener(
     'keydown',
     e => {
 
@@ -1984,270 +2367,78 @@ if(authScreen === 'register'){
 
     }
   );
+
+
+  document.getElementById(
+    'forgot-btn'
+  ).onclick = () => {
+
+    authScreen =
+      'recovery';
+
+    render();
+
+  };
+
+
+  const registerLink =
+    document.getElementById(
+      'register-link'
+    );
+
+  if(registerLink){
+
+    registerLink.onclick = () => {
+
+      authScreen =
+        'register';
+
+      render();
+
+    };
+
+  }
+
 }
+
 
 /* =========================================================
-   DATA LOADING
-   ========================================================= */
-
-async function sb(path, opts={}){
-
-  if(!supabaseClient){
-    throw new Error(
-      'Supabase non disponible.'
-    );
-  }
-
-  const {
-    data,
-    error
-  } =
-    await supabaseClient
-      .from(
-        path.split('?')[0]
-      )
-      .select();
-
-  /*
-    Cette fonction est conservée uniquement
-    pour compatibilité.
-  */
-
-  return data;
-}
-
-async function loadClients(){
-
-  if(!supabaseClient){
-    return;
-  }
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from('vitalis_clients')
-        .select('*')
-        .order(
-          'created_at',
-          { ascending:false }
-        );
-
-    if(error)
-      throw error;
-
-    clients =
-      data || [];
-
-  }catch(error){
-
-    console.error(
-      'loadClients:',
-      error
-    );
-
-    clients = [];
-
-    showToast(
-      'Impossible de charger les clientes'
-    );
-  }
-}
-
-async function loadActiveClient(){
-
-  if(!supabaseClient){
-
-    activeClientData = null;
-    return;
-  }
-
-  try{
-
-    let query =
-      supabaseClient
-        .from('vitalis_clients')
-        .select('*');
-
-    /*
-      Si on arrive avec un lien d'invitation,
-      on retrouve la fiche grâce au code.
-    */
-
-    if(INVITE_CODE){
-
-  query =
-    query.eq(
-      'invitation_code',
-      INVITE_CODE
-    );
-}
-
-    }else if(activeClientId){
-
-      /*
-        Compatibilité avec l'ancien système
-      */
-
-      query =
-        query.eq(
-          'id',
-          activeClientId
-        );
-
-    }else{
-
-      activeClientData = null;
-      return;
-
-    }
-
-    const {
-      data,
-      error
-    } =
-      await query.limit(1);
-
-    if(error)
-      throw error;
-
-    activeClientData =
-      data && data[0]
-        ? data[0]
-        : null;
-
-    /*
-      Si la fiche a été retrouvée
-      grâce à l'invitation, on mémorise
-      son ID pour les bilans.
-    */
-
-    if(
-  activeClientData &&
-  CLIENT_MODE_ID
-    ){
-
-      activeClientId =
-        activeClientData.id;
-
-    }
-
-  }catch(error){
-
-    console.error(
-      'loadActiveClient:',
-      error
-    );
-
-    activeClientData = null;
-  }
-}
-async function loadBilans(){
-
-  if(
-    !supabaseClient ||
-    !activeClientId
-  ){
-
-    bilans = [];
-    return;
-  }
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-        .from('vitalis_bilans')
-        .select('*')
-        .eq(
-          'client_id',
-          activeClientId
-        )
-        .order(
-          'date',
-          { ascending:false }
-        );
-
-    if(error)
-      throw error;
-
-    bilans =
-      data || [];
-
-  }catch(error){
-
-    console.error(
-      'loadBilans:',
-      error
-    );
-
-    bilans = [];
-
-    showToast(
-      'Impossible de charger les bilans'
-    );
-  }
-}
-
-function activeClient(){
-  return activeClientData;
-}
-
-/* =========================================================
-   HEADER / TABS
+   HEADER
    ========================================================= */
 
 function renderHeader(){
-
-  const c =
-    activeClient();
 
   const pill =
     document.getElementById(
       'client-pill'
     );
 
-  if(
-    isClientMode &&
-    c
-  ){
+  const name =
+    document.getElementById(
+      'client-pill-name'
+    );
+
+  if(activeClientData){
+
+    pill.style.display =
+      'flex';
+
+    name.textContent =
+      activeClientData.name || '';
+
+  }else{
 
     pill.style.display =
       'none';
 
-    document.getElementById(
-      'header-subtitle'
-    ).textContent =
-      `ESPACE DE ${c.name.toUpperCase()}`;
-
-  }else if(!isClientMode){
-
-    pill.style.display =
-      c ? 'flex' : 'none';
-
-    if(c){
-
-      document.getElementById(
-        'client-pill-name'
-      ).textContent =
-        c.name;
-
-    }
-
-    document.getElementById(
-      'header-subtitle'
-    ).textContent =
-      c
-        ? `SUIVI DE ${c.name.toUpperCase()}`
-        : 'SUIVI NATUROPATHIE';
   }
+
 }
+
+
+/* =========================================================
+   TABS
+   ========================================================= */
 
 function renderTabs(){
 
@@ -2256,85 +2447,113 @@ function renderTabs(){
       'tabbar'
     );
 
-  if(
-    !currentSession &&
-    !isClientMode
-  ){
+  if(!currentSession){
 
     bar.innerHTML = '';
+
     return;
+
   }
+
 
   if(isClientMode){
 
     bar.innerHTML = `
-      <button class="tab" data-tab="new">
+
+      <button
+        class="tab ${activeTab==='new'?'active':''}"
+        data-tab="new"
+      >
         <span class="tab-emoji">📝</span>
-        Nouveau bilan
+        BILAN
       </button>
 
-      <button class="tab" data-tab="history">
+      <button
+        class="tab ${activeTab==='history'?'active':''}"
+        data-tab="history"
+      >
         <span class="tab-emoji">📋</span>
-        Historique
+        HISTORIQUE
       </button>
 
-      <button class="tab" data-tab="progress">
-        <span class="tab-emoji">📈</span>
-        Évolution
+      <button
+        class="tab ${activeTab==='profile'?'active':''}"
+        data-tab="profile"
+      >
+        <span class="tab-emoji">👤</span>
+        PROFIL
       </button>
+
     `;
 
   }else{
 
     bar.innerHTML = `
-      <button class="tab" data-tab="clients">
+
+      <button
+        class="tab ${activeTab==='clients'?'active':''}"
+        data-tab="clients"
+      >
         <span class="tab-emoji">👥</span>
-        Clientes
+        CLIENTES
       </button>
 
-      <button class="tab" data-tab="profile">
-        <span class="tab-emoji">🗂️</span>
-        Fiche
+      <button
+        class="tab ${activeTab==='profile'?'active':''}"
+        data-tab="profile"
+      >
+        <span class="tab-emoji">👤</span>
+        PROFIL
       </button>
 
-      <button class="tab" data-tab="new">
-        <span class="tab-emoji">📝</span>
-        Bilan
+      <button
+        class="tab ${activeTab==='new'?'active':''}"
+        data-tab="new"
+      >
+        <span class="tab-emoji">➕</span>
+        BILAN
       </button>
 
-      <button class="tab" data-tab="history">
+      <button
+        class="tab ${activeTab==='history'?'active':''}"
+        data-tab="history"
+      >
         <span class="tab-emoji">📋</span>
-        Historique
+        HISTORIQUE
       </button>
 
-      <button class="tab" data-tab="progress">
+      <button
+        class="tab ${activeTab==='progress'?'active':''}"
+        data-tab="progress"
+      >
         <span class="tab-emoji">📈</span>
-        Évolution
+        ÉVOLUTION
       </button>
+
     `;
 
   }
 
-  document
-    .querySelectorAll('.tab')
-    .forEach(t => {
 
-      t.classList.toggle(
-        'active',
-        t.dataset.tab === activeTab
-      );
+  bar
+    .querySelectorAll(
+      '[data-tab]'
+    )
+    .forEach(btn => {
 
-      t.onclick = () => {
+      btn.onclick = () => {
 
         activeTab =
-          t.dataset.tab;
+          btn.dataset.tab;
 
         render();
 
       };
 
     });
+
 }
+
 
 /* =========================================================
    CLIENTS
@@ -2342,159 +2561,124 @@ function renderTabs(){
 
 function renderClients(){
 
-  const list =
-    clients.length
+  if(!clients.length){
 
-      ? clients.map(c => `
+    return `
 
-        <div
-          class="client-item ${
-            c.id === activeClientId
-              ? 'active'
-              : ''
-          }"
-          data-act="select-client"
-          data-id="${c.id}"
+      <div class="card">
+
+        <div class="section-label">
+          👥 CLIENTES
+        </div>
+
+        <div class="empty">
+          Aucune cliente pour le moment.
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="section-label">
+          ➕ NOUVELLE CLIENTE
+        </div>
+
+        <input
+          id="new-client-name"
+          type="text"
+          placeholder="Nom de la cliente"
         >
 
-          <div class="client-avatar">
-            ${escapeHtml(
-              (c.name || '?')
-                .charAt(0)
-                .toUpperCase()
-            )}
-          </div>
+        <button
+          class="btn-primary"
+          id="add-client-btn"
+        >
+          Ajouter la cliente
+        </button>
 
-          <div style="flex:1;">
-            <div class="client-name">
-              ${escapeHtml(c.name)}
-            </div>
-          </div>
+      </div>
 
-          ${
-            c.id === activeClientId
-              ? '<span style="color:var(--green);font-size:11px;">● active</span>'
-              : ''
-          }
+    `;
 
-          <button
-            class="del-btn"
-            data-act="delete-client"
-            data-id="${c.id}"
-            style="margin-top:0;margin-left:8px;"
-          >
-            ✕
-          </button>
+  }
 
-        </div>
-
-      `).join('')
-
-      : `
-        <div class="empty">
-          Aucune cliente pour l'instant.
-        </div>
-      `;
-
-  const linkSection =
-    activeClientId
-
-      ? `
-
-        <div class="card">
-
-          <div class="section-label">
-            🔗 Lien personnel de la cliente
-          </div>
-
-          <div style="
-            font-size:12.5px;
-            color:var(--text-muted);
-          ">
-            Envoie ce lien à ta cliente
-            pour qu'elle remplisse elle-même
-            ses bilans depuis son téléphone.
-          </div>
-
-          <div class="link-box">
-            ${baseUrl()}?invite=${activeClientData?.invitation_code || ''}
-          </div>
-
-          <button
-            class="btn-secondary"
-            id="copy-link-btn"
-          >
-            Copier le lien
-          </button>
-
-        </div>
-
-      `
-
-      : '';
 
   return `
 
     <div class="card">
 
       <div class="section-label">
-        👥 Tes clientes
+        👥 MES CLIENTES
       </div>
 
-      ${list}
+      ${
+        clients.map(c => `
+
+          <div
+            class="client-item ${
+              activeClientId === c.id
+                ? 'active'
+                : ''
+            }"
+            data-act="select-client"
+            data-id="${c.id}"
+          >
+
+            <div class="client-avatar">
+              ${
+                escapeHtml(
+                  (c.name || '?')
+                    .charAt(0)
+                    .toUpperCase()
+                )
+              }
+            </div>
+
+            <div class="client-name">
+              ${escapeHtml(c.name)}
+            </div>
+
+            <button
+              class="text-button"
+              data-act="delete-client"
+              data-id="${c.id}"
+              style="color:var(--danger);"
+            >
+              Supprimer
+            </button>
+
+          </div>
+
+        `).join('')
+      }
 
     </div>
-
-    ${linkSection}
 
     <div class="card">
 
       <div class="section-label">
-        + Ajouter une cliente
+        ➕ NOUVELLE CLIENTE
       </div>
 
-      <label>Nom</label>
-
       <input
-        type="text"
         id="new-client-name"
-        placeholder="ex : Sophie M."
-        value="${escapeHtml(
-          newClientName
-        )}"
+        type="text"
+        placeholder="Nom de la cliente"
       >
 
       <button
         class="btn-primary"
         id="add-client-btn"
       >
-        Ajouter
+        Ajouter la cliente
       </button>
 
     </div>
 
-    <div class="card logout-area">
-
-      <div class="section-label">
-        👤 Compte
-      </div>
-
-      <div class="user-info">
-        ${escapeHtml(
-          currentUser?.email || ''
-        )}
-      </div>
-
-      <button
-        class="btn-danger"
-        id="logout-btn"
-      >
-        Se déconnecter
-      </button>
-
-    </div>
   `;
+
 }
+
 
 /* =========================================================
    PROFILE
@@ -2508,704 +2692,587 @@ function renderProfile(){
   if(!c){
 
     return `
+
       <div class="card">
+
         <div class="empty">
-          Sélectionne une cliente
-          pour voir sa fiche.
+          Sélectionne une cliente.
         </div>
+
       </div>
+
     `;
+
   }
+
 
   const age =
     calcAge(c.birth_date);
-
-  const objectifs =
-    Array.isArray(c.objectifs)
-      ? c.objectifs
-      : [];
-
-  const admissionView =
-    editingAdmission
-
-      ? `
-
-        <div class="card">
-
-          <div class="section-label">
-            🗂️ Fiche d'admission —
-            ${escapeHtml(c.name)}
-          </div>
-
-          <label>Date de naissance</label>
-          <input
-            type="date"
-            id="a-birth"
-            value="${admissionForm.birth_date}"
-          >
-
-          <label>Sexe</label>
-
-          <div class="seg">
-
-            <button
-              data-act="a-sex"
-              data-val="Femme"
-              class="${
-                admissionForm.sex === 'Femme'
-                  ? 'active'
-                  : ''
-              }"
-            >
-              Femme
-            </button>
-
-            <button
-              data-act="a-sex"
-              data-val="Homme"
-              class="${
-                admissionForm.sex === 'Homme'
-                  ? 'active'
-                  : ''
-              }"
-            >
-              Homme
-            </button>
-
-          </div>
-
-          <label>Profession</label>
-          <input
-            type="text"
-            id="a-profession"
-            value="${escapeHtml(
-              admissionForm.profession
-            )}"
-          >
-
-          <label>Téléphone</label>
-          <input
-            type="tel"
-            id="a-phone"
-            value="${escapeHtml(
-              admissionForm.phone
-            )}"
-          >
-
-          <label>E-mail</label>
-          <input
-            type="email"
-            id="a-email"
-            value="${escapeHtml(
-              admissionForm.email
-            )}"
-          >
-
-          <label>Taille (cm)</label>
-          <input
-            type="number"
-            id="a-height"
-            value="${admissionForm.height_cm}"
-          >
-
-          <label>Motif de consultation</label>
-          <textarea
-            id="a-motif"
-          >${escapeHtml(
-            admissionForm.motif_consultation
-          )}</textarea>
-
-          <label>Antécédents médicaux</label>
-          <textarea id="a-medicaux">${escapeHtml(
-            admissionForm.antecedents_medicaux
-          )}</textarea>
-
-          <label>Antécédents chirurgicaux</label>
-          <textarea id="a-chirurgicaux">${escapeHtml(
-            admissionForm.antecedents_chirurgicaux
-          )}</textarea>
-
-          <label>Antécédents familiaux</label>
-          <textarea id="a-familiaux">${escapeHtml(
-            admissionForm.antecedents_familiaux
-          )}</textarea>
-
-          <label>Allergies</label>
-          <textarea id="a-allergies">${escapeHtml(
-            admissionForm.allergies
-          )}</textarea>
-
-          <label>Objectifs</label>
-
-          <div class="check-row">
-
-            ${OBJECTIFS_OPTIONS.map(o => `
-
-              <span
-                class="check-chip ${
-                  admissionForm.objectifs
-                    .includes(o)
-                    ? 'active'
-                    : ''
-                }"
-                data-act="a-objectif"
-                data-val="${escapeHtml(o)}"
-              >
-                ${escapeHtml(o)}
-              </span>
-
-            `).join('')}
-
-          </div>
-
-          <button
-            class="btn-primary"
-            id="save-admission-btn"
-          >
-            Enregistrer la fiche
-          </button>
-
-        </div>
-      `
-
-      : `
-
-        <div class="card">
-
-          <div class="section-label">
-            🗂️ Fiche d'admission
-          </div>
-
-          <div
-            class="entry-stats"
-            style="margin-bottom:10px;"
-          >
-
-            ${
-              age !== null
-                ? `<span><b>${age}</b> ans</span>`
-                : ''
-            }
-
-            ${
-              c.sex
-                ? `<span>${escapeHtml(c.sex)}</span>`
-                : ''
-            }
-
-            ${
-              c.height_cm
-                ? `<span><b>${c.height_cm}</b> cm</span>`
-                : ''
-            }
-
-          </div>
-
-          ${
-            c.profession
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Profession
-                  </span>
-                  ${escapeHtml(c.profession)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            c.phone || c.email
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Contact
-                  </span>
-                  ${escapeHtml(c.phone || '')}
-                  ${
-                    c.email
-                      ? ' · ' +
-                        escapeHtml(c.email)
-                      : ''
-                  }
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            c.motif_consultation
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Motif de consultation
-                  </span>
-                  ${escapeHtml(
-                    c.motif_consultation
-                  )}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            c.antecedents_medicaux
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Antécédents médicaux
-                  </span>
-                  ${escapeHtml(
-                    c.antecedents_medicaux
-                  )}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            c.antecedents_chirurgicaux
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Antécédents chirurgicaux
-                  </span>
-                  ${escapeHtml(
-                    c.antecedents_chirurgicaux
-                  )}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            c.antecedents_familiaux
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Antécédents familiaux
-                  </span>
-                  ${escapeHtml(
-                    c.antecedents_familiaux
-                  )}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            c.allergies
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Allergies
-                  </span>
-                  ${escapeHtml(c.allergies)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            objectifs.length
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Objectifs
-                  </span>
-                  ${objectifs
-                    .map(escapeHtml)
-                    .join(' · ')}
-                </div>
-              `
-              : ''
-          }
-
-          <button
-            class="btn-secondary"
-            id="edit-admission-btn"
-          >
-            ✏️ Modifier la fiche
-          </button>
-
-        </div>
-      `;
-
-  const rx = {
-    diet:c.prescription_diet || '',
-    micronutrition:
-      c.prescription_micronutrition || '',
-    phyto:c.prescription_phyto || '',
-    exercises:
-      c.prescription_exercises || '',
-    hygiene:
-      c.prescription_hygiene || '',
-    suivi:
-      c.prescription_suivi || ''
-  };
-
-  const prescriptionView =
-    editingPrescription
-
-      ? `
-
-        <div class="card">
-
-          <div class="section-label">
-            🌿 Conseils naturopathiques
-          </div>
-
-          <label>Alimentation</label>
-
-          <textarea id="rx-diet">${escapeHtml(
-            prescriptionForm.diet
-          )}</textarea>
-
-          <label>
-            Micronutrition / Compléments
-          </label>
-
-          <textarea id="rx-micro">${escapeHtml(
-            prescriptionForm.micronutrition
-          )}</textarea>
-
-          <label>
-            Phytothérapie / Aromathérapie
-          </label>
-
-          <textarea id="rx-phyto">${escapeHtml(
-            prescriptionForm.phyto
-          )}</textarea>
-
-          <label>Activité physique</label>
-
-          <textarea id="rx-exercises">${escapeHtml(
-            prescriptionForm.exercises
-          )}</textarea>
-
-          <label>Hygiène de vie</label>
-
-          <textarea id="rx-hygiene">${escapeHtml(
-            prescriptionForm.hygiene
-          )}</textarea>
-
-          <label>Plan de suivi</label>
-
-          <textarea id="rx-suivi">${escapeHtml(
-            prescriptionForm.suivi
-          )}</textarea>
-
-          <button
-            class="btn-primary"
-            id="save-rx-btn"
-          >
-            Enregistrer les conseils
-          </button>
-
-        </div>
-      `
-
-      : `
-
-        <div class="card">
-
-          <div class="section-label">
-            🌿 Conseils naturopathiques
-          </div>
-
-          ${
-            rx.diet
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Alimentation
-                  </span>
-                  ${escapeHtml(rx.diet)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            rx.micronutrition
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Micronutrition
-                  </span>
-                  ${escapeHtml(
-                    rx.micronutrition
-                  )}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            rx.phyto
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Phytothérapie
-                  </span>
-                  ${escapeHtml(rx.phyto)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            rx.exercises
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Activité physique
-                  </span>
-                  ${escapeHtml(
-                    rx.exercises
-                  )}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            rx.hygiene
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Hygiène de vie
-                  </span>
-                  ${escapeHtml(rx.hygiene)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            rx.suivi
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Plan de suivi
-                  </span>
-                  ${escapeHtml(rx.suivi)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            !rx.diet &&
-            !rx.micronutrition &&
-            !rx.phyto &&
-            !rx.exercises &&
-            !rx.hygiene &&
-            !rx.suivi
-
-              ? `
-                <div style="
-                  font-size:13px;
-                  color:var(--text-muted);
-                ">
-                  Aucun conseil enregistré encore.
-                </div>
-              `
-              : ''
-          }
-
-          <button
-            class="btn-secondary"
-            id="edit-rx-btn"
-          >
-            ✏️ Modifier les conseils
-          </button>
-
-        </div>
-      `;
-
-  return (
-    admissionView +
-    prescriptionView
-  );
-}
-
-/* =========================================================
-   NOUVEAU BILAN
-   ========================================================= */
-
-function renderNew(){
-
-  const c =
-    activeClient();
-
-  if(!c){
-
-    return `
-      <div class="card">
-        <div class="empty">
-          ${
-            isClientMode
-              ? 'Lien invalide ou cliente introuvable.'
-              : 'Sélectionne une cliente dans l’onglet Clientes.'
-          }
-        </div>
-      </div>
-    `;
-  }
-
-  const bmi =
-    calcBMI(
-      c.height_cm,
-      form.weight
-        ? Number(form.weight)
-        : null
-    );
 
   return `
 
     <div class="card">
 
       <div class="section-label">
-        Bilan pour ${escapeHtml(c.name)}
+        👤 FICHE CLIENTE
       </div>
 
-      <label>Date</label>
-
-      <input
-        type="date"
-        id="f-date"
-        value="${form.date}"
+      <h2
+        style="
+          font-family:'Fraunces',serif;
+          margin:0 0 5px;
+        "
       >
-
-      <label>Poids (kg)</label>
-
-      <input
-        type="number"
-        step="0.1"
-        id="f-weight"
-        value="${form.weight}"
-      >
+        ${escapeHtml(c.name)}
+      </h2>
 
       ${
-        bmi
+        age !== null
           ? `
-            <div style="
-              font-size:11.5px;
-              color:var(--text-muted);
-              margin-top:4px;
-            ">
-              IMC estimé :
-              <b style="color:var(--green)">
-                ${bmi}
-              </b>
-              (taille ${c.height_cm || '?'} cm)
+            <div class="small">
+              ${age} ans
             </div>
           `
           : ''
       }
 
-      <label>Tour de taille (cm)</label>
+      ${
+        !editingAdmission
+          ? `
 
-      <input
-        type="number"
-        step="0.5"
-        id="f-waist"
-        value="${form.waist}"
-      >
+            <div class="entry-stats"
+                 style="margin-top:15px;">
 
-      <div
-        class="section-label"
-        style="margin-top:18px;"
-      >
-        🍽️ Alimentation
+              <span>
+                Sexe :
+                <b>
+                  ${escapeHtml(c.sex || '—')}
+                </b>
+              </span>
+
+              <span>
+                Taille :
+                <b>
+                  ${c.height_cm || '—'} cm
+                </b>
+              </span>
+
+            </div>
+
+            <div class="entry-note">
+              <b>Profession :</b>
+              ${escapeHtml(c.profession || '—')}
+            </div>
+
+            <div class="entry-note">
+              <b>Téléphone :</b>
+              ${escapeHtml(c.phone || '—')}
+            </div>
+
+            <div class="entry-note">
+              <b>E-mail :</b>
+              ${escapeHtml(c.email || '—')}
+            </div>
+
+            <div class="entry-note">
+              <b>Motif :</b>
+              ${escapeHtml(c.motif_consultation || '—')}
+            </div>
+
+            <div class="entry-note">
+              <b>Allergies :</b>
+              ${escapeHtml(c.allergies || '—')}
+            </div>
+
+            <button
+              class="btn-secondary"
+              id="edit-admission-btn"
+            >
+              Modifier la fiche
+            </button>
+
+          `
+          : renderAdmissionForm()
+      }
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        🔗 LIEN CLIENTE
       </div>
 
-      <label>Petit-déjeuner</label>
-      <input
-        type="text"
-        id="f-petitdej"
-        value="${escapeHtml(form.petit_dejeuner)}"
-      >
+      <p class="small">
+        Envoie ce lien à ta cliente pour
+        qu’elle puisse créer son compte.
+      </p>
 
-      <label>Déjeuner</label>
-      <input
-        type="text"
-        id="f-dejeuner"
-        value="${escapeHtml(form.dejeuner)}"
-      >
+      <div class="link-box">
 
-      <label>Dîner</label>
-      <input
-        type="text"
-        id="f-diner"
-        value="${escapeHtml(form.diner)}"
-      >
+        ${escapeHtml(
+          `${baseUrl()}?invite=${c.invitation_code || ''}`
+        )}
 
-      <label>Collations</label>
-      <input
-        type="text"
-        id="f-collations"
-        value="${escapeHtml(form.collations)}"
-      >
-
-      <label>Hydratation (L/jour)</label>
-      <input
-        type="number"
-        step="0.1"
-        id="f-hydratation"
-        value="${form.hydratation_l}"
-      >
-
-      <div
-        class="section-label"
-        style="margin-top:18px;"
-      >
-        🏃 Activité physique
       </div>
 
-      <div class="seg">
+      <button
+        class="btn-secondary"
+        id="copy-link-btn"
+      >
+        📋 Copier le lien
+      </button>
 
-        ${EFFORT_TYPES.map(t => `
+    </div>
+
+
+    ${
+      !isClientMode
+        ? renderPrescription()
+        : ''
+    }
+
+
+    ${
+      !isClientMode
+        ? `
+          <div class="card logout-area">
+
+            <div class="section-label">
+              🔐 COMPTE
+            </div>
+
+            <div class="user-info">
+              ${
+                escapeHtml(
+                  currentUser?.email || ''
+                )
+              }
+            </div>
+
+            <button
+              class="btn-danger"
+              id="logout-btn"
+            >
+              Se déconnecter
+            </button>
+
+          </div>
+        `
+        : ''
+    }
+
+  `;
+
+}
+
+
+/* =========================================================
+   ADMISSION FORM
+   ========================================================= */
+
+function renderAdmissionForm(){
+
+  const f =
+    admissionForm;
+
+  return `
+
+    <label>Date de naissance</label>
+
+    <input
+      type="date"
+      id="a-birth"
+      value="${escapeHtml(f.birth_date)}"
+    >
+
+    <label>Sexe</label>
+
+    <div class="seg">
+
+      ${['Femme','Homme','Autre']
+        .map(v => `
 
           <button
-            data-act="effort-type"
-            data-val="${escapeHtml(t)}"
+            data-act="a-sex"
+            data-val="${v}"
             class="${
-              form.effort_type === t
+              f.sex === v
                 ? 'active'
                 : ''
             }"
           >
-            ${escapeHtml(t)}
+            ${v}
+          </button>
+
+        `).join('')}
+
+    </div>
+
+    <label>Profession</label>
+
+    <input
+      id="a-profession"
+      value="${escapeHtml(f.profession)}"
+    >
+
+    <label>Téléphone</label>
+
+    <input
+      id="a-phone"
+      type="tel"
+      value="${escapeHtml(f.phone)}"
+    >
+
+    <label>E-mail</label>
+
+    <input
+      id="a-email"
+      type="email"
+      value="${escapeHtml(f.email)}"
+    >
+
+    <label>Taille (cm)</label>
+
+    <input
+      id="a-height"
+      type="number"
+      value="${escapeHtml(f.height_cm)}"
+    >
+
+    <label>Motif de consultation</label>
+
+    <textarea id="a-motif">${escapeHtml(f.motif_consultation)}</textarea>
+
+    <label>Antécédents médicaux</label>
+
+    <textarea id="a-medicaux">${escapeHtml(f.antecedents_medicaux)}</textarea>
+
+    <label>Antécédents chirurgicaux</label>
+
+    <textarea id="a-chirurgicaux">${escapeHtml(f.antecedents_chirurgicaux)}</textarea>
+
+    <label>Antécédents familiaux</label>
+
+    <textarea id="a-familiaux">${escapeHtml(f.antecedents_familiaux)}</textarea>
+
+    <label>Allergies</label>
+
+    <textarea id="a-allergies">${escapeHtml(f.allergies)}</textarea>
+
+    <label>Objectifs</label>
+
+    <div class="check-row">
+
+      ${OBJECTIFS_OPTIONS.map(v => `
+
+        <button
+          class="check-chip ${
+            f.objectifs.includes(v)
+              ? 'active'
+              : ''
+          }"
+          data-act="a-objectif"
+          data-val="${escapeHtml(v)}"
+        >
+          ${escapeHtml(v)}
+        </button>
+
+      `).join('')}
+
+    </div>
+
+    <button
+      class="btn-primary"
+      id="save-admission-btn"
+    >
+      Enregistrer la fiche
+    </button>
+
+  `;
+
+}
+
+
+/* =========================================================
+   PRESCRIPTION
+   ========================================================= */
+
+function renderPrescription(){
+
+  if(!editingPrescription){
+
+    const c =
+      activeClient();
+
+    return `
+
+      <div class="card">
+
+        <div class="section-label">
+          🌿 CONSEILS / PRESCRIPTION
+        </div>
+
+        <div class="entry-note">
+          <b>Alimentation :</b>
+          ${escapeHtml(c.prescription_diet || '—')}
+        </div>
+
+        <div class="entry-note">
+          <b>Micronutrition :</b>
+          ${escapeHtml(c.prescription_micronutrition || '—')}
+        </div>
+
+        <div class="entry-note">
+          <b>Phytothérapie :</b>
+          ${escapeHtml(c.prescription_phyto || '—')}
+        </div>
+
+        <div class="entry-note">
+          <b>Exercices :</b>
+          ${escapeHtml(c.prescription_exercises || '—')}
+        </div>
+
+        <div class="entry-note">
+          <b>Hygiène :</b>
+          ${escapeHtml(c.prescription_hygiene || '—')}
+        </div>
+
+        <div class="entry-note">
+          <b>Suivi :</b>
+          ${escapeHtml(c.prescription_suivi || '—')}
+        </div>
+
+        <button
+          class="btn-secondary"
+          id="edit-rx-btn"
+        >
+          Modifier les conseils
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  const f =
+    prescriptionForm;
+
+  return `
+
+    <div class="card">
+
+      <div class="section-label">
+        🌿 MODIFIER LES CONSEILS
+      </div>
+
+      <label>Alimentation</label>
+
+      <textarea id="rx-diet">${escapeHtml(f.diet)}</textarea>
+
+      <label>Micronutrition</label>
+
+      <textarea id="rx-micro">${escapeHtml(f.micronutrition)}</textarea>
+
+      <label>Phytothérapie</label>
+
+      <textarea id="rx-phyto">${escapeHtml(f.phyto)}</textarea>
+
+      <label>Exercices</label>
+
+      <textarea id="rx-exercises">${escapeHtml(f.exercises)}</textarea>
+
+      <label>Hygiène</label>
+
+      <textarea id="rx-hygiene">${escapeHtml(f.hygiene)}</textarea>
+
+      <label>Suivi</label>
+
+      <textarea id="rx-suivi">${escapeHtml(f.suivi)}</textarea>
+
+      <button
+        class="btn-primary"
+        id="save-rx-btn"
+      >
+        Enregistrer les conseils
+      </button>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   NEW BILAN
+   ========================================================= */
+
+function renderNew(){
+
+  if(!activeClientData){
+
+    return `
+
+      <div class="card">
+
+        <div class="empty">
+          ${
+            isClientMode
+              ? 'Ton espace cliente est en cours de chargement.'
+              : 'Sélectionne une cliente avant de créer un bilan.'
+          }
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  return `
+
+    <div class="card">
+
+      <div class="section-label">
+        📝 NOUVEAU BILAN
+      </div>
+
+      <div class="small">
+        Cliente :
+        <b>
+          ${escapeHtml(activeClientData.name)}
+        </b>
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        📅 MESURES
+      </div>
+
+      <label>Date</label>
+
+      <input
+        id="f-date"
+        type="date"
+        value="${escapeHtml(form.date)}"
+      >
+
+      <label>Poids (kg)</label>
+
+      <input
+        id="f-weight"
+        type="number"
+        step="0.1"
+        value="${escapeHtml(form.weight)}"
+      >
+
+      <label>Tour de taille (cm)</label>
+
+      <input
+        id="f-waist"
+        type="number"
+        step="0.1"
+        value="${escapeHtml(form.waist)}"
+      >
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        🍽️ ALIMENTATION
+      </div>
+
+      <label>Petit-déjeuner</label>
+
+      <textarea id="f-petitdej">${escapeHtml(form.petit_dejeuner)}</textarea>
+
+      <label>Déjeuner</label>
+
+      <textarea id="f-dejeuner">${escapeHtml(form.dejeuner)}</textarea>
+
+      <label>Dîner</label>
+
+      <textarea id="f-diner">${escapeHtml(form.diner)}</textarea>
+
+      <label>Collations</label>
+
+      <textarea id="f-collations">${escapeHtml(form.collations)}</textarea>
+
+      <label>Hydratation (L)</label>
+
+      <input
+        id="f-hydratation"
+        type="number"
+        step="0.1"
+        value="${escapeHtml(form.hydratation_l)}"
+      >
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        🏃 ACTIVITÉ
+      </div>
+
+      <label>Type d'effort</label>
+
+      <div class="seg">
+
+        ${EFFORT_TYPES.map(v => `
+
+          <button
+            data-act="effort-type"
+            data-val="${escapeHtml(v)}"
+            class="${
+              form.effort_type === v
+                ? 'active'
+                : ''
+            }"
+          >
+            ${escapeHtml(v)}
           </button>
 
         `).join('')}
 
       </div>
 
-      <label>Durée (min)</label>
+      <label>Durée (minutes)</label>
 
       <input
-        type="number"
         id="f-duration"
-        value="${form.effort_duration}"
+        type="number"
+        value="${escapeHtml(form.effort_duration)}"
       >
 
-      <div
-        class="section-label"
-        style="margin-top:18px;"
-      >
-        😴 Sommeil
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        😴 SOMMEIL
       </div>
 
       <label>Nombre d'heures</label>
 
       <input
-        type="number"
-        step="0.5"
         id="f-sleep"
-        value="${form.sleep_hours}"
+        type="number"
+        step="0.1"
+        value="${escapeHtml(form.sleep_hours)}"
       >
 
       <label>Qualité</label>
@@ -3213,9 +3280,11 @@ function renderNew(){
       <div class="seg">
 
         ${[
-          'Bonne',
+          'Très mauvaise',
+          'Mauvaise',
           'Moyenne',
-          'Mauvaise'
+          'Bonne',
+          'Très bonne'
         ].map(v => `
 
           <button
@@ -3234,19 +3303,24 @@ function renderNew(){
 
       </div>
 
-      <div
-        class="section-label"
-        style="margin-top:18px;"
-      >
-        😰 Stress
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        🧠 STRESS
       </div>
+
+      <label>Niveau</label>
 
       <div class="seg">
 
         ${[
           'Faible',
           'Modéré',
-          'Élevé'
+          'Élevé',
+          'Très élevé'
         ].map(v => `
 
           <button
@@ -3265,124 +3339,128 @@ function renderNew(){
 
       </div>
 
-      <label>Commentaire stress</label>
+      <label>Commentaire</label>
 
-      <input
-        type="text"
-        id="f-stress-comment"
-        value="${escapeHtml(
-          form.stress_comment
-        )}"
-      >
+      <textarea id="f-stress-comment">${escapeHtml(form.stress_comment)}</textarea>
 
-      <div
-        class="section-label"
-        style="margin-top:18px;"
-      >
-        🩺 Bilan naturopathique
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        🍃 DIGESTION
       </div>
-
-      <label>Digestion</label>
 
       <div class="check-row">
 
-        ${DIGESTION_OPTIONS.map(o => `
+        ${DIGESTION_OPTIONS.map(v => `
 
-          <span
+          <button
             class="check-chip ${
-              form.digestion.includes(o)
+              form.digestion.includes(v)
                 ? 'active'
                 : ''
             }"
             data-act="digestion"
-            data-val="${escapeHtml(o)}"
+            data-val="${escapeHtml(v)}"
           >
-            ${escapeHtml(o)}
-          </span>
-
-        `).join('')}
-
-      </div>
-
-      <label>
-        Commentaire digestion
-      </label>
-
-      <input
-        type="text"
-        id="f-digestion-comment"
-        value="${escapeHtml(
-          form.digestion_comment
-        )}"
-      >
-
-      <label>Énergie</label>
-
-      <div class="seg">
-
-        ${ENERGIE_OPTIONS.map(o => `
-
-          <button
-            data-act="energie"
-            data-val="${escapeHtml(o)}"
-            class="${
-              form.energie === o
-                ? 'active'
-                : ''
-            }"
-          >
-            ${escapeHtml(o)}
+            ${escapeHtml(v)}
           </button>
 
         `).join('')}
 
       </div>
 
-      <label>État émotionnel</label>
+      <label>Commentaire</label>
 
-      <div class="check-row">
+      <textarea id="f-digestion-comment">${escapeHtml(form.digestion_comment)}</textarea>
 
-        ${EMOTIONNEL_OPTIONS.map(o => `
+    </div>
 
-          <span
-            class="check-chip ${
-              form.emotionnel.includes(o)
+
+    <div class="card">
+
+      <div class="section-label">
+        ⚡ ÉNERGIE
+      </div>
+
+      <div class="seg">
+
+        ${ENERGIE_OPTIONS.map(v => `
+
+          <button
+            data-act="energie"
+            data-val="${escapeHtml(v)}"
+            class="${
+              form.energie === v
                 ? 'active'
                 : ''
             }"
-            data-act="emotionnel"
-            data-val="${escapeHtml(o)}"
           >
-            ${escapeHtml(o)}
-          </span>
+            ${escapeHtml(v)}
+          </button>
 
         `).join('')}
 
       </div>
 
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        ❤️ ÉMOTIONNEL
+      </div>
+
+      <div class="check-row">
+
+        ${EMOTIONNEL_OPTIONS.map(v => `
+
+          <button
+            class="check-chip ${
+              form.emotionnel.includes(v)
+                ? 'active'
+                : ''
+            }"
+            data-act="emotionnel"
+            data-val="${escapeHtml(v)}"
+          >
+            ${escapeHtml(v)}
+          </button>
+
+        `).join('')}
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        🩺 SANTÉ
+      </div>
+
       <label>Douleurs</label>
 
-      <input
-        type="text"
-        id="f-douleurs"
-        placeholder="ex : hanche, genou"
-        value="${escapeHtml(form.douleurs)}"
-      >
+      <textarea id="f-douleurs">${escapeHtml(form.douleurs)}</textarea>
 
-      <label>
-        Notes santé générales
-      </label>
+      <label>Note santé</label>
 
-      <textarea id="f-health">${escapeHtml(
-        form.health_note
-      )}</textarea>
+      <textarea id="f-health">${escapeHtml(form.health_note)}</textarea>
 
-      <div
-        class="section-label"
-        style="margin-top:18px;"
-      >
-        💰 Paiement
+    </div>
+
+
+    <div class="card">
+
+      <div class="section-label">
+        💰 PAIEMENT
       </div>
+
+      <label>Statut</label>
 
       <div class="seg">
 
@@ -3395,7 +3473,7 @@ function renderNew(){
               : ''
           }"
         >
-          ✅ Payé
+          Payé
         </button>
 
         <button
@@ -3407,12 +3485,12 @@ function renderNew(){
               : ''
           }"
         >
-          ⏳ En attente
+          En attente
         </button>
 
       </div>
 
-      <label>Méthode</label>
+      <label>Moyen de paiement</label>
 
       <div class="seg">
 
@@ -3442,10 +3520,11 @@ function renderNew(){
       <label>Montant</label>
 
       <input
+        id="f-payment-amount"
         type="number"
         step="0.01"
-        id="f-payment-amount"
-        value="${form.payment_amount}"
+        value="${escapeHtml(form.payment_amount)}"
+        placeholder="Montant"
       >
 
       <button
@@ -3456,252 +3535,141 @@ function renderNew(){
       </button>
 
     </div>
+
   `;
+
 }
 
+
 /* =========================================================
-   HISTORIQUE
+   HISTORY
    ========================================================= */
 
 function renderHistory(){
 
-  const c =
-    activeClient();
-
-  if(!c){
+  if(!activeClientData){
 
     return `
+
       <div class="card">
+
         <div class="empty">
           Sélectionne une cliente.
         </div>
+
       </div>
+
     `;
+
   }
 
-  if(bilans.length === 0){
+
+  if(!bilans.length){
 
     return `
+
       <div class="card">
-        <div class="empty">
-          Aucun bilan enregistré pour
-          ${escapeHtml(c.name)}.
+
+        <div class="section-label">
+          📋 HISTORIQUE
         </div>
+
+        <div class="empty">
+          Aucun bilan enregistré.
+        </div>
+
       </div>
+
     `;
+
   }
+
 
   return `
 
     <div class="card">
 
-      ${bilans.map(e => `
+      <div class="section-label">
+        📋 HISTORIQUE DES BILANS
+      </div>
 
-        <div class="entry">
+      ${
+        bilans.map(b => `
 
-          <div class="entry-date">
-            ${formatDate(e.date)}
-          </div>
+          <div class="entry">
 
-          <div class="entry-stats">
+            <div class="entry-date">
+              ${formatDate(b.date)}
+            </div>
+
+            <div class="entry-stats">
+
+              ${
+                b.weight
+                  ? `<span>⚖️ <b>${b.weight} kg</b></span>`
+                  : ''
+              }
+
+              ${
+                b.sleep_hours
+                  ? `<span>😴 <b>${b.sleep_hours} h</b></span>`
+                  : ''
+              }
+
+              ${
+                b.payment_amount
+                  ? `<span>💰 <b>${b.payment_amount}</b></span>`
+                  : ''
+              }
+
+            </div>
 
             ${
-              e.weight
-                ? `<span><b>${e.weight}</b> kg</span>`
-                : ''
-            }
-
-            ${
-              e.waist
-                ? `<span>Taille <b>${e.waist}</b>cm</span>`
-                : ''
-            }
-
-            ${
-              e.sleep_hours
+              b.health_note
                 ? `
-                  <span>
-                    😴 <b>${e.sleep_hours}</b>h
-                    (${escapeHtml(
-                      e.sleep_quality || ''
-                    )})
-                  </span>
+                  <div class="entry-note">
+                    ${escapeHtml(b.health_note)}
+                  </div>
                 `
                 : ''
             }
 
             ${
-              e.stress_level
+              b.douleurs
                 ? `
-                  <span>
-                    Stress :
-                    <b>${escapeHtml(
-                      e.stress_level
-                    )}</b>
-                  </span>
+                  <div class="entry-note">
+                    <b>Douleurs :</b>
+                    ${escapeHtml(b.douleurs)}
+                  </div>
+                `
+                : ''
+            }
+
+            ${
+              !isClientMode
+                ? `
+                  <button
+                    class="btn-danger"
+                    data-act="delete-bilan"
+                    data-id="${b.id}"
+                  >
+                    Supprimer
+                  </button>
                 `
                 : ''
             }
 
           </div>
 
-          ${
-            e.energie
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Énergie
-                  </span>
-                  ${escapeHtml(e.energie)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            Array.isArray(e.digestion) &&
-            e.digestion.length
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Digestion
-                  </span>
-                  ${e.digestion
-                    .map(escapeHtml)
-                    .join(', ')}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            Array.isArray(e.emotionnel) &&
-            e.emotionnel.length
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Émotionnel
-                  </span>
-                  ${e.emotionnel
-                    .map(escapeHtml)
-                    .join(', ')}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            e.douleurs
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Douleurs
-                  </span>
-                  ${escapeHtml(e.douleurs)}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            e.petit_dejeuner ||
-            e.dejeuner ||
-            e.diner
-
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Repas
-                  </span>
-
-                  ${
-                    [
-                      e.petit_dejeuner,
-                      e.dejeuner,
-                      e.diner,
-                      e.collations
-                    ]
-                      .filter(Boolean)
-                      .map(escapeHtml)
-                      .join(' · ')
-                  }
-
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            e.health_note
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Notes
-                  </span>
-                  ${escapeHtml(
-                    e.health_note
-                  )}
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            e.payment_status
-              ? `
-                <div class="entry-note">
-                  <span class="lbl">
-                    Paiement
-                  </span>
-
-                  ${
-                    e.payment_status === 'paye'
-                      ? '✅ Payé'
-                      : '⏳ En attente'
-                  }
-
-                  ${
-                    e.payment_amount
-                      ? ' · ' +
-                        e.payment_amount
-                      : ''
-                  }
-
-                  ${
-                    e.payment_method
-                      ? ' · ' +
-                        escapeHtml(
-                          e.payment_method
-                        )
-                      : ''
-                  }
-
-                </div>
-              `
-              : ''
-          }
-
-          ${
-            !isClientMode
-              ? `
-                <button
-                  class="del-btn"
-                  data-act="delete-bilan"
-                  data-id="${e.id}"
-                >
-                  Supprimer
-                </button>
-              `
-              : ''
-          }
-
-        </div>
-
-      `).join('')}
+        `).join('')
+      }
 
     </div>
+
   `;
+
 }
+
 
 /* =========================================================
    EVOLUTION
@@ -3715,37 +3683,65 @@ function renderProgress(){
   if(!c){
 
     return `
+
       <div class="card">
+
         <div class="empty">
           Sélectionne une cliente.
         </div>
+
       </div>
+
     `;
+
   }
 
-  if(bilans.length === 0){
+
+  if(!bilans.length){
 
     return `
+
       <div class="card">
+
         <div class="empty">
           Pas encore assez de données.
         </div>
+
       </div>
+
     `;
+
   }
+
 
   const sorted =
     [...bilans]
       .sort(
         (a,b) =>
-          a.date.localeCompare(b.date)
+          String(a.date)
+            .localeCompare(
+              String(b.date)
+            )
       );
 
+
   const withWeight =
-    sorted.filter(e => e.weight);
+    sorted.filter(
+      e =>
+        e.weight !== null &&
+        e.weight !== undefined &&
+        e.weight !== ''
+    );
+
 
   const withSleep =
-    sorted.filter(e => e.sleep_hours);
+    sorted.filter(
+      e =>
+        e.sleep_hours !== null &&
+        e.sleep_hours !== undefined &&
+        e.sleep_hours !== ''
+    );
+
 
   const avgSleep =
     withSleep.length
@@ -3759,6 +3755,7 @@ function renderProgress(){
         ).toFixed(1)
       : '—';
 
+
   const lastBmi =
     c.height_cm &&
     withWeight.length
@@ -3770,12 +3767,16 @@ function renderProgress(){
         )
       : null;
 
+
   function lineChart(
     list,
     key,
     lo,
     hi
   ){
+
+    if(!list.length)
+      return '';
 
     const w = 300;
     const h = 100;
@@ -3796,36 +3797,42 @@ function renderProgress(){
         ? hi
         : Math.max(...vals) + .5;
 
-    if(max === min){
+    if(max === min)
       max = min + 1;
-    }
 
     const pts =
-      list.map((e,i) => {
+      list.map(
+        (e,i) => {
 
-        const x =
-          pad +
-          (
-            i /
-            (list.length - 1 || 1)
-          ) *
-          (w - 2 * pad);
+          const x =
+            pad +
+            (
+              i /
+              (list.length - 1 || 1)
+            ) *
+            (w - 2 * pad);
 
-        const y =
-          h -
-          pad -
-          (
-            (Number(e[key]) - min) /
-            (max - min)
-          ) *
-          (h - 2 * pad);
+          const y =
+            h -
+            pad -
+            (
+              (Number(e[key]) - min) /
+              (max - min)
+            ) *
+            (h - 2 * pad);
 
-        return `${x},${y}`;
+          return `${x},${y}`;
 
-      }).join(' ');
+        }
+      ).join(' ');
+
 
     return `
-      <svg viewBox="0 0 ${w} ${h}">
+
+      <svg
+        viewBox="0 0 ${w} ${h}"
+      >
+
         <polyline
           points="${pts}"
           fill="none"
@@ -3834,32 +3841,37 @@ function renderProgress(){
           stroke-linejoin="round"
           stroke-linecap="round"
         />
+
       </svg>
+
     `;
+
   }
+
 
   const weightChart =
     withWeight.length >= 2
-
       ? `
 
         <div class="card">
 
           <div class="section-label">
-            ⚖️ Évolution du poids
+            ⚖️ ÉVOLUTION DU POIDS
           </div>
 
           <div class="chart-wrap">
+
             ${lineChart(
               withWeight,
               'weight'
             )}
+
           </div>
 
           <div class="chart-caption">
 
             <span>
-              ${withWeight[0].weight}kg
+              ${withWeight[0].weight} kg
             </span>
 
             <span>
@@ -3867,51 +3879,61 @@ function renderProgress(){
                 withWeight[
                   withWeight.length - 1
                 ].weight
-              }kg
+              } kg
             </span>
 
           </div>
 
         </div>
-      `
 
+      `
       : '';
+
 
   const sleepChart =
     withSleep.length >= 2
-
       ? `
 
         <div class="card">
 
           <div class="section-label">
-            😴 Évolution du sommeil
+            😴 ÉVOLUTION DU SOMMEIL
           </div>
 
           <div class="chart-wrap">
+
             ${lineChart(
               withSleep,
               'sleep_hours',
               0,
               10
             )}
+
           </div>
 
         </div>
-      `
 
+      `
       : '';
+
 
   const totalPaye =
     sorted
       .filter(
-        e => e.payment_status === 'paye'
+        e =>
+          e.payment_status === 'paye'
       )
       .reduce(
         (s,e) =>
-          s + (Number(e.payment_amount) || 0),
+          s +
+          (
+            Number(
+              e.payment_amount
+            ) || 0
+          ),
         0
       );
+
 
   const countAttente =
     sorted.filter(
@@ -3919,30 +3941,41 @@ function renderProgress(){
         e.payment_status === 'attente'
     ).length;
 
+
   return `
 
     <div class="stat-grid">
 
       <div class="stat-box">
+
         <div class="num">
           ${sorted.length}
         </div>
+
         <div class="lbl">
-          📋 Bilans
+          📋 BILANS
         </div>
+
       </div>
 
+
       <div class="stat-box">
+
         <div class="num">
           ${avgSleep}
         </div>
+
         <div class="lbl">
-          😴 Sommeil moyen
+          😴 SOMMEIL MOYEN
         </div>
+
       </div>
 
+
       <div class="stat-box">
+
         <div class="num">
+
           ${
             withWeight.length
               ? withWeight[
@@ -3950,27 +3983,35 @@ function renderProgress(){
                 ].weight
               : '—'
           }
+
         </div>
+
         <div class="lbl">
-          ⚖️ Dernier poids
+          ⚖️ DERNIER POIDS
         </div>
+
       </div>
 
+
       <div class="stat-box">
+
         <div class="num">
           ${lastBmi || '—'}
         </div>
+
         <div class="lbl">
-          📐 IMC actuel
+          📐 IMC ACTUEL
         </div>
+
       </div>
 
     </div>
 
+
     <div class="card">
 
       <div class="section-label">
-        💰 Paiements
+        💰 PAIEMENTS
       </div>
 
       <div class="entry-stats">
@@ -3993,88 +4034,24 @@ function renderProgress(){
 
     </div>
 
+
     ${weightChart}
+
     ${sleepChart}
 
   `;
+
 }
 
-/* =========================================================
-   MAIN RENDER
-   ========================================================= */
-
-function render(){
-
-  /*
-    Si nous sommes dans l'espace cliente
-    et qu'elle n'est pas connectée,
-    on conserve le fonctionnement du lien.
-  */
-
-  if(
-    !isClientMode &&
-    !currentSession
-  ){
-
-    document.getElementById(
-      'header-subtitle'
-    ).textContent =
-      'CONNEXION';
-
-    renderAuth();
-    return;
-  }
-
-  renderHeader();
-  renderTabs();
-
-  const main =
-    document.getElementById('main');
-
-  if(
-    activeTab === 'clients' &&
-    !isClientMode
-  ){
-
-    main.innerHTML =
-      renderClients();
-
-  }else if(
-    activeTab === 'profile'
-  ){
-
-    main.innerHTML =
-      renderProfile();
-
-  }else if(
-    activeTab === 'new'
-  ){
-
-    main.innerHTML =
-      renderNew();
-
-  }else if(
-    activeTab === 'history'
-  ){
-
-    main.innerHTML =
-      renderHistory();
-
-  }else{
-
-    main.innerHTML =
-      renderProgress();
-
-  }
-
-  attachHandlers();
-}
 
 /* =========================================================
    HANDLERS
    ========================================================= */
 
 function attachHandlers(){
+
+
+  /* CLIENT PILL */
 
   const pill =
     document.getElementById(
@@ -4085,18 +4062,21 @@ function attachHandlers(){
 
     pill.onclick = () => {
 
-      activeTab =
-        'clients';
+      if(!isClientMode){
 
-      render();
+        activeTab =
+          'clients';
+
+        render();
+
+      }
 
     };
 
   }
 
-  /*
-    LOGOUT
-  */
+
+  /* LOGOUT */
 
   const logoutBtn =
     document.getElementById(
@@ -4110,9 +4090,8 @@ function attachHandlers(){
 
   }
 
-  /*
-    CLIENT SELECT
-  */
+
+  /* CLIENT SELECT */
 
   document
     .querySelectorAll(
@@ -4128,27 +4107,41 @@ function attachHandlers(){
               '[data-act="delete-client"]'
             )
           ){
+
             return;
+
           }
 
           activeClientId =
             el.dataset.id;
 
-          await loadActiveClient();
-          await loadBilans();
+          try{
 
-          activeTab =
-            'profile';
+            await loadActiveClient();
 
-          render();
+            await loadBilans();
+
+            activeTab =
+              'profile';
+
+            render();
+
+          }catch(error){
+
+            console.error(error);
+
+            showToast(
+              'Impossible de charger la cliente'
+            );
+
+          }
 
         };
 
     });
 
-  /*
-    DELETE CLIENT
-  */
+
+  /* DELETE CLIENT */
 
   document
     .querySelectorAll(
@@ -4166,16 +4159,13 @@ function attachHandlers(){
               'Supprimer cette cliente et ses bilans ?'
             )
           ){
+
             return;
+
           }
 
-          try{
 
-            /*
-              Les bilans doivent être supprimés
-              avant la cliente si la base possède
-              une contrainte de clé étrangère.
-            */
+          try{
 
             await supabaseClient
               .from('vitalis_bilans')
@@ -4184,6 +4174,7 @@ function attachHandlers(){
                 'client_id',
                 el.dataset.id
               );
+
 
             const {
               error
@@ -4196,8 +4187,10 @@ function attachHandlers(){
                   el.dataset.id
                 );
 
+
             if(error)
               throw error;
+
 
             if(
               activeClientId ===
@@ -4209,6 +4202,7 @@ function attachHandlers(){
               bilans = [];
 
             }
+
 
             await loadClients();
 
@@ -4232,149 +4226,33 @@ function attachHandlers(){
 
     });
 
-  /*
-    ADD CLIENT
-  */
+
+  /* ADD CLIENT */
 
   const nameEl =
+    document.getElementById(
+      'new-client-name'
+    );
 
-  document.getElementById(
+  if(nameEl){
 
-    'new-client-name'
+    nameEl.oninput =
+      e => {
 
-  );
+        newClientName =
+          e.target.value;
 
-if(nameEl){
+      };
 
-  nameEl.oninput =
+  }
 
-    e =>
 
-      newClientName =
+  const addBtn =
+    document.getElementById(
+      'add-client-btn'
+    );
 
-        e.target.value;
-
-}
-
-const addBtn =
-
-  document.getElementById(
-
-    'add-client-btn'
-
-  );
-
-if(addBtn){
-
-  addBtn.onclick =
-
-    async () => {
-
-      if(
-
-        !newClientName.trim()
-
-      ){
-
-        showToast(
-
-          'Entre un nom'
-
-        );
-
-        return;
-
-      }
-
-      try{
-
-        const invitationCode =
-
-          crypto.randomUUID();
-
-        const {
-
-          data,
-
-          error
-
-        } =
-
-          await supabaseClient
-
-            .from('vitalis_clients')
-
-            .insert({
-
-              name:
-
-                newClientName.trim(),
-
-              objectifs:[],
-
-              invitation_code:
-
-                invitationCode
-
-            })
-
-            .select();
-
-        if(error)
-
-          throw error;
-
-        newClientName = '';
-
-        await loadClients();
-
-        if(
-
-          data &&
-
-          data[0]
-
-        ){
-
-          activeClientId =
-
-            data[0].id;
-
-          await loadActiveClient();
-
-          await loadBilans();
-
-        }
-
-        showToast(
-
-          'Cliente ajoutée ✅'
-
-        );
-
-        render();
-
-      }catch(error){
-
-        console.error(
-
-          'Erreur ajout cliente:',
-
-          error
-
-        );
-
-        showToast(
-
-          'Erreur — vérifie les permissions Supabase'
-
-        );
-
-      }
-
-    };
-
-}
+  if(addBtn){
 
     addBtn.onclick =
       async () => {
@@ -4388,9 +4266,15 @@ if(addBtn){
           );
 
           return;
+
         }
 
+
         try{
+
+          const invitationCode =
+            crypto.randomUUID();
+
 
           const {
             data,
@@ -4399,18 +4283,27 @@ if(addBtn){
             await supabaseClient
               .from('vitalis_clients')
               .insert({
+
                 name:
                   newClientName.trim(),
-                objectifs:[]
+
+                objectifs:[],
+
+                invitation_code:
+                  invitationCode
+
               })
               .select();
+
 
           if(error)
             throw error;
 
+
           newClientName = '';
 
           await loadClients();
+
 
           if(
             data &&
@@ -4421,9 +4314,14 @@ if(addBtn){
               data[0].id;
 
             await loadActiveClient();
+
             await loadBilans();
 
+            activeTab =
+              'profile';
+
           }
+
 
           showToast(
             'Cliente ajoutée ✅'
@@ -4433,7 +4331,10 @@ if(addBtn){
 
         }catch(error){
 
-          console.error(error);
+          console.error(
+            'Erreur ajout cliente:',
+            error
+          );
 
           showToast(
             'Erreur — vérifie les permissions Supabase'
@@ -4445,9 +4346,8 @@ if(addBtn){
 
   }
 
-  /*
-    COPY LINK
-  */
+
+  /* COPY LINK */
 
   const copyLinkBtn =
     document.getElementById(
@@ -4461,15 +4361,21 @@ if(addBtn){
 
         try{
 
-          await navigator.clipboard.writeText(
-            `${baseUrl()}?invite=${activeClientData?.invitation_code || ''}`
-          );
+          const link =
+            `${baseUrl()}?invite=${
+              activeClientData?.invitation_code || ''
+            }`;
+
+          await navigator.clipboard
+            .writeText(link);
 
           showToast(
             'Lien copié 📋'
           );
 
         }catch(error){
+
+          console.error(error);
 
           showToast(
             'Copie impossible'
@@ -4481,9 +4387,8 @@ if(addBtn){
 
   }
 
-  /*
-    ADMISSION
-  */
+
+  /* ADMISSION */
 
   const editAdmBtn =
     document.getElementById(
@@ -4549,6 +4454,7 @@ if(addBtn){
 
   }
 
+
   document
     .querySelectorAll(
       '[data-act="a-sex"]'
@@ -4566,6 +4472,7 @@ if(addBtn){
 
     });
 
+
   document
     .querySelectorAll(
       '[data-act="a-objectif"]'
@@ -4582,7 +4489,9 @@ if(addBtn){
             .includes(v)
 
             ? admissionForm.objectifs
-                .filter(x => x !== v)
+                .filter(
+                  x => x !== v
+                )
 
             : [
                 ...admissionForm.objectifs,
@@ -4594,6 +4503,7 @@ if(addBtn){
       };
 
     });
+
 
   const admissionMap = {
 
@@ -4629,6 +4539,7 @@ if(addBtn){
 
   };
 
+
   Object
     .keys(admissionMap)
     .forEach(id => {
@@ -4650,6 +4561,7 @@ if(addBtn){
         };
 
     });
+
 
   const saveAdmBtn =
     document.getElementById(
@@ -4717,8 +4629,10 @@ if(addBtn){
                 activeClientId
               );
 
+
           if(error)
             throw error;
+
 
           await loadActiveClient();
 
@@ -4745,9 +4659,8 @@ if(addBtn){
 
   }
 
-  /*
-    PRESCRIPTION
-  */
+
+  /* PRESCRIPTION */
 
   const editRxBtn =
     document.getElementById(
@@ -4793,6 +4706,7 @@ if(addBtn){
 
   }
 
+
   const rxMap = {
 
     'rx-diet':
@@ -4815,6 +4729,7 @@ if(addBtn){
 
   };
 
+
   Object
     .keys(rxMap)
     .forEach(id => {
@@ -4836,6 +4751,7 @@ if(addBtn){
         };
 
     });
+
 
   const saveRxBtn =
     document.getElementById(
@@ -4880,8 +4796,10 @@ if(addBtn){
                 activeClientId
               );
 
+
           if(error)
             throw error;
+
 
           await loadActiveClient();
 
@@ -4908,9 +4826,8 @@ if(addBtn){
 
   }
 
-  /*
-    BILAN
-  */
+
+  /* BILAN */
 
   document
     .querySelectorAll(
@@ -4929,6 +4846,7 @@ if(addBtn){
 
     });
 
+
   document
     .querySelectorAll(
       '[data-act="sleep-quality"]'
@@ -4945,6 +4863,7 @@ if(addBtn){
       };
 
     });
+
 
   document
     .querySelectorAll(
@@ -4963,6 +4882,7 @@ if(addBtn){
 
     });
 
+
   document
     .querySelectorAll(
       '[data-act="energie"]'
@@ -4980,6 +4900,7 @@ if(addBtn){
 
     });
 
+
   document
     .querySelectorAll(
       '[data-act="digestion"]'
@@ -4994,9 +4915,10 @@ if(addBtn){
         form.digestion =
           form.digestion.includes(v)
 
-            ? form.digestion.filter(
-                x => x !== v
-              )
+            ? form.digestion
+                .filter(
+                  x => x !== v
+                )
 
             : [
                 ...form.digestion,
@@ -5008,6 +4930,7 @@ if(addBtn){
       };
 
     });
+
 
   document
     .querySelectorAll(
@@ -5023,9 +4946,10 @@ if(addBtn){
         form.emotionnel =
           form.emotionnel.includes(v)
 
-            ? form.emotionnel.filter(
-                x => x !== v
-              )
+            ? form.emotionnel
+                .filter(
+                  x => x !== v
+                )
 
             : [
                 ...form.emotionnel,
@@ -5037,6 +4961,7 @@ if(addBtn){
       };
 
     });
+
 
   document
     .querySelectorAll(
@@ -5055,6 +4980,7 @@ if(addBtn){
 
     });
 
+
   document
     .querySelectorAll(
       '[data-act="payment-method"]'
@@ -5071,6 +4997,9 @@ if(addBtn){
       };
 
     });
+
+
+  /* FIELD MAP */
 
   const fieldMap = {
 
@@ -5121,6 +5050,7 @@ if(addBtn){
 
   };
 
+
   Object
     .keys(fieldMap)
     .forEach(id => {
@@ -5143,6 +5073,9 @@ if(addBtn){
 
     });
 
+
+  /* SAVE BILAN */
+
   const saveBtn =
     document.getElementById(
       'save-btn'
@@ -5160,13 +5093,15 @@ if(addBtn){
           );
 
           return;
+
         }
 
-        saveBtn.disabled =
-          true;
+
+        saveBtn.disabled = true;
 
         saveBtn.textContent =
           'Enregistrement...';
+
 
         const payload = {
 
@@ -5201,7 +5136,9 @@ if(addBtn){
 
           hydratation_l:
             form.hydratation_l
-              ? Number(form.hydratation_l)
+              ? Number(
+                  form.hydratation_l
+                )
               : null,
 
           effort_type:
@@ -5268,6 +5205,7 @@ if(addBtn){
 
         };
 
+
         try{
 
           const {
@@ -5275,10 +5213,14 @@ if(addBtn){
           } =
             await supabaseClient
               .from('vitalis_bilans')
-              .insert(payload);
+              .insert(
+                payload
+              );
+
 
           if(error)
             throw error;
+
 
           await loadBilans();
 
@@ -5319,9 +5261,8 @@ if(addBtn){
 
   }
 
-  /*
-    DELETE BILAN
-  */
+
+  /* DELETE BILAN */
 
   document
     .querySelectorAll(
@@ -5337,8 +5278,11 @@ if(addBtn){
               'Supprimer ce bilan ?'
             )
           ){
+
             return;
+
           }
+
 
           try{
 
@@ -5353,8 +5297,10 @@ if(addBtn){
                   b.dataset.id
                 );
 
+
             if(error)
               throw error;
+
 
             await loadBilans();
 
@@ -5380,6 +5326,135 @@ if(addBtn){
 
 }
 
+
+/* =========================================================
+   RENDER PRINCIPAL
+   ========================================================= */
+
+function render(){
+
+  /*
+    L'espace professionnel nécessite
+    une connexion.
+  */
+
+  if(
+    !isClientMode &&
+    !currentSession
+  ){
+
+    document.getElementById(
+      'header-subtitle'
+    ).textContent =
+      'CONNEXION';
+
+    renderAuth();
+
+    return;
+
+  }
+
+
+  /*
+    L'espace cliente nécessite aussi
+    maintenant un compte connecté.
+  */
+
+  if(
+    isClientMode &&
+    !currentSession
+  ){
+
+    document.getElementById(
+      'header-subtitle'
+    ).textContent =
+      'ESPACE CLIENTE';
+
+    renderAuth();
+
+    return;
+
+  }
+
+
+  document.getElementById(
+    'header-subtitle'
+  ).textContent =
+    isClientMode
+      ? 'ESPACE CLIENTE'
+      : 'SUIVI NATUROPATHIE';
+
+
+  renderHeader();
+
+  renderTabs();
+
+
+  const main =
+    document.getElementById(
+      'main'
+    );
+
+
+  if(
+    activeTab === 'clients' &&
+    !isClientMode
+  ){
+
+    main.innerHTML =
+      renderClients();
+
+  }
+
+  else if(
+    activeTab === 'profile'
+  ){
+
+    main.innerHTML =
+      renderProfile();
+
+  }
+
+  else if(
+    activeTab === 'new'
+  ){
+
+    main.innerHTML =
+      renderNew();
+
+  }
+
+  else if(
+    activeTab === 'history'
+  ){
+
+    main.innerHTML =
+      renderHistory();
+
+  }
+
+  else if(
+    activeTab === 'progress'
+  ){
+
+    main.innerHTML =
+      renderProgress();
+
+  }
+
+  else{
+
+    main.innerHTML =
+      renderProgress();
+
+  }
+
+
+  attachHandlers();
+
+}
+
+
 /* =========================================================
    INIT
    ========================================================= */
@@ -5388,40 +5463,24 @@ async function init(){
 
   try{
 
-    /*
-      Vérifie d'abord la session Supabase.
-    */
-
     await checkAuth();
 
-    /*
-      L'espace cliente continue d'utiliser
-      son identifiant de lien.
-    */
-
-    if(isClientMode){
-
-      await loadActiveClient();
-      await loadBilans();
-
-      render();
-
-      return;
-    }
 
     /*
-      L'espace naturopathe nécessite
-      maintenant une connexion.
+      Si une session existe déjà,
+      on charge directement l'espace.
     */
 
-    if(!currentSession){
+    if(currentSession){
 
-      render();
+      await afterLogin();
 
       return;
+
     }
 
-    await afterLogin();
+
+    render();
 
   }catch(error){
 
@@ -5429,6 +5488,7 @@ async function init(){
       'Erreur initialisation:',
       error
     );
+
 
     document.getElementById(
       'main'
@@ -5440,20 +5500,20 @@ async function init(){
           ⚠️ ERREUR
         </div>
 
-        <p style="
-          font-size:13px;
-          line-height:1.5;
-          color:var(--text-muted);
-        ">
+        <p class="small">
+
           VITALIS a rencontré une erreur
           lors du chargement.
+
         </p>
 
         <div class="link-box">
+
           ${escapeHtml(
             error.message ||
             'Erreur inconnue'
           )}
+
         </div>
 
         <button
@@ -5471,25 +5531,7 @@ async function init(){
 
 }
 
+
 init();
-</script>
 
-<script>
-   if ('serviceWorker' in navigator) {
-
-    window.addEventListener('load', () => {
-
-      navigator.serviceWorker.register('/service-worker.js')
-
-        .then(() => console.log('Vitalis PWA activée ✅'))
-
-        .catch(error => console.error('Erreur PWA :', error));
-
-    });
-
-  }
-
-</script>
-<script src="./payment.js"></script>
-</body>
-</html>
+</
