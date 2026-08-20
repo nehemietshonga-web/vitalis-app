@@ -5534,6 +5534,13 @@ async function init(){
       on charge directement l'espace.
     */
 
+    if(isClientMode){
+
+  await loadActiveClient();
+  await loadBilans();
+
+    }
+    
     if(currentSession){
 
       await afterLogin();
