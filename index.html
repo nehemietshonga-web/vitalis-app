@@ -5370,26 +5370,12 @@ function render(){
   }
 
 
-  /*
-    L'espace cliente nécessite aussi
-    maintenant un compte connecté.
-  */
+  
 
-  if(
-    isClientMode &&
-    !currentSession
-  ){
+  
+    
 
-    document.getElementById(
-      'header-subtitle'
-    ).textContent =
-      'ESPACE CLIENTE';
-
-    renderAuth();
-
-    return;
-
-  }
+  
 
 
   document.getElementById(
