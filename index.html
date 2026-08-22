@@ -2772,17 +2772,6 @@ function renderPayment(){
         p_payment_reference:
           reference
       }
-    const { error } =
-  await supabaseClient
-    .rpc(
-      'submit_client_payment',
-      {
-        p_invitation_code:
-          INVITE_CODE,
-
-        p_payment_reference:
-          reference
-      }
     );
 
     if(error)
