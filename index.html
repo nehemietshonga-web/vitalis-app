@@ -1763,53 +1763,73 @@ async function loadActiveClient(){
 
   }
 
-  let query =
-    supabaseClient
-      .from('vitalis_clients')
-      .select('*');
+  try{
 
+    if(isClientMode){
 
-  if(isClientMode){
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .rpc(
+            'get_client_by_invitation',
+            {
+              p_invitation_code:
+                INVITE_CODE
+            }
+          );
 
-    query =
-      query.eq(
-        'invitation_code',
-        INVITE_CODE
-      );
+      if(error)
+        throw error;
 
-  }else{
+      activeClientData =
+        data || null;
 
-    query =
-      query.eq(
-        'id',
-        activeClientId
-      );
+    }else{
 
-  }
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from('vitalis_clients')
+          .select('*')
+          .eq(
+            'id',
+            activeClientId
+          )
+          .maybeSingle();
 
+      if(error)
+        throw error;
 
-  const {
-    data,
-    error
-  } =
-    await query.maybeSingle();
+      activeClientData =
+        data || null;
 
-  if(error)
+    }
+
+    if(activeClientData){
+
+      activeClientId =
+        activeClientData.id;
+
+    }
+
+  }catch(error){
+
+    console.error(
+      'Erreur chargement client:',
+      error
+    );
+
+    activeClientData = null;
+
     throw error;
-
-  activeClientData =
-    data || null;
-
-  if(activeClientData){
-
-    activeClientId =
-      activeClientData.id;
 
   }
 
 }
-
-
 /* =========================================================
    LOAD BILANS
    ========================================================= */
@@ -1819,6 +1839,33 @@ async function loadBilans(){
   if(!activeClientId){
 
     bilans = [];
+
+    return;
+
+  }
+
+  if(isClientMode){
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .rpc(
+          'get_client_bilans_by_invitation',
+          {
+            p_invitation_code:
+              INVITE_CODE
+          }
+        );
+
+    if(error)
+      throw error;
+
+    bilans =
+      Array.isArray(data)
+        ? data
+        : [];
 
     return;
 
@@ -1849,7 +1896,6 @@ async function loadBilans(){
     data || [];
 
 }
-
 
 /* =========================================================
    AFTER LOGIN
