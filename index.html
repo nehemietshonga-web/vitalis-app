@@ -2751,7 +2751,8 @@ function renderClients(){
    PAYMENT
    ========================================================= */
 
-function renderPayment(){
+
+  function renderPayment(){
 
   const c =
     activeClient();
@@ -2771,78 +2772,6 @@ function renderPayment(){
     `;
 
   }
-  
-  
-  async function submitPayment(){
-
-  const referenceInput =
-    document.getElementById(
-      'payment-reference'
-    );
-
-  const reference =
-    referenceInput
-      ? referenceInput.value.trim()
-      : '';
-
-  if(!activeClientId){
-
-    showToast(
-      'Client introuvable'
-    );
-
-    return;
-
-  }
-
-  if(!reference){
-
-    showToast(
-      'Veuillez entrer la référence du paiement'
-    );
-
-    return;
-
-  }
-
-  try{
-
-    const { error } =
-  await supabaseClient
-    .rpc(
-      'submit_client_payment',
-      {
-        p_invitation_code:
-          INVITE_CODE,
-
-        p_payment_reference:
-          reference
-      }
-    );
-
-    if(error)
-      throw error;
-
-    showToast(
-      'Paiement envoyé à votre professionnelle ✅'
-    );
-
-    render();
-
-  }catch(error){
-
-    console.error(
-      'Erreur paiement:',
-      error
-    );
-
-    showToast(
-      'Impossible d’enregistrer le paiement'
-    );
-
-  }
-
-}
 
   return `
 
@@ -2885,6 +2814,78 @@ function renderPayment(){
     </div>
 
   `;
+
+}
+
+
+async function submitPayment(){
+
+  const referenceInput =
+    document.getElementById(
+      'payment-reference'
+    );
+
+  const reference =
+    referenceInput
+      ? referenceInput.value.trim()
+      : '';
+
+  if(!activeClientId){
+
+    showToast(
+      'Client introuvable'
+    );
+
+    return;
+
+  }
+
+  if(!reference){
+
+    showToast(
+      'Veuillez entrer la référence du paiement'
+    );
+
+    return;
+
+  }
+
+  try{
+
+    const { error } =
+      await supabaseClient
+        .rpc(
+          'submit_client_payment',
+          {
+            p_invitation_code:
+              INVITE_CODE,
+
+            p_payment_reference:
+              reference
+          }
+        );
+
+    if(error)
+      throw error;
+
+    showToast(
+      'Paiement envoyé à votre professionnelle ✅'
+    );
+
+    render();
+
+  }catch(error){
+
+    console.error(
+      'Erreur paiement:',
+      error
+    );
+
+    showToast(
+      'Impossible d’enregistrer le paiement'
+    );
+
+  }
 
 }
 /* =========================================================
