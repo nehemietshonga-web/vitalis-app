@@ -2498,6 +2498,13 @@ function renderTabs(){
         <span class="tab-emoji">👤</span>
         PROFIL
       </button>
+      <button
+  class="tab ${activeTab==='payment'?'active':''}"
+  data-tab="payment"
+>
+  <span class="tab-emoji">💳</span>
+  PAIEMENT
+</button>
 
     `;
 
@@ -2694,7 +2701,157 @@ function renderClients(){
 
 }
 
+/* =========================================================
+   PAYMENT
+   ========================================================= */
 
+function renderPayment(){
+
+  const c =
+    activeClient();
+
+  if(!c){
+
+    return `
+
+      <div class="card">
+
+        <div class="empty">
+          Aucun client sélectionné.
+        </div>
+
+      </div>
+
+    `;
+
+  }
+  
+  
+  async function submitPayment(){
+
+  const referenceInput =
+    document.getElementById(
+      'payment-reference'
+    );
+
+  const reference =
+    referenceInput
+      ? referenceInput.value.trim()
+      : '';
+
+  if(!activeClientId){
+
+    showToast(
+      'Client introuvable'
+    );
+
+    return;
+
+  }
+
+  if(!reference){
+
+    showToast(
+      'Veuillez entrer la référence du paiement'
+    );
+
+    return;
+
+  }
+
+  try{
+
+    const { error } =
+  await supabaseClient
+    .rpc(
+      'submit_client_payment',
+      {
+        p_invitation_code:
+          INVITE_CODE,
+
+        p_payment_reference:
+          reference
+      }
+    const { error } =
+  await supabaseClient
+    .rpc(
+      'submit_client_payment',
+      {
+        p_invitation_code:
+          INVITE_CODE,
+
+        p_payment_reference:
+          reference
+      }
+    );
+
+    if(error)
+      throw error;
+
+    showToast(
+      'Paiement envoyé à votre professionnelle ✅'
+    );
+
+    render();
+
+  }catch(error){
+
+    console.error(
+      'Erreur paiement:',
+      error
+    );
+
+    showToast(
+      'Impossible d’enregistrer le paiement'
+    );
+
+  }
+
+}
+
+  return `
+
+    <div class="card">
+
+      <h2>💳 Paiement</h2>
+
+      <p>
+        Effectuez votre paiement avec <strong>IllicoCash</strong>.
+      </p>
+
+      <div class="payment-box">
+
+        <p><strong>Numéro IllicoCash</strong></p>
+
+        <div class="payment-number">
+          +243 89 06 90 712
+        </div>
+
+        <p>
+          Après avoir effectué le paiement,
+          indiquez votre référence de transaction ci-dessous.
+        </p>
+
+        <input
+          id="payment-reference"
+          type="text"
+          placeholder="Référence de transaction"
+        >
+
+        <button
+          type="button"
+          onclick="submitPayment()"
+        >
+          J’ai effectué le paiement
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
 /* =========================================================
    PROFILE
    ========================================================= */
@@ -5415,6 +5572,15 @@ function render(){
       renderProfile();
 
   }
+  
+  else if(
+  activeTab === 'payment'
+){
+
+  main.innerHTML =
+    renderPayment();
+
+}
 
   else if(
     activeTab === 'new'
