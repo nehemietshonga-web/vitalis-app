@@ -2777,45 +2777,69 @@ function renderClients(){
 
     <div class="card">
 
-      <h2>💳 Paiement</h2>
+     <h2>💳 Paiement</h2>
 
-      <p>
-        Effectuez votre paiement avec <strong>IllicoCash</strong>.
-      </p>
+<p>
+  Effectuez votre paiement avec <strong>IllicoCash</strong>.
+</p>
 
-      <div class="payment-box">
+<div class="payment-box">
 
-        <p><strong>Numéro IllicoCash</strong></p>
+  <p><strong>Numéro IllicoCash</strong></p>
 
-        <div class="payment-number">
-          +243 89 06 90 712
+  <div class="payment-number">
+    +243 89 06 90 712
+  </div>
+
+  ${
+    c.payment_reference
+      ? `
+        <div class="payment-status-box">
+
+          <p>
+            <strong>Statut du paiement</strong>
+          </p>
+
+          <p>
+            ${
+              c.payment_status === 'Validé'
+                ? '🟢 Paiement validé'
+                : '🟠 Paiement en attente'
+            }
+          </p>
+
+          <p>
+            <strong>Référence :</strong>
+            ${escapeHtml(c.payment_reference)}
+          </p>
+
         </div>
+      `
+      : ''
+  }
 
-        <p>
-          Après avoir effectué le paiement,
-          indiquez votre référence de transaction ci-dessous.
-        </p>
+  <p>
+    Après avoir effectué le paiement,
+    indiquez votre référence de transaction ci-dessous.
+  </p>
 
-        <input
-          id="payment-reference"
-          type="text"
-          placeholder="Référence de transaction"
-        >
+  <input
+    id="payment-reference"
+    type="text"
+    placeholder="Référence de transaction"
+    value="${escapeHtml(c.payment_reference || '')}"
+  >
 
-        <button
-          type="button"
-          onclick="submitPayment()"
-        >
-          J’ai effectué le paiement
-        </button>
+  <button
+    type="button"
+    onclick="submitPayment()"
+  >
+    J’ai effectué le paiement
+  </button>
 
-      </div>
+</div>
 
-    </div>
-
-  `;
-
-}
+</div>
 
 
 async function submitPayment(){
