@@ -5464,6 +5464,22 @@ function attachHandlers(){
 
           if(error)
             throw error;
+const {
+  error: paymentUpdateError
+} =
+  await supabaseClient
+    .from('vitalis_clients')
+    .update({
+      payment_status:
+        form.payment_status
+    })
+    .eq(
+      'id',
+      activeClientId
+    );
+
+if(paymentUpdateError)
+  throw paymentUpdateError;
 
 
           await loadBilans();
