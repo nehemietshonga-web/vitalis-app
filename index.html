@@ -4783,59 +4783,68 @@ function attachHandlers(){
 
         try{
 
-          const {
-            error
-          } =
-            await supabaseClient
-              .from('vitalis_clients')
-              .update({
+      const {
+  error
+} =
+  await supabaseClient
+    .rpc(
+      'update_client_profile_by_invitation',
+      {
+        p_invitation_code:
+          INVITE_CODE,
 
-                birth_date:
-                  admissionForm.birth_date ||
-                  null,
+        p_birth_date:
+          admissionForm.birth_date ||
+          null,
 
-                sex:
-                  admissionForm.sex,
+        p_sex:
+          admissionForm.sex ||
+          null,
 
-                profession:
-                  admissionForm.profession,
+        p_profession:
+          admissionForm.profession ||
+          null,
 
-                phone:
-                  admissionForm.phone,
+        p_phone:
+          admissionForm.phone ||
+          null,
 
-                email:
-                  admissionForm.email,
+        p_email:
+          admissionForm.email ||
+          null,
 
-                height_cm:
-                  admissionForm.height_cm
-                    ? Number(
-                        admissionForm.height_cm
-                      )
-                    : null,
+        p_height_cm:
+          admissionForm.height_cm
+            ? Number(
+                admissionForm.height_cm
+              )
+            : null,
 
-                motif_consultation:
-                  admissionForm.motif_consultation,
+        p_motif_consultation:
+          admissionForm.motif_consultation ||
+          null,
 
-                antecedents_medicaux:
-                  admissionForm.antecedents_medicaux,
+        p_antecedents_medicaux:
+          admissionForm.antecedents_medicaux ||
+          null,
 
-                antecedents_chirurgicaux:
-                  admissionForm.antecedents_chirurgicaux,
+        p_antecedents_chirurgicaux:
+          admissionForm.antecedents_chirurgicaux ||
+          null,
 
-                antecedents_familiaux:
-                  admissionForm.antecedents_familiaux,
+        p_antecedents_familiaux:
+          admissionForm.antecedents_familiaux ||
+          null,
 
-                allergies:
-                  admissionForm.allergies,
+        p_allergies:
+          admissionForm.allergies ||
+          null,
 
-                objectifs:
-                  admissionForm.objectifs
-
-              })
-              .eq(
-                'id',
-                activeClientId
-              );
+        p_objectifs:
+          admissionForm.objectifs ||
+          {}
+      }
+    );
 
 
           if(error)
