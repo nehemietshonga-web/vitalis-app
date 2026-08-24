@@ -2802,10 +2802,13 @@ function renderClients(){
 
           <p>
             ${
-              c.payment_status === 'Paye' ||
-               c.payment_status === 'Validé'
-                ? '🟢 Paiement validé'
-                : '🟠 Paiement en attente'
+              (
+  c.payment_status === 'Paye' ||
+  c.payment_status === 'Validé' ||
+  c.payment_status === 'paye'
+)
+  ? '🟢 Paiement validé'
+  : '🟠 Paiement en attente'
             }
           </p>
 
