@@ -2802,7 +2802,8 @@ function renderClients(){
 
           <p>
             ${
-              c.payment_status === 'Validé'
+              c.payment_status === 'Paye' ||
+               c.payment_status === 'Validé'
                 ? '🟢 Paiement validé'
                 : '🟠 Paiement en attente'
             }
@@ -5485,7 +5486,9 @@ function attachHandlers(){
           activeClientId,
 
         p_status:
-          form.payment_status
+  form.payment_status === 'paye'
+    ? 'Paye'
+    : 'En attente'
       }
     );
 
