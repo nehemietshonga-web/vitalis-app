@@ -5464,6 +5464,23 @@ function attachHandlers(){
 
           if(error)
             throw error;
+  const {
+  error: paymentSyncError
+} =
+  await supabaseClient
+    .rpc(
+      'sync_client_payment_status',
+      {
+        p_client_id:
+          activeClientId,
+
+        p_status:
+          form.payment_status
+      }
+    );
+
+if(paymentSyncError)
+  throw paymentSyncError;
 const {
   error: paymentUpdateError
 } =
