@@ -3724,7 +3724,17 @@ function renderNew(){
         </button>
 
       </div>
+<label>Référence du paiement</label>
 
+<input
+  id="f-payment-reference"
+  type="text"
+  value="${escapeHtml(
+    activeClientData?.payment_reference || ''
+  )}"
+  placeholder="Référence du paiement"
+  readonly
+>
       <label>Moyen de paiement</label>
 
       <div class="seg">
